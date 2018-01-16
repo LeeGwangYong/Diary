@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class SignViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
