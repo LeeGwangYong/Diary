@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		A4B4BBABEF00849F719159DE /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */; };
 		FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */; };
-		FC18F2CF200DB5570087E3A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CE200DB5570087E3A8 /* ViewController.swift */; };
+		FC18F2CF200DB5570087E3A8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CE200DB5570087E3A8 /* HomeViewController.swift */; };
 		FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D0200DB5570087E3A8 /* Main.storyboard */; };
 		FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D3200DB5570087E3A8 /* Assets.xcassets */; };
 		FC18F2D7200DB5570087E3A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D5200DB5570087E3A8 /* LaunchScreen.storyboard */; };
+		FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E5200E03B90087E3A8 /* APIService.swift */; };
+		FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */; };
+		FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E9200E04BD0087E3A8 /* SignService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +24,14 @@
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 		FC18F2C9200DB5570087E3A8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC18F2CE200DB5570087E3A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC18F2CE200DB5570087E3A8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FC18F2D1200DB5570087E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC18F2D3200DB5570087E3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC18F2D6200DB5570087E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC18F2D8200DB5570087E3A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC18F2E5200E03B90087E3A8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
+		FC18F2E9200E04BD0087E3A8 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +85,72 @@
 			isa = PBXGroup;
 			children = (
 				FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */,
-				FC18F2CE200DB5570087E3A8 /* ViewController.swift */,
-				FC18F2D0200DB5570087E3A8 /* Main.storyboard */,
-				FC18F2D3200DB5570087E3A8 /* Assets.xcassets */,
-				FC18F2D5200DB5570087E3A8 /* LaunchScreen.storyboard */,
 				FC18F2D8200DB5570087E3A8 /* Info.plist */,
+				FC18F2E4200E035F0087E3A8 /* Protocol */,
+				FC18F2E3200E03530087E3A8 /* Extension */,
+				FC18F2E1200E03110087E3A8 /* Network */,
+				FC18F2E2200E031B0087E3A8 /* Model */,
+				FC18F2E0200E02F70087E3A8 /* Resource */,
+				FC18F2DF200E02F10087E3A8 /* Storyboard */,
+				FC18F2DE200E02EA0087E3A8 /* ViewController */,
 			);
 			path = Diary;
+			sourceTree = "<group>";
+		};
+		FC18F2DE200E02EA0087E3A8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC18F2CE200DB5570087E3A8 /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FC18F2DF200E02F10087E3A8 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FC18F2D5200DB5570087E3A8 /* LaunchScreen.storyboard */,
+				FC18F2D0200DB5570087E3A8 /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FC18F2E0200E02F70087E3A8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FC18F2D3200DB5570087E3A8 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FC18F2E1200E03110087E3A8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FC18F2E5200E03B90087E3A8 /* APIService.swift */,
+				FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */,
+				FC18F2E9200E04BD0087E3A8 /* SignService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FC18F2E2200E031B0087E3A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC18F2E3200E03530087E3A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FC18F2E4200E035F0087E3A8 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +302,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC18F2CF200DB5570087E3A8 /* ViewController.swift in Sources */,
+				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
+				FC18F2CF200DB5570087E3A8 /* HomeViewController.swift in Sources */,
+				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
+				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +447,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPWV8KDDJE;
 				INFOPLIST_FILE = Diary/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GwangGro.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -395,6 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EPWV8KDDJE;
 				INFOPLIST_FILE = Diary/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = GwangGro.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
