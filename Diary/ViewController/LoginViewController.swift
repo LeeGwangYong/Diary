@@ -8,16 +8,19 @@
 
 import UIKit
 import Firebase
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        emailTextField.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        pwTextField.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        self.emailTextField.delegate = self
+        self.pwTextField.delegate = self
         if let user = Auth.auth().currentUser {
             
             emailTextField.placeholder = "이미 로그인 된 상태입니다."
@@ -26,7 +29,19 @@ class LoginViewController: UIViewController {
             logoutButton.isHidden = false
         }
     }
-
+    
+    //Hide keyboard when user touches outside keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    //Presses return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        pwTextField.resignFirstResponder()
+        return (true)
+    }
+  
+    
     @IBAction func loginButtonTouched(_ sender: Any) {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: pwTextField.text!) { (user, error) in
             if user != nil{
@@ -63,16 +78,14 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+//TextField under line
+extension UITextField {
+    func addBorderBottom(height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: self.frame.height-height, width: self.frame.width, height: height)
+        border.backgroundColor = color.cgColor
+        self.layer.addSublayer(border)
+    }
+}
+

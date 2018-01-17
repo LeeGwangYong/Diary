@@ -18,8 +18,8 @@ class SignUpViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        emailTextField.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        pwTextField.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
     
     override func didReceiveMemoryWarning() {
