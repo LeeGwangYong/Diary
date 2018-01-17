@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RDG-hh-B3Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GeP-dx-BEC">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="73" y="130"/>
+            <point key="canvasLocation" x="-1028" y="195"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Xkl-NQ-49D">
@@ -113,6 +113,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tRt-1Z-qTs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QBa-ud-MlQ"/>
                     <connections>
                         <outlet property="emailTextField" destination="a7X-Mt-yvI" id="V5N-cr-ApN"/>
                         <outlet property="loginButton" destination="FuW-Vo-jrL" id="zE6-ME-TRH"/>
@@ -122,12 +123,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZr-F4-TiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="781.60000000000002" y="131.78410794602701"/>
+            <point key="canvasLocation" x="770" y="195"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--회원가입-->
         <scene sceneID="1aC-cP-ydu">
             <objects>
-                <viewController id="lIT-4x-ZIf" customClass="SignUpViewController" customModule="Diary" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ㄹㅇㅈㄹ" title="회원가입" id="lIT-4x-ZIf" customClass="SignUpViewController" customModule="Diary" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VSk-Sd-HuI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,13 +172,6 @@
                                     <action selector="signUpAction:" destination="lIT-4x-ZIf" eventType="touchUpInside" id="URx-qe-ZIL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="회원가입" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghx-C9-7RQ">
-                                <rect key="frame" x="137" y="149" width="100" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="q9Z-C4-pC3"/>
@@ -189,7 +183,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPs-dr-aWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1584.8" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1630" y="195"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MVl-WF-QUt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GeP-dx-BEC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="P0a-uB-58K">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RDG-hh-B3Q" kind="relationship" relationship="rootViewController" id="TAr-o5-WZe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Odm-hI-DWi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-137" y="195"/>
         </scene>
     </scenes>
 </document>
