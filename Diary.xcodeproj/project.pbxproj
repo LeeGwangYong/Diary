@@ -69,6 +69,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9EADC815200F703000A4B3EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FC18F2C0200DB5570087E3A8 = {
 			isa = PBXGroup;
 			children = (
@@ -93,25 +100,26 @@
 				FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */,
 				FC18F2D8200DB5570087E3A8 /* Info.plist */,
 				9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */,
+				9EADC815200F703000A4B3EB /* Models */,
 				FC18F2E4200E035F0087E3A8 /* Protocol */,
 				FC18F2E3200E03530087E3A8 /* Extension */,
 				FC18F2E1200E03110087E3A8 /* Network */,
 				FC18F2E2200E031B0087E3A8 /* Model */,
-				FC18F2E0200E02F70087E3A8 /* Resource */,
+				FC18F2E0200E02F70087E3A8 /* Resources */,
 				FC18F2DF200E02F10087E3A8 /* Storyboard */,
-				FC18F2DE200E02EA0087E3A8 /* ViewController */,
+				FC18F2DE200E02EA0087E3A8 /* Controllers */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
 		};
-		FC18F2DE200E02EA0087E3A8 /* ViewController */ = {
+		FC18F2DE200E02EA0087E3A8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				FC18F2CE200DB5570087E3A8 /* SignViewController.swift */,
 				9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */,
 				9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */,
 			);
-			path = ViewController;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		FC18F2DF200E02F10087E3A8 /* Storyboard */ = {
@@ -123,12 +131,12 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		FC18F2E0200E02F70087E3A8 /* Resource */ = {
+		FC18F2E0200E02F70087E3A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				FC18F2D3200DB5570087E3A8 /* Assets.xcassets */,
 			);
-			path = Resource;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FC18F2E1200E03110087E3A8 /* Network */ = {
