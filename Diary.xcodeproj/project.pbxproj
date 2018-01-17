@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E381548200F0F9200CE6A3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */; };
+		9EE00CB4200F05D200CE5BD5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */; };
+		9EE00CB6200F094700CE5BD5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */; };
 		A4B4BBABEF00849F719159DE /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */; };
 		FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */; };
 		FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CE200DB5570087E3A8 /* SignViewController.swift */; };
@@ -22,6 +25,9 @@
 		49AAD48E563A0B0CF7602047 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
+		9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC18F2C9200DB5570087E3A8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC18F2CE200DB5570087E3A8 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 			children = (
 				FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */,
 				FC18F2D8200DB5570087E3A8 /* Info.plist */,
+				9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */,
 				FC18F2E4200E035F0087E3A8 /* Protocol */,
 				FC18F2E3200E03530087E3A8 /* Extension */,
 				FC18F2E1200E03110087E3A8 /* Network */,
@@ -101,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				FC18F2CE200DB5570087E3A8 /* SignViewController.swift */,
+				9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */,
+				9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC18F2D7200DB5570087E3A8 /* LaunchScreen.storyboard in Resources */,
+				9E381548200F0F9200CE6A3E /* GoogleService-Info.plist in Resources */,
 				FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */,
 				FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */,
 			);
@@ -265,30 +275,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -302,6 +304,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EE00CB4200F05D200CE5BD5 /* LoginViewController.swift in Sources */,
+				9EE00CB6200F094700CE5BD5 /* SignUpViewController.swift in Sources */,
 				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
 				FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
@@ -445,11 +449,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EPWV8KDDJE;
+				DEVELOPMENT_TEAM = N598FBZXVH;
 				INFOPLIST_FILE = Diary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GwangGro.Diary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clapwatermelon.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -462,11 +466,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EPWV8KDDJE;
+				DEVELOPMENT_TEAM = N598FBZXVH;
 				INFOPLIST_FILE = Diary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GwangGro.Diary;
+				PRODUCT_BUNDLE_IDENTIFIER = com.clapwatermelon.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
