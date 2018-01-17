@@ -85,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				FC18F2CB200DB5570087E3A8 /* Diary */,
-				FCC3CC84200ED08500AD0019 /* Xib */,
 				FC18F2CA200DB5570087E3A8 /* Products */,
 				185024BB27573985B0E090A3 /* Pods */,
 				75CE16BFC7DFD88B764F446D /* Frameworks */,
@@ -111,6 +110,7 @@
 				FC18F2E2200E031B0087E3A8 /* Model */,
 				FC18F2E0200E02F70087E3A8 /* Resource */,
 				FC18F2DF200E02F10087E3A8 /* Storyboard */,
+				FCC3CC84200ED08500AD0019 /* Xib */,
 				FC18F2DE200E02EA0087E3A8 /* ViewController */,
 			);
 			path = Diary;
