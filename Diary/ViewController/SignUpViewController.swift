@@ -7,29 +7,63 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var pwTextField: UITextField!
+    @IBAction func signUpAction(_ sender: Any) {
+        doSignUp()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+}
+extension SignUpViewController{
+    func showAlert(message:String){
+        let alert = UIAlertController(title: "회원가입 실패", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: UIAlertActionStyle.default))
+        self.present(alert, animated: true, completion: nil)
     }
-    */
-
+    func doSignUp(){
+        if emailTextField.text == ""{
+            showAlert(message: "이메일을 입력해주세요")
+            return
+        }
+        if pwTextField.text == ""{
+            showAlert(message: "비밀번호를 입력해주세요")
+            return
+        }
+        signUp(email: emailTextField.text!, password: pwTextField.text!)
+    }
+    func signUp(email:String, password:String){
+        Auth.auth().createUser(withEmail: email, password: password, completion: {(user,error) in
+            if error != nil{
+                if let ErrorCode = AuthErrorCode(rawValue: (error?._code)!){
+                    switch ErrorCode {
+                    case AuthErrorCode.invalidEmail:
+                        self.showAlert(message: "유효하지 않은 이메일 입니다")
+                    case AuthErrorCode.emailAlreadyInUse:
+                        self.showAlert(message: "이미 가입한 회원 입니다")
+                        
+                    case AuthErrorCode.weakPassword:
+                        self.showAlert(message: "비밀번호는 6자리 이상입니다")
+                    default:
+                        print(ErrorCode)
+                    }
+                }
+            } else{
+                print("회원가입 성공")
+                dump(user)
+            }
+        })
+    }
 }

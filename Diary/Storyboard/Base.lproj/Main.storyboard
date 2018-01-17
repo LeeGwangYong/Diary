@@ -167,6 +167,9 @@
                                 <state key="normal" title="회원가입">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpAction:" destination="lIT-4x-ZIf" eventType="touchUpInside" id="URx-qe-ZIL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="회원가입" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghx-C9-7RQ">
                                 <rect key="frame" x="137" y="149" width="100" height="30"/>
@@ -179,6 +182,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="q9Z-C4-pC3"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Gkv-IT-2cf" id="5Pc-5X-xGz"/>
+                        <outlet property="pwTextField" destination="kby-ka-HA4" id="oRx-LE-XBi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPs-dr-aWt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
