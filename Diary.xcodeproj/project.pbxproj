@@ -25,6 +25,8 @@
 		FCC3CC94200EDB5900AD0019 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3CC93200EDB5900AD0019 /* ViewController.swift */; };
 		FCC3CC9E200F290F00AD0019 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3CC9C200F290F00AD0019 /* InputViewController.swift */; };
 		FCC3CC9F200F290F00AD0019 /* InputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC3CC9D200F290F00AD0019 /* InputViewController.xib */; };
+		FCC3CCA1200F9FE300AD0019 /* CapsuleStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3CCA0200F9FE300AD0019 /* CapsuleStruct.swift */; };
+		FCC3CCA3200FA25600AD0019 /* DateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC3CCA2200FA25600AD0019 /* DateString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		FCC3CC93200EDB5900AD0019 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCC3CC9C200F290F00AD0019 /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		FCC3CC9D200F290F00AD0019 /* InputViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InputViewController.xib; sourceTree = "<group>"; };
+		FCC3CCA0200F9FE300AD0019 /* CapsuleStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleStruct.swift; sourceTree = "<group>"; };
+		FCC3CCA2200FA25600AD0019 /* DateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,7 @@
 		FC18F2E2200E031B0087E3A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FCC3CCA0200F9FE300AD0019 /* CapsuleStruct.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC3CC8B200ED44200AD0019 /* ReusableExtension.swift */,
+				FCC3CCA2200FA25600AD0019 /* DateString.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -240,6 +246,11 @@
 					FC18F2C8200DB5570087E3A8 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -359,10 +370,12 @@
 				FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
 				FCC3CC9E200F290F00AD0019 /* InputViewController.swift in Sources */,
+				FCC3CCA3200FA25600AD0019 /* DateString.swift in Sources */,
 				FCC3CC83200ECCCA00AD0019 /* MainViewController.swift in Sources */,
 				FCC3CC94200EDB5900AD0019 /* ViewController.swift in Sources */,
 				FCC3CC91200ED5D600AD0019 /* DiaryCollectionViewCell.swift in Sources */,
 				FCC3CC8C200ED44200AD0019 /* ReusableExtension.swift in Sources */,
+				FCC3CCA1200F9FE300AD0019 /* CapsuleStruct.swift in Sources */,
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
 				FCC3CC8A200ED2CB00AD0019 /* TableCollectionProtocol.swift in Sources */,

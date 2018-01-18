@@ -22,7 +22,6 @@ extension TableCollectionProtocol where Self: UITableViewDataSource & UITableVie
     func setTableView(tableView: UITableView, tableViewCell: UITableViewCell.Type){
         tableView.delegate = self
         tableView.dataSource = self
-        //self.videoTableView.register(UINib(nibName: VideoTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: VideoTableViewCell.reuseIdentifier)
         tableView.register(UINib(nibName: tableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: tableViewCell.reuseIdentifier)
     }
     

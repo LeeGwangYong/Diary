@@ -12,12 +12,17 @@ class DiaryListViewController: ViewController, TableCollectionProtocol {
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     @IBOutlet weak var countLabel: UILabel!
     
-    var capsule: [String] = ["Sample1", "Sample2", "Sample3", "Sample4", "Sample5"]
+    var capsule: [CapsuleStruct] =
+        [CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: +10, to: Date())!, content: "sample1"),
+         CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: +3, to: Date())!, content: "sample2"),
+         CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: +0, to: Date())!, content: "sample3"),
+         CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: -10, to: Date())!, content: "sample5"),]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewController()
+        
     }
     
     override func setViewController() {
@@ -38,10 +43,15 @@ extension DiaryListViewController: UICollectionViewDelegate, UICollectionViewDat
         return capsule.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryCollectionViewCell.reuseIdentifier, for: indexPath) as! DiaryCollectionViewCell
         cell.backgroundColor = UIColor().random()
-        cell.contentLabel.text = capsule[indexPath.row]
+        cell.dateLabel.text = capsule[indexPath.row].date.dateToString()
+        cell.contentLabel.text = capsule[indexPath.row].content
+        cell.opacityView.alpha =  CGFloat(capsule[indexPath.row].date.timeIntervalSinceNow / 1000000)
         return cell
     }
     

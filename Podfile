@@ -6,7 +6,7 @@ target 'Diary' do
   use_frameworks!
 pod 'Alamofire'
 pod 'SwiftyJSON'
-pod ‘RealmSwift’
+pod 'RealmSwift'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
