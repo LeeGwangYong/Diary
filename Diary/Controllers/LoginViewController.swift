@@ -60,7 +60,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         backItem.title = "취소"
         navigationItem.backBarButtonItem = backItem
     }
-    
     // MARK:- Facebook Login
     @objc func faceBookLoginButtonClicked() {
         let faceBookLoginManager = LoginManager()
