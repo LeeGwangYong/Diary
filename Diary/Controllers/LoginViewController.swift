@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 import FacebookLogin
 import FBSDKLoginKit
 
@@ -42,13 +41,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if let accessToken = FBSDKAccessToken.current(){
             getFaceBookUserData()
         }
-        
-        if let user = Auth.auth().currentUser {
-            emailTextField.placeholder = "이미 로그인 된 상태입니다."
-            pwTextField.placeholder = "이미 로그인 된 상태입니다."
-            loginButton.isHidden = true
-            logoutButton.isHidden = false
-        }
     }
     
     //Hide keyboard when user touches outside keyboard
@@ -61,31 +53,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         pwTextField.resignFirstResponder()
         return (true)
     }
-    @IBAction func loginButtonTouched(_ sender: Any) {
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: pwTextField.text!) { (user, error) in
-            if user != nil{
-                print("login success")
-                self.loginButton.isHidden = true
-                self.logoutButton.isHidden = false
-            }
-            else{
-                print("login fail")
-            }
-        }
-    }
-    
-    @IBAction func logoutButtonTouched(_ sender: Any) {
-        do {
-            try Auth.auth() .signOut()
-            self.loginButton.isHidden = false
-            self.logoutButton.isHidden = true
-            emailTextField.placeholder = "dbdiary@db.com"
-            pwTextField.placeholder = " 숫자 몇자리를 입력하세요"
-            print("logout")
-        } catch let error as NSError {
-            print(error)
-        }
-    }
+
     //fix back button title
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()

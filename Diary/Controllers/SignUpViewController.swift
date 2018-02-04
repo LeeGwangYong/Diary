@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
@@ -46,28 +45,6 @@ extension SignUpViewController{
             showAlert(message: "비밀번호를 입력해주세요")
             return
         }
-        signUp(email: emailTextField.text!, password: pwTextField.text!)
     }
-    func signUp(email:String, password:String){
-        Auth.auth().createUser(withEmail: email, password: password, completion: {(user,error) in
-            if error != nil{
-                if let ErrorCode = AuthErrorCode(rawValue: (error?._code)!){
-                    switch ErrorCode {
-                    case AuthErrorCode.invalidEmail:
-                        self.showAlert(message: "유효하지 않은 이메일입니다")
-                    case AuthErrorCode.emailAlreadyInUse:
-                        self.showAlert(message: "이미 가입한 이메일입니다")
-                        
-                    case AuthErrorCode.weakPassword:
-                        self.showAlert(message: "비밀번호는 6자리 이상입니다")
-                    default:
-                        print(ErrorCode)
-                    }
-                }
-            } else{
-                print("회원가입 성공")
-                dump(user)
-            }
-        })
-    }
+    
 }
