@@ -48,8 +48,7 @@ class MainViewController: ViewController {
     }
     
     @objc func navigateInputViewController() {
-        let nextVC: InputViewController = InputViewController(nibName: InputViewController.reuseIdentifier, bundle: nil)
-        nextVC.dateString = self.dateLabel.text
+        let nextVC: InputViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: InputViewController.reuseIdentifier) as! InputViewController
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
@@ -65,41 +64,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let cell: CapsuleTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 70
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let section = UIView()
-//        section.backgroundColor = UIColor.red
-//        return section
-//    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y <= 0 {
-            scrollView.isScrollEnabled = false
-            self.bottomConstraint.constant = 20
-            self.topConstraint.constant = -156
-            UIView.animate(withDuration: 1,
-                           animations: {
-                            self.view.layoutIfNeeded()
-                            self.dateLabel.isHidden = true
-            }, completion: { (bool) in
-                scrollView.isScrollEnabled = true
-            })
-        }
-    }
-    
+
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y <= 0 {
-            self.bottomConstraint.constant = 97
-            self.topConstraint.constant = 0
-            UIView.animate(withDuration: 1) {
-                self.view.layoutIfNeeded()
-                self.dateLabel.isHidden = false
-            }
+        let offset = scrollView.contentOffset.y
+        print(offset)
+        
+        if offset <= 60 {
+            self.topConstraint.constant =  30 - offset
+            self.bottomConstraint.constant = 80 - offset
+            self.dateLabel.alpha = (60 - offset) / 60
         }
+        else if offset > 60 {
+            self.topConstraint.constant = -30
+            self.bottomConstraint.constant = 20
+            self.dateLabel.alpha = 0
+        }
+        self.view.layoutIfNeeded()
     }
 }
