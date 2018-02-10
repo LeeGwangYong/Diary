@@ -9,11 +9,13 @@
 import UIKit
 
 class InputViewController: UIViewController {
-
+    @IBOutlet weak var dateLabel: UILabel!
+    var dateString: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dateLabel.text = dateString
         // Do any additional setup after loading the view.
     }
 

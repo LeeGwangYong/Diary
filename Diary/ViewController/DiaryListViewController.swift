@@ -12,12 +12,12 @@ class DiaryListViewController: ViewController, TableCollectionProtocol {
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     @IBOutlet weak var countLabel: UILabel!
     
-    var capsule: [String] = ["Sample1", "Sample2", "Sample3", "Sample4", "Sample5"]
-    
+    var capsule: [Capsule] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewController()
+        
     }
     
     override func setViewController() {
@@ -38,10 +38,15 @@ extension DiaryListViewController: UICollectionViewDelegate, UICollectionViewDat
         return capsule.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryCollectionViewCell.reuseIdentifier, for: indexPath) as! DiaryCollectionViewCell
         cell.backgroundColor = UIColor().random()
-        cell.contentLabel.text = capsule[indexPath.row]
+        cell.dateLabel.text = capsule[indexPath.row].date.dateToString()
+        cell.contentLabel.text = capsule[indexPath.row].content
+        cell.opacityView.alpha =  CGFloat(capsule[indexPath.row].date.timeIntervalSinceNow / 1000000)
         return cell
     }
     

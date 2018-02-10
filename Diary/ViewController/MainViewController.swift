@@ -18,20 +18,20 @@ class MainViewController: ViewController {
         self.setViewController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        inputNavigateView.createGradientLayer()
+    }
+    
     override func setViewController() {
         inputNavigateView.isUserInteractionEnabled = true
         inputNavigateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateInputViewController)))
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = """
-yyyy년
-M월 d일
-"""
-        dateFormatter.locale = Locale.current
-        dateLabel.text = " \(dateFormatter.string(from: Date()))의 기억"
+        let currentDateString = Date().dateToString()
+        dateLabel.text = currentDateString//.insert("\n", at:  ) //currentDateString.insert("\n", at:  )
     }
     
     @objc func navigateInputViewController() {
-        let nextVC = InputViewController(nibName: InputViewController.reuseIdentifier, bundle: nil)
+        let nextVC: InputViewController = InputViewController(nibName: InputViewController.reuseIdentifier, bundle: nil)
+        nextVC.dateString = self.dateLabel.text
         self.present(nextVC, animated: true, completion: nil)
     }
 }

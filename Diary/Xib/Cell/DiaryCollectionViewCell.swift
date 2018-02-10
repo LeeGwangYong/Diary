@@ -9,10 +9,13 @@
 import UIKit
 
 class DiaryCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var opacityView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        opacityView.alpha = 1
         // Initialization code
     }
 

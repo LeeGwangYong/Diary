@@ -21,6 +21,7 @@ struct Token {
         return ["token" : token]
     }
 }
+
 protocol APIService {
     
 }
