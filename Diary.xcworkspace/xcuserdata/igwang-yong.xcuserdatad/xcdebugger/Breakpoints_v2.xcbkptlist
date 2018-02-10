@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/DiaryListViewController.swift"
-            timestampString = "539939035.166497"
+            timestampString = "539950227.0987411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -24,7 +24,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/DiaryListViewController.swift"
-            timestampString = "539939035.166567"
+            timestampString = "539950227.098807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -38,7 +38,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/DiaryListViewController.swift"
-            timestampString = "539939035.166616"
+            timestampString = "539950227.0988539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -54,7 +54,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/DiaryListViewController.swift"
-            timestampString = "539939035.1666631"
+            timestampString = "539950227.098897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -68,7 +68,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/DiaryListViewController.swift"
-            timestampString = "539939035.1667041"
+            timestampString = "539950227.098938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -82,12 +82,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/MainViewController.swift"
-            timestampString = "539939035.166748"
+            timestampString = "539952040.901336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "setViewController()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Diary/ViewController/MainViewController.swift"
+            timestampString = "539952040.901795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "navigateInputViewController()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
