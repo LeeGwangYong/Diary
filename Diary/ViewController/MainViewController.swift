@@ -26,9 +26,11 @@ class MainViewController: ViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.transparentNavigationBar()
         self.inputNavigateView.createGradientLayer()
+        self.blinkingView.alpha = 0.2
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.blinkingView.alpha = 1.0}, completion: nil)
-        
         let attributedString = NSMutableAttributedString(string: "다섯 개의 기억이\n타임캡슐에 담겨있습니다.")
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .bold ), range: NSRange(location: 0, length: 4))
         self.capsuleCountLabel.attributedText = attributedString
@@ -41,14 +43,14 @@ class MainViewController: ViewController {
         var currentDateString = Date().dateToString()
         currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6)) //currentDateString.insert("\n", at:  )
         self.dateLabel.text = currentDateString
-        self.blinkingView.alpha = 0.2
+        
         
     }
     
     @objc func navigateInputViewController() {
         let nextVC: InputViewController = InputViewController(nibName: InputViewController.reuseIdentifier, bundle: nil)
         nextVC.dateString = self.dateLabel.text
-        self.present(nextVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -64,29 +66,40 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 70
+//    }
+//
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let section = UIView()
+//        section.backgroundColor = UIColor.red
+//        return section
+//    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= 0 {
+            scrollView.isScrollEnabled = false
+            self.bottomConstraint.constant = 20
+            self.topConstraint.constant = -156
+            UIView.animate(withDuration: 1,
+                           animations: {
+                            self.view.layoutIfNeeded()
+                            self.dateLabel.isHidden = true
+            }, completion: { (bool) in
+                scrollView.isScrollEnabled = true
+            })
+        }
+    }
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y <= 0 {
             self.bottomConstraint.constant = 97
             self.topConstraint.constant = 0
-            
             UIView.animate(withDuration: 1) {
                 self.view.layoutIfNeeded()
                 self.dateLabel.isHidden = false
             }
-        }
-        else {
-            self.bottomConstraint.constant = 20
-            self.topConstraint.constant = -156
-            
-            UIView.animate(withDuration: 1) {
-                self.view.layoutIfNeeded()
-                self.dateLabel.isHidden = true
-            }
-            
-        }
-        UIView.animate(withDuration: 1) {
-            self.view.layoutIfNeeded()
         }
     }
 }
