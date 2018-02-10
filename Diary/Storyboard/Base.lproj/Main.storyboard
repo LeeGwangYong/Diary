@@ -25,6 +25,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1075" y="15"/>
         </scene>
         <!--Home-->
         <scene sceneID="0YV-7f-K1T">
@@ -34,17 +35,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2018년 1월 7일의 기억" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzA-8L-c2o">
-                                <rect key="frame" x="16" y="20" width="189" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yA3-lT-nu1">
-                                <rect key="frame" x="16" y="101" width="378" height="196"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yA3-lT-nu1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="319"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018년 1월 7일의 기억" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzA-8L-c2o">
+                                        <rect key="frame" x="16" y="55" width="163.33333333333334" height="67"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘은 어떤 기억을 담아둘까?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bL-iR-Icp">
+                                        <rect key="frame" x="32" y="154" width="186.66666666666666" height="19.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.88618993759999998" green="0.88640290499999996" blue="0.88208514449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9bL-iR-Icp" firstAttribute="leading" secondItem="fzA-8L-c2o" secondAttribute="leading" constant="16" id="F3R-cV-oXS"/>
+                                    <constraint firstItem="fzA-8L-c2o" firstAttribute="top" secondItem="yA3-lT-nu1" secondAttribute="top" constant="55" id="XRP-Qz-MZv"/>
+                                    <constraint firstItem="fzA-8L-c2o" firstAttribute="leading" secondItem="yA3-lT-nu1" secondAttribute="leading" constant="16" id="Xex-dF-xoH"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9bL-iR-Icp" secondAttribute="trailing" constant="16" id="fsG-iz-fqF"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fzA-8L-c2o" secondAttribute="trailing" constant="16" id="sjt-yE-1AW"/>
+                                    <constraint firstItem="9bL-iR-Icp" firstAttribute="top" secondItem="fzA-8L-c2o" secondAttribute="bottom" constant="32" id="uaD-tT-c8j"/>
+                                </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QIh-Nw-0jQ">
                                 <rect key="frame" x="0.0" y="319" width="414" height="368"/>
@@ -56,9 +71,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tC2-hy-g34" firstAttribute="trailing" secondItem="QIh-Nw-0jQ" secondAttribute="trailing" id="1W0-xN-thD"/>
+                            <constraint firstItem="tC2-hy-g34" firstAttribute="trailing" secondItem="yA3-lT-nu1" secondAttribute="trailing" id="57j-3i-bF9"/>
+                            <constraint firstItem="yA3-lT-nu1" firstAttribute="leading" secondItem="tC2-hy-g34" secondAttribute="leading" id="Gzl-VY-Q9m"/>
                             <constraint firstItem="tC2-hy-g34" firstAttribute="bottom" secondItem="QIh-Nw-0jQ" secondAttribute="bottom" id="Mi2-sj-9pM"/>
                             <constraint firstItem="QIh-Nw-0jQ" firstAttribute="leading" secondItem="tC2-hy-g34" secondAttribute="leading" id="SQM-IB-6yr"/>
                             <constraint firstItem="QIh-Nw-0jQ" firstAttribute="height" secondItem="Ubs-8r-sI3" secondAttribute="height" multiplier="0.5" id="luO-Tt-RHM"/>
+                            <constraint firstItem="QIh-Nw-0jQ" firstAttribute="top" secondItem="yA3-lT-nu1" secondAttribute="bottom" id="pMm-TV-j3X"/>
+                            <constraint firstItem="yA3-lT-nu1" firstAttribute="top" secondItem="Ubs-8r-sI3" secondAttribute="top" id="z15-tw-2Qf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tC2-hy-g34"/>
                     </view>
@@ -78,6 +97,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RvU-S8-uZH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vhw-HZ-04d">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -143,6 +163,7 @@
                             <constraint firstItem="JCI-V9-IYT" firstAttribute="leading" secondItem="DAh-YX-oey" secondAttribute="leading" id="sYx-EP-2i3"/>
                             <constraint firstItem="JCo-Lh-Jea" firstAttribute="trailing" secondItem="DAh-YX-oey" secondAttribute="trailingMargin" constant="15" id="zX8-IO-J0Y"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="6IX-iQ-ePF"/>
                     </view>
                     <connections>
                         <outlet property="countLabel" destination="JCo-Lh-Jea" id="6jD-VH-3wW"/>

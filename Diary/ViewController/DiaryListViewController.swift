@@ -12,12 +12,7 @@ class DiaryListViewController: ViewController, TableCollectionProtocol {
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     @IBOutlet weak var countLabel: UILabel!
     
-    var capsule: [CapsuleStruct] =
-        [CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: +10, to: Date())!, content: "sample1"),
-         CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: +3, to: Date())!, content: "sample2"),
-         CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: +0, to: Date())!, content: "sample3"),
-         CapsuleStruct(date: Calendar.current.date(byAdding: .day, value: -10, to: Date())!, content: "sample5"),]
-    
+    var capsule: [Capsule] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,6 +18,10 @@ class MainViewController: ViewController {
         self.setViewController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        inputNavigateView.createGradientLayer()
+    }
+    
     override func setViewController() {
         inputNavigateView.isUserInteractionEnabled = true
         inputNavigateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateInputViewController)))
