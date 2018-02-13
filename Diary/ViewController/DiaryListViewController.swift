@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiaryListViewController: ViewController, TableCollectionProtocol {
+class DiaryListViewController: ViewController {
     @IBOutlet weak var diaryCollectionView: UICollectionView!
     @IBOutlet weak var countLabel: UILabel!
     
@@ -21,7 +21,7 @@ class DiaryListViewController: ViewController, TableCollectionProtocol {
     }
     
     override func setViewController() {
-        setCollectionView(collectionView: diaryCollectionView, cell: DiaryCollectionViewCell.self)
+//        setCollectionView(collectionView: diaryCollectionView, cell: DiaryCollectionViewCell.self)
         if let layout = diaryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
         }
