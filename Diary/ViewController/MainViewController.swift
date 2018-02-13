@@ -28,12 +28,16 @@ class MainViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.transparentNavigationBar()
-        self.inputNavigateView.createGradientLayer()
+        
         self.blinkingView.alpha = 0.2
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.blinkingView.alpha = 1.0}, completion: nil)
         let attributedString = NSMutableAttributedString(string: "다섯 개의 기억이\n타임캡슐에 담겨있습니다.")
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .bold ), range: NSRange(location: 0, length: 4))
         self.capsuleCountLabel.attributedText = attributedString
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.inputNavigateView.createGradientLayer()
     }
     
     override func setViewController() {
@@ -67,19 +71,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
+        let offset = scrollView.contentOffset.y * 2
         print(offset)
+        UIView.animate(withDuration: 0.001) {
+            if offset <= 60 {
+                self.topConstraint.constant =  30 - offset
+                self.bottomConstraint.constant = 80 - offset
+                self.dateLabel.alpha = (60 - offset) / 60
+            }
+            else if offset > 60 {
+                self.topConstraint.constant = -30
+                self.bottomConstraint.constant = 20
+                self.dateLabel.alpha = 0
+            }
+            self.view.layoutIfNeeded()
+        }
         
-        if offset <= 60 {
-            self.topConstraint.constant =  30 - offset
-            self.bottomConstraint.constant = 80 - offset
-            self.dateLabel.alpha = (60 - offset) / 60
-        }
-        else if offset > 60 {
-            self.topConstraint.constant = -30
-            self.bottomConstraint.constant = 20
-            self.dateLabel.alpha = 0
-        }
-        self.view.layoutIfNeeded()
     }
 }
