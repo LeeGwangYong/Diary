@@ -7,8 +7,6 @@ target 'Diary' do
 pod 'Alamofire'
 pod 'SwiftyJSON'
 pod ‘RealmSwift’
-pod 'FacebookCore'
-pod 'FacebookLogin'
   # Pods for Diary
 
 end

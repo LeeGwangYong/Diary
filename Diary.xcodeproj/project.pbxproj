@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E381548200F0F9200CE6A3E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */; };
+		9E1D802920352E8F005D8298 /* SignUpEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1D802820352E8F005D8298 /* SignUpEmailViewController.swift */; };
+		9E518B272033CD170001CF51 /* Spoqa Han Sans Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B1A2033CD140001CF51 /* Spoqa Han Sans Light.ttf */; };
+		9E518B282033CD170001CF51 /* Spoqa Han Sans Thin.woff in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B1B2033CD140001CF51 /* Spoqa Han Sans Thin.woff */; };
+		9E518B292033CD170001CF51 /* Spoqa Han Sans Bold.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B1C2033CD150001CF51 /* Spoqa Han Sans Bold.woff2 */; };
+		9E518B2A2033CD170001CF51 /* Spoqa Han Sans Light.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B1D2033CD150001CF51 /* Spoqa Han Sans Light.woff2 */; };
+		9E518B2B2033CD170001CF51 /* Spoqa Han Sans Thin.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B1E2033CD150001CF51 /* Spoqa Han Sans Thin.woff2 */; };
+		9E518B2C2033CD170001CF51 /* Spoqa Han Sans Light.woff in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B1F2033CD150001CF51 /* Spoqa Han Sans Light.woff */; };
+		9E518B2D2033CD170001CF51 /* Spoqa Han Sans Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B202033CD160001CF51 /* Spoqa Han Sans Thin.ttf */; };
+		9E518B2E2033CD170001CF51 /* Spoqa Han Sans Regular.woff2 in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B212033CD160001CF51 /* Spoqa Han Sans Regular.woff2 */; };
+		9E518B2F2033CD170001CF51 /* Spoqa Han Sans Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B222033CD160001CF51 /* Spoqa Han Sans Regular.ttf */; };
+		9E518B302033CD170001CF51 /* Spoqa Han Sans Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B232033CD170001CF51 /* Spoqa Han Sans Regular.woff */; };
+		9E518B312033CD170001CF51 /* glyphs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B242033CD170001CF51 /* glyphs.txt */; };
+		9E518B322033CD170001CF51 /* Spoqa Han Sans Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B252033CD170001CF51 /* Spoqa Han Sans Bold.ttf */; };
+		9E518B332033CD170001CF51 /* Spoqa Han Sans Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = 9E518B262033CD170001CF51 /* Spoqa Han Sans Bold.woff */; };
+		9E55109F2030A484009FFA98 /* positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E55109C2030A483009FFA98 /* positive.png */; };
+		9E5510A520314AEF009FFA98 /* UIKitExtenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5510A420314AEF009FFA98 /* UIKitExtenstions.swift */; };
+		9E5510AB20317071009FFA98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5510AA20317071009FFA98 /* SignUpViewController.swift */; };
+		9EB6E2C120355251007AE935 /* ResendEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB6E2C020355251007AE935 /* ResendEmailViewController.swift */; };
 		9EE00CB4200F05D200CE5BD5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */; };
-		9EE00CB6200F094700CE5BD5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */; };
 		A4B4BBABEF00849F719159DE /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */; };
 		FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */; };
-		FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CE200DB5570087E3A8 /* SignViewController.swift */; };
 		FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D0200DB5570087E3A8 /* Main.storyboard */; };
 		FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D3200DB5570087E3A8 /* Assets.xcassets */; };
 		FC18F2D7200DB5570087E3A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D5200DB5570087E3A8 /* LaunchScreen.storyboard */; };
@@ -25,12 +40,27 @@
 		49AAD48E563A0B0CF7602047 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
-		9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E1D802820352E8F005D8298 /* SignUpEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailViewController.swift; sourceTree = "<group>"; };
+		9E518B1A2033CD140001CF51 /* Spoqa Han Sans Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Light.ttf"; sourceTree = "<group>"; };
+		9E518B1B2033CD140001CF51 /* Spoqa Han Sans Thin.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Thin.woff"; sourceTree = "<group>"; };
+		9E518B1C2033CD150001CF51 /* Spoqa Han Sans Bold.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Bold.woff2"; sourceTree = "<group>"; };
+		9E518B1D2033CD150001CF51 /* Spoqa Han Sans Light.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Light.woff2"; sourceTree = "<group>"; };
+		9E518B1E2033CD150001CF51 /* Spoqa Han Sans Thin.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Thin.woff2"; sourceTree = "<group>"; };
+		9E518B1F2033CD150001CF51 /* Spoqa Han Sans Light.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Light.woff"; sourceTree = "<group>"; };
+		9E518B202033CD160001CF51 /* Spoqa Han Sans Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Thin.ttf"; sourceTree = "<group>"; };
+		9E518B212033CD160001CF51 /* Spoqa Han Sans Regular.woff2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Regular.woff2"; sourceTree = "<group>"; };
+		9E518B222033CD160001CF51 /* Spoqa Han Sans Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Regular.ttf"; sourceTree = "<group>"; };
+		9E518B232033CD170001CF51 /* Spoqa Han Sans Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Regular.woff"; sourceTree = "<group>"; };
+		9E518B242033CD170001CF51 /* glyphs.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = glyphs.txt; sourceTree = "<group>"; };
+		9E518B252033CD170001CF51 /* Spoqa Han Sans Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Bold.ttf"; sourceTree = "<group>"; };
+		9E518B262033CD170001CF51 /* Spoqa Han Sans Bold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spoqa Han Sans Bold.woff"; sourceTree = "<group>"; };
+		9E55109C2030A483009FFA98 /* positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = positive.png; path = Diary/Resource/positive.png; sourceTree = SOURCE_ROOT; };
+		9E5510A420314AEF009FFA98 /* UIKitExtenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtenstions.swift; sourceTree = "<group>"; };
+		9E5510AA20317071009FFA98 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9EB6E2C020355251007AE935 /* ResendEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendEmailViewController.swift; sourceTree = "<group>"; };
 		9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC18F2C9200DB5570087E3A8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC18F2CE200DB5570087E3A8 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		FC18F2D1200DB5570087E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC18F2D3200DB5570087E3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC18F2D6200DB5570087E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,11 +99,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9EADC815200F703000A4B3EB /* Models */ = {
+		9E518B192033CCBA0001CF51 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				9E518B242033CD170001CF51 /* glyphs.txt */,
+				9E518B252033CD170001CF51 /* Spoqa Han Sans Bold.ttf */,
+				9E518B262033CD170001CF51 /* Spoqa Han Sans Bold.woff */,
+				9E518B1C2033CD150001CF51 /* Spoqa Han Sans Bold.woff2 */,
+				9E518B1A2033CD140001CF51 /* Spoqa Han Sans Light.ttf */,
+				9E518B1F2033CD150001CF51 /* Spoqa Han Sans Light.woff */,
+				9E518B1D2033CD150001CF51 /* Spoqa Han Sans Light.woff2 */,
+				9E518B222033CD160001CF51 /* Spoqa Han Sans Regular.ttf */,
+				9E518B232033CD170001CF51 /* Spoqa Han Sans Regular.woff */,
+				9E518B212033CD160001CF51 /* Spoqa Han Sans Regular.woff2 */,
+				9E518B202033CD160001CF51 /* Spoqa Han Sans Thin.ttf */,
+				9E518B1B2033CD140001CF51 /* Spoqa Han Sans Thin.woff */,
+				9E518B1E2033CD150001CF51 /* Spoqa Han Sans Thin.woff2 */,
 			);
-			path = Models;
+			path = Font;
 			sourceTree = "<group>";
 		};
 		FC18F2C0200DB5570087E3A8 = {
@@ -99,8 +142,6 @@
 			children = (
 				FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */,
 				FC18F2D8200DB5570087E3A8 /* Info.plist */,
-				9E381547200F0F9200CE6A3E /* GoogleService-Info.plist */,
-				9EADC815200F703000A4B3EB /* Models */,
 				FC18F2E4200E035F0087E3A8 /* Protocol */,
 				FC18F2E3200E03530087E3A8 /* Extension */,
 				FC18F2E1200E03110087E3A8 /* Network */,
@@ -115,9 +156,10 @@
 		FC18F2DE200E02EA0087E3A8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FC18F2CE200DB5570087E3A8 /* SignViewController.swift */,
 				9EE00CB3200F05D200CE5BD5 /* LoginViewController.swift */,
-				9EE00CB5200F094700CE5BD5 /* SignUpViewController.swift */,
+				9E5510AA20317071009FFA98 /* SignUpViewController.swift */,
+				9E1D802820352E8F005D8298 /* SignUpEmailViewController.swift */,
+				9EB6E2C020355251007AE935 /* ResendEmailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -134,6 +176,8 @@
 		FC18F2E0200E02F70087E3A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9E518B192033CCBA0001CF51 /* Font */,
+				9E55109C2030A483009FFA98 /* positive.png */,
 				FC18F2D3200DB5570087E3A8 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -159,6 +203,7 @@
 		FC18F2E3200E03530087E3A8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9E5510A420314AEF009FFA98 /* UIKitExtenstions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -205,6 +250,7 @@
 				TargetAttributes = {
 					FC18F2C8200DB5570087E3A8 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -233,9 +279,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC18F2D7200DB5570087E3A8 /* LaunchScreen.storyboard in Resources */,
-				9E381548200F0F9200CE6A3E /* GoogleService-Info.plist in Resources */,
+				9E55109F2030A484009FFA98 /* positive.png in Resources */,
+				9E518B292033CD170001CF51 /* Spoqa Han Sans Bold.woff2 in Resources */,
+				9E518B272033CD170001CF51 /* Spoqa Han Sans Light.ttf in Resources */,
+				9E518B332033CD170001CF51 /* Spoqa Han Sans Bold.woff in Resources */,
+				9E518B322033CD170001CF51 /* Spoqa Han Sans Bold.ttf in Resources */,
+				9E518B2E2033CD170001CF51 /* Spoqa Han Sans Regular.woff2 in Resources */,
+				9E518B302033CD170001CF51 /* Spoqa Han Sans Regular.woff in Resources */,
+				9E518B2A2033CD170001CF51 /* Spoqa Han Sans Light.woff2 in Resources */,
+				9E518B312033CD170001CF51 /* glyphs.txt in Resources */,
+				9E518B282033CD170001CF51 /* Spoqa Han Sans Thin.woff in Resources */,
 				FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */,
+				9E518B2C2033CD170001CF51 /* Spoqa Han Sans Light.woff in Resources */,
+				9E518B2F2033CD170001CF51 /* Spoqa Han Sans Regular.ttf in Resources */,
+				9E518B2D2033CD170001CF51 /* Spoqa Han Sans Thin.ttf in Resources */,
 				FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */,
+				9E518B2B2033CD170001CF51 /* Spoqa Han Sans Thin.woff2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,11 +342,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -295,11 +349,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -316,13 +365,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EB6E2C120355251007AE935 /* ResendEmailViewController.swift in Sources */,
 				9EE00CB4200F05D200CE5BD5 /* LoginViewController.swift in Sources */,
-				9EE00CB6200F094700CE5BD5 /* SignUpViewController.swift in Sources */,
+				9E5510AB20317071009FFA98 /* SignUpViewController.swift in Sources */,
+				9E5510A520314AEF009FFA98 /* UIKitExtenstions.swift in Sources */,
 				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
-				FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
+				9E1D802920352E8F005D8298 /* SignUpEmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +511,7 @@
 			baseConfigurationReference = 49AAD48E563A0B0CF7602047 /* Pods-Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N598FBZXVH;
 				INFOPLIST_FILE = Diary/Info.plist;
@@ -467,6 +519,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clapwatermelon.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -477,6 +531,7 @@
 			baseConfigurationReference = 69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N598FBZXVH;
 				INFOPLIST_FILE = Diary/Info.plist;
@@ -484,6 +539,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clapwatermelon.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
