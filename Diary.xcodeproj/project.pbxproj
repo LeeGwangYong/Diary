@@ -17,6 +17,7 @@
 		FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */; };
 		FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E9200E04BD0087E3A8 /* SignService.swift */; };
 		FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC210236202F12B300B3FFDD /* InputViewController.swift */; };
+		FC3F243220363E400062222F /* KeepDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F243120363E400062222F /* KeepDayViewController.swift */; };
 		FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C05202EC3E000F93095 /* KoreanInt.swift */; };
 		FC9A7C08202ECB0600F93095 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C07202ECB0600F93095 /* Gradient.swift */; };
 		FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */; };
@@ -48,6 +49,7 @@
 		FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		FC18F2E9200E04BD0087E3A8 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
 		FC210236202F12B300B3FFDD /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		FC3F243120363E400062222F /* KeepDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepDayViewController.swift; sourceTree = "<group>"; };
 		FC9A7C05202EC3E000F93095 /* KoreanInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInt.swift; sourceTree = "<group>"; };
 		FC9A7C07202ECB0600F93095 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaCoExtension.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				FCC3CC85200ED13300AD0019 /* DiaryListViewController.swift */,
 				FCC3CC93200EDB5900AD0019 /* ViewController.swift */,
 				FC210236202F12B300B3FFDD /* InputViewController.swift */,
+				FC3F243120363E400062222F /* KeepDayViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				FC9A7C08202ECB0600F93095 /* Gradient.swift in Sources */,
 				FCC3CC94200EDB5900AD0019 /* ViewController.swift in Sources */,
 				FCC3CC91200ED5D600AD0019 /* DiaryCollectionViewCell.swift in Sources */,
+				FC3F243220363E400062222F /* KeepDayViewController.swift in Sources */,
 				FCC3CC8C200ED44200AD0019 /* ReusableExtension.swift in Sources */,
 				FCC3CCA1200F9FE300AD0019 /* Capsule.swift in Sources */,
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
