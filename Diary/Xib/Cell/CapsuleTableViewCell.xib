@@ -52,11 +52,8 @@
                     <constraint firstItem="e15-Pr-1ks" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="y3q-gN-OQv"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
-                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                        <color key="value" red="0.70864838360000004" green="0.74011367559999997" blue="0.80659466980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </userDefinedRuntimeAttribute>
                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                        <real key="value" value="0.5"/>
+                        <real key="value" value="0.0"/>
                     </userDefinedRuntimeAttribute>
                 </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
