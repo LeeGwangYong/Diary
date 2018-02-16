@@ -23,7 +23,9 @@ class MainViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewController()
+        self.setUpTableView()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,10 +36,11 @@ class MainViewController: ViewController {
         let attributedString = NSMutableAttributedString(string: "다섯 개의 기억이\n타임캡슐에 담겨있습니다.")
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .bold ), range: NSRange(location: 0, length: 4))
         self.capsuleCountLabel.attributedText = attributedString
+        self.inputNavigateView.createGradientLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.inputNavigateView.createGradientLayer()
+//        self.inputNavigateView.createGradientLayer()
     }
     
     override func setViewController() {
@@ -47,8 +50,17 @@ class MainViewController: ViewController {
         var currentDateString = Date().dateToString()
         currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6)) //currentDateString.insert("\n", at:  )
         self.dateLabel.text = currentDateString
-        
-        
+    }
+    
+    func setUpTableView() {
+        self.capsuleTableView.tableFooterView = UIView()
+        self.capsuleTableView.separatorStyle = .singleLine
+        self.capsuleTableView.separatorColor = UIColor(red: 1/255, green: 117/255, blue: 152/255, alpha: 1)
+        let px = 1 / UIScreen.main.scale
+        let frame = CGRect(x: 0, y: 0, width: self.capsuleTableView.frame.size.width, height: px)
+        let line = UIView(frame: frame)
+        self.capsuleTableView.tableHeaderView = line
+        line.backgroundColor = self.capsuleTableView.separatorColor
     }
     
     @objc func navigateInputViewController() {
@@ -66,6 +78,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CapsuleTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
 

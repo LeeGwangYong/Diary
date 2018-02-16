@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -139,7 +140,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tC2-hy-g34"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HeD-DV-iQu"/>
+                    <navigationItem key="navigationItem" id="HeD-DV-iQu">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Cbh-ZW-7cM"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="blinkingView" destination="GQZ-g9-WCE" id="OwX-xx-E0m"/>
                         <outlet property="bottomConstraint" destination="dqp-a8-rdv" id="nxk-BT-49n"/>
@@ -161,42 +164,146 @@
                     <view key="view" contentMode="scaleToFill" id="THX-Vk-9FT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018년 1월 7일의 기억" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oP-UB-t13">
+                                <rect key="frame" x="16" y="27" width="163.33333333333334" height="67"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" red="0.37647058823529411" green="0.23529411764705882" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PiX-N4-Ddb">
+                                <rect key="frame" x="32" y="126" width="350" height="578"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">서정진 셀트리온 회장이 코스닥에서는 처음으로 5조원 넘는 상장주식 자산을 보유하게 되면서 최태원 SK그룹 회장과 정몽구 현대차그룹 회장을 제치고 주식부호 4위에 올랐다.  
+
+7일 재벌닷컴에 따르면 서정진 셀트리온 회장의 상장주식 자산 규모는 지난 5일 종가 기준 5조3천905억원으로 집계됐다. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PiX-N4-Ddb" firstAttribute="leading" secondItem="ZtS-vQ-rOu" secondAttribute="leading" constant="32" id="CPQ-aj-Bqv"/>
+                            <constraint firstItem="9oP-UB-t13" firstAttribute="top" secondItem="ZtS-vQ-rOu" secondAttribute="top" constant="7" id="EY8-mj-Hpi"/>
+                            <constraint firstItem="9oP-UB-t13" firstAttribute="leading" secondItem="ZtS-vQ-rOu" secondAttribute="leading" constant="16" id="OV3-pc-zUM"/>
+                            <constraint firstItem="ZtS-vQ-rOu" firstAttribute="trailing" secondItem="PiX-N4-Ddb" secondAttribute="trailing" constant="32" id="PBp-y3-2VJ"/>
+                            <constraint firstItem="PiX-N4-Ddb" firstAttribute="top" secondItem="9oP-UB-t13" secondAttribute="bottom" constant="32" id="nfu-dy-D44"/>
+                            <constraint firstItem="ZtS-vQ-rOu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9oP-UB-t13" secondAttribute="trailing" constant="16" id="q12-AG-HoB"/>
+                            <constraint firstItem="ZtS-vQ-rOu" firstAttribute="bottom" secondItem="PiX-N4-Ddb" secondAttribute="bottom" constant="32" id="tPD-vp-KbB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZtS-vQ-rOu"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8q3-IC-cHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4076" y="12"/>
+            <point key="canvasLocation" x="4075.36231884058" y="11.413043478260871"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Keep Day View Controller-->
+        <scene sceneID="kcU-Xh-iqV">
+            <objects>
+                <viewController storyboardIdentifier="KeepDayViewController" id="AFp-v9-L1I" customClass="KeepDayViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DEL-Gg-GkX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlS-By-1Fh">
+                                <rect key="frame" x="16.000000000000014" y="27" width="239.33333333333337" height="67"/>
+                                <string key="text">오늘의 기억을
+언제까지 담아둘까요?</string>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" red="0.37647058820000001" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tgP-4c-O3F">
+                                <rect key="frame" x="16" y="162" width="382" height="558"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" red="0.65771621469999997" green="0.50092262030000001" blue="0.69500339030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeepDayCell" rowHeight="60" id="Jha-ML-h8P" customClass="KeepDayCell" customModule="Diary" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="382" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jha-ML-h8P" id="3CI-tT-LKR">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="달력에서 직접 선택" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5be-lD-k9i">
+                                                    <rect key="frame" x="15" y="11" width="352" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5be-lD-k9i" firstAttribute="top" secondItem="3CI-tT-LKR" secondAttribute="topMargin" id="81M-TY-IZU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5be-lD-k9i" secondAttribute="bottom" id="lnU-RX-b42"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5be-lD-k9i" secondAttribute="trailing" id="mYY-m9-UyR"/>
+                                                <constraint firstItem="5be-lD-k9i" firstAttribute="leading" secondItem="3CI-tT-LKR" secondAttribute="leadingMargin" id="zhs-hx-Jb9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="5be-lD-k9i" id="ZSa-m1-k2f"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HlS-By-1Fh" firstAttribute="leading" secondItem="Gpw-hN-07s" secondAttribute="leading" constant="16" id="AwU-aK-NLV"/>
+                            <constraint firstItem="Gpw-hN-07s" firstAttribute="trailing" secondItem="tgP-4c-O3F" secondAttribute="trailing" constant="16" id="FTB-ie-e35"/>
+                            <constraint firstItem="Gpw-hN-07s" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HlS-By-1Fh" secondAttribute="trailing" constant="16" id="Ihl-Yk-EXi"/>
+                            <constraint firstItem="Gpw-hN-07s" firstAttribute="bottom" secondItem="tgP-4c-O3F" secondAttribute="bottom" constant="16" id="buU-gs-an2"/>
+                            <constraint firstItem="HlS-By-1Fh" firstAttribute="top" secondItem="Gpw-hN-07s" secondAttribute="top" constant="7" id="ccB-w2-EvP"/>
+                            <constraint firstItem="tgP-4c-O3F" firstAttribute="top" secondItem="HlS-By-1Fh" secondAttribute="bottom" constant="68" id="dvq-67-X9Q"/>
+                            <constraint firstItem="tgP-4c-O3F" firstAttribute="leading" secondItem="Gpw-hN-07s" secondAttribute="leading" constant="16" id="yBo-Lv-2F2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Gpw-hN-07s"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="tgP-4c-O3F" id="ory-Sf-cfB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AAn-CW-h3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4759" y="11"/>
+        </scene>
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="PQw-KY-jfo">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RvU-S8-uZH" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CustomTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="RvU-S8-uZH" customClass="CustomTabBarController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vhw-HZ-04d">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.65771621469999997" green="0.50092262030000001" blue="0.69500339030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedImageTintColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="VSK-GZ-Eto" kind="relationship" relationship="viewControllers" id="G2K-dr-LRk"/>
+                        <segue destination="f4y-wG-PfH" kind="relationship" relationship="viewControllers" id="Hup-vU-ExV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsX-tZ-i3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1910" y="16"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="kBi-SO-U0S">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VSK-GZ-Eto" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="3gb-ev-DrI"/>
+                    <tabBarItem key="tabBarItem" title="" image="Main" landscapeImage="Main" id="3gb-ev-DrI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LfH-z6-DVs">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.65771621469999997" green="0.50092262030000001" blue="0.69500339030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -207,5 +314,25 @@
             </objects>
             <point key="canvasLocation" x="2626.0869565217395" y="15.489130434782609"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="DVy-CN-f1I">
+            <objects>
+                <viewController id="f4y-wG-PfH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WmV-aE-9wS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="afY-26-94l"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="Memory" landscapeImage="Memory" id="H7c-wT-zky"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qwt-Oo-vHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2626" y="729"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Main" width="125" height="52"/>
+        <image name="Memory" width="125" height="52"/>
+    </resources>
 </document>
