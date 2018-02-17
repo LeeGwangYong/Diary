@@ -22,7 +22,9 @@ class InputViewController: ViewController {
 
     @objc func selectKeepDay() {
         let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: KeepDayViewController.reuseIdentifier)
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
         
     }
 }

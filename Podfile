@@ -10,6 +10,7 @@ pod 'RealmSwift'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
+pod 'JTAppleCalendar'
   # Pods for Diary
 
 end

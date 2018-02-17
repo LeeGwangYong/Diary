@@ -25,6 +25,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.29.0):
     - FBSDKCoreKit
+  - JTAppleCalendar (7.1.5)
   - Realm (3.0.2):
     - Realm/Headers (= 3.0.2)
   - Realm/Headers (3.0.2)
@@ -37,6 +38,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - JTAppleCalendar
   - RealmSwift
   - SwiftyJSON
 
@@ -49,10 +51,11 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
+  JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 2605551e7ab2b43d2c0d877119ff9251349f63c8
+PODFILE CHECKSUM: fca244bb48e50e41da209493a0725405ef75002e
 
 COCOAPODS: 1.4.0

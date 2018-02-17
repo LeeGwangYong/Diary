@@ -56,16 +56,13 @@ class MainViewController: ViewController {
         self.capsuleTableView.tableFooterView = UIView()
         self.capsuleTableView.separatorStyle = .singleLine
         self.capsuleTableView.separatorColor = UIColor(red: 1/255, green: 117/255, blue: 152/255, alpha: 1)
-        let px = 1 / UIScreen.main.scale
-        let frame = CGRect(x: 0, y: 0, width: self.capsuleTableView.frame.size.width, height: px)
-        let line = UIView(frame: frame)
-        self.capsuleTableView.tableHeaderView = line
-        line.backgroundColor = self.capsuleTableView.separatorColor
     }
     
     @objc func navigateInputViewController() {
         let nextVC: InputViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: InputViewController.reuseIdentifier) as! InputViewController
+        self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
+        self.hidesBottomBarWhenPushed = false
     }
 }
 

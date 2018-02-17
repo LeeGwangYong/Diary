@@ -36,9 +36,14 @@ class KeepDayViewController: ViewController {
         super.viewDidLoad()
 
         setViewController()
+        setUpTableView()
     }
     
     override func setViewController() {
+       
+    }
+    
+    func setUpTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
@@ -73,8 +78,16 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! KeepDayCell
-        cell.reload()
+        if let cell = tableView.cellForRow(at: indexPath) as? KeepDayCell {
+            cell.reload()
+        }
+        switch indexPath.row {
+        case 0:
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CalendarViewController.reuseIdentifier)
+            self.navigationController?.present(nextVC, animated: true, completion: nil)
+        default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -82,4 +95,5 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
             cell.reload()
         }
     }
+    
 }
