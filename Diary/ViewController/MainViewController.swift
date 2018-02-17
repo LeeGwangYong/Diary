@@ -36,11 +36,11 @@ class MainViewController: ViewController {
         let attributedString = NSMutableAttributedString(string: "다섯 개의 기억이\n타임캡슐에 담겨있습니다.")
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16, weight: .bold ), range: NSRange(location: 0, length: 4))
         self.capsuleCountLabel.attributedText = attributedString
-        self.inputNavigateView.createGradientLayer()
+//        self.inputNavigateView.createGradientLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.inputNavigateView.createGradientLayer()
+        self.inputNavigateView.createGradientLayer()
     }
     
     override func setViewController() {
@@ -80,6 +80,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
+
 
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

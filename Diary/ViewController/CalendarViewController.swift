@@ -73,8 +73,15 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     }
     
     func handleCellSelected(cell: JTAppleCell?, cellState: CellState){
-        guard let cell = cell as? CalendarCell else {return }
-        cell.selectedView.isHidden = !(cell.isSelected)
+        guard let cell = cell as? CalendarCell else {
+            return
+        }
+        switch cellState.isSelected {
+        case true:
+            cell.selectedView.isHidden = false
+        case false:
+            cell.selectedView.isHidden = true
+        }
     }
     
     func handleCellTextColor(cell: JTAppleCell?, cellState: CellState){
@@ -102,24 +109,30 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
     }
     
-    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
-        let cell = cell as! CalendarCell
-        cell.dateLabel.text = cellState.text
-    }
+    
     
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: CalendarCell.reuseIdentifier, for: indexPath) as! CalendarCell
         cell.dateLabel.text = cellState.text
-        handleCellConfiguration(cell: cell, cellState: cellState)
+        
+        self.calendar(calendar, willDisplay: cell, forItemAt: date, cellState: cellState, indexPath: indexPath)
         return cell
+    }
+    
+    
+    func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
+        let cell = cell as! CalendarCell
+        cell.dateLabel.text = cellState.text
+        handleCellConfiguration(cell: cell, cellState: cellState)
     }
     
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone =  Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
-        
+//        formatter.timeZone =  TimeZone.current
+//        formatter.locale = Locale.current
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         let start = formatter.date(from: "\(todayComponents.year!) 01 01")
         let end = formatter.date(from: "\(todayComponents.year! + 5) 12 31")
         return ConfigurationParameters(startDate: start!, endDate: end!, generateOutDates: .tillEndOfRow)
@@ -127,7 +140,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellConfiguration(cell: cell, cellState: cellState)
-        print(date)
+        print(date.description(with: Locale.current))
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
