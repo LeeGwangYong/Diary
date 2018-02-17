@@ -20,6 +20,7 @@ class CalendarViewController: ViewController {
         calendar.timeZone = .current
         return calendar.dateComponents([.year, .month, .day], from: Date())
     }
+    var delegate: KeepDayViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,10 +130,10 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
-//        formatter.timeZone =  TimeZone.current
-//        formatter.locale = Locale.current
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone =  TimeZone.current
+        formatter.locale = Locale.current
+//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        formatter.locale = Locale(identifier: "en_US_POSIX")
         let start = formatter.date(from: "\(todayComponents.year!) 01 01")
         let end = formatter.date(from: "\(todayComponents.year! + 5) 12 31")
         return ConfigurationParameters(startDate: start!, endDate: end!, generateOutDates: .tillEndOfRow)
@@ -141,6 +142,9 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellConfiguration(cell: cell, cellState: cellState)
         print(date.description(with: Locale.current))
+        self.dismiss(animated: true) {
+            self.delegate?.selectedDate = date
+        }
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

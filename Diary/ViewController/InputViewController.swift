@@ -13,18 +13,20 @@ class InputViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewController()
+        
     }
     
     override func setViewController() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "담아두기", style: UIBarButtonItemStyle.plain, target: self, action: #selector(selectKeepDay))
         self.navigationItem.backBarButtonItem?.title = ""
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
 
     @objc func selectKeepDay() {
         let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: KeepDayViewController.reuseIdentifier)
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
-        self.hidesBottomBarWhenPushed = false
+//        self.hidesBottomBarWhenPushed = false
         
     }
 }

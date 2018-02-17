@@ -216,7 +216,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tgP-4c-O3F">
-                                <rect key="frame" x="16" y="162" width="382" height="558"/>
+                                <rect key="frame" x="16" y="161.99999999999997" width="382" height="458.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.65771621469999997" green="0.50092262030000001" blue="0.69500339030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -247,20 +247,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6LL-4N-Jii">
+                                <rect key="frame" x="0.0" y="677" width="414" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="6Lj-6v-Qgr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="기억 담아두기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xl-IR-Skj">
+                                <rect key="frame" x="126.00000000000001" y="620.33333333333337" width="162.33333333333337" height="40.666666666666629"/>
+                                <string key="text"> 2019년 12월 22일까지
+기억을 담아둡니다</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Gpw-hN-07s" firstAttribute="bottom" secondItem="6LL-4N-Jii" secondAttribute="bottom" id="AEm-D5-p89"/>
                             <constraint firstItem="HlS-By-1Fh" firstAttribute="leading" secondItem="Gpw-hN-07s" secondAttribute="leading" constant="16" id="AwU-aK-NLV"/>
+                            <constraint firstItem="9Xl-IR-Skj" firstAttribute="top" secondItem="tgP-4c-O3F" secondAttribute="bottom" id="EoA-DN-s0X"/>
                             <constraint firstItem="Gpw-hN-07s" firstAttribute="trailing" secondItem="tgP-4c-O3F" secondAttribute="trailing" constant="16" id="FTB-ie-e35"/>
+                            <constraint firstItem="Gpw-hN-07s" firstAttribute="trailing" secondItem="6LL-4N-Jii" secondAttribute="trailing" id="HAU-Gq-J3i"/>
                             <constraint firstItem="Gpw-hN-07s" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HlS-By-1Fh" secondAttribute="trailing" constant="16" id="Ihl-Yk-EXi"/>
-                            <constraint firstItem="Gpw-hN-07s" firstAttribute="bottom" secondItem="tgP-4c-O3F" secondAttribute="bottom" constant="16" id="buU-gs-an2"/>
+                            <constraint firstItem="6LL-4N-Jii" firstAttribute="leading" secondItem="Gpw-hN-07s" secondAttribute="leading" id="LVI-03-IcY"/>
                             <constraint firstItem="HlS-By-1Fh" firstAttribute="top" secondItem="Gpw-hN-07s" secondAttribute="top" constant="7" id="ccB-w2-EvP"/>
                             <constraint firstItem="tgP-4c-O3F" firstAttribute="top" secondItem="HlS-By-1Fh" secondAttribute="bottom" constant="68" id="dvq-67-X9Q"/>
+                            <constraint firstItem="9Xl-IR-Skj" firstAttribute="centerX" secondItem="DEL-Gg-GkX" secondAttribute="centerX" id="tee-6x-mDB"/>
+                            <constraint firstItem="6LL-4N-Jii" firstAttribute="top" secondItem="9Xl-IR-Skj" secondAttribute="bottom" constant="16" id="ukV-on-wU1"/>
                             <constraint firstItem="tgP-4c-O3F" firstAttribute="leading" secondItem="Gpw-hN-07s" secondAttribute="leading" constant="16" id="yBo-Lv-2F2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gpw-hN-07s"/>
                     </view>
                     <connections>
+                        <outlet property="memorizeButton" destination="6LL-4N-Jii" id="pOy-Mo-ypa"/>
+                        <outlet property="selectedDateLabel" destination="9Xl-IR-Skj" id="QXP-3l-gJk"/>
                         <outlet property="tableView" destination="tgP-4c-O3F" id="ory-Sf-cfB"/>
                     </connections>
                 </viewController>
@@ -420,7 +445,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIV-a5-W0K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5479.7101449275369" y="10.597826086956523"/>
+            <point key="canvasLocation" x="5673" y="16"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="PQw-KY-jfo">

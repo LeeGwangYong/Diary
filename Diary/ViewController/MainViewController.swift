@@ -50,6 +50,7 @@ class MainViewController: ViewController {
         var currentDateString = Date().dateToString()
         currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6)) //currentDateString.insert("\n", at:  )
         self.dateLabel.text = currentDateString
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
     
     func setUpTableView() {
