@@ -9,9 +9,9 @@
 import Foundation
 
 extension Date {
-    func dateToString() -> String{
+    func dateToStringYMD() -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 M월 d일의 기억"
+        dateFormatter.dateFormat = "yyyy년 M월 d일"
         dateFormatter.locale = Locale.current
         return dateFormatter.string(from: self)
     }

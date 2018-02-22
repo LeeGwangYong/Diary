@@ -14,11 +14,11 @@ enum Result<T> {
     case Failure(Int)
 }
 struct Token {
-    static func getToken() -> [String:String]?{
-        guard let token = UserDefaults.standard.string(forKey: "token")
-            else {return nil}
-        print(token)
-        return ["token" : token]
+    static func getUserIndex() -> [String:Int]?{
+        let userIdx = UserDefaults.standard.integer(forKey: "userIdx")
+        
+        print(userIdx)
+        return ["userIdx" : 59]
     }
 }
 
@@ -28,13 +28,13 @@ protocol APIService {
 
 extension APIService  {
     static func getURL(path: String) -> String {
-        return "http://example.com" + path
+        return "http://45.63.120.140:40004/api/" + path
     }
-    static func getResult_StatusCode(response: DataResponse<Data>) -> Result<Any>? {
+    static func getResult_StatusCode<T>(response: DataResponse<T>) -> Result<T>? {
         switch response.result {
         case .success :
             guard let statusCode = response.response?.statusCode as Int? else {return nil}
-            guard let responseData = response.data else {return nil}
+            guard let responseData = response.result.value else {return nil}
             switch statusCode {
             case 200..<400 :
                 return Result.Success(responseData)

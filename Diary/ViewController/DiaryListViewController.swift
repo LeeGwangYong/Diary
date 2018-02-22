@@ -44,9 +44,9 @@ extension DiaryListViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiaryCollectionViewCell.reuseIdentifier, for: indexPath) as! DiaryCollectionViewCell
         cell.backgroundColor = UIColor().random()
-        cell.dateLabel.text = capsule[indexPath.row].date.dateToString()
-        cell.contentLabel.text = capsule[indexPath.row].content
-        cell.opacityView.alpha =  CGFloat(capsule[indexPath.row].date.timeIntervalSinceNow / 1000000)
+        cell.dateLabel.text = capsule[indexPath.row].insertDate.dateToStringYMD()
+        cell.contentLabel.text = capsule[indexPath.row].contents
+        cell.opacityView.alpha =  CGFloat(capsule[indexPath.row].insertDate.timeIntervalSinceNow / 1000000)
         return cell
     }
     

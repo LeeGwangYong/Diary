@@ -31,14 +31,34 @@ class KeepDayCell: UITableViewCell {
 
 class KeepDayViewController: ViewController {
     let days = ["달력에서 직접 선택", "다음 봄이 시작되는 날", "올해의 마지막 날", "내년 첫 날", "아무때나"]
+    var selectedDate: Date? {
+        didSet {
+            if let dateString = selectedDate?.dateToStringYMD() {
+                let attributedString = NSMutableAttributedString(string: "\(dateString)까지\n기억을 담아둡니다")
+                attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold), range: NSRange(location: 0, length: dateString.count))
+                self.selectedDateLabel.attributedText = attributedString
+            }
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectedDateLabel: UILabel!
+    @IBOutlet weak var memorizeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setViewController()
+        setUpTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        memorizeButton.createGradientLayer()
     }
     
     override func setViewController() {
+       
+    }
+    
+    func setUpTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
@@ -73,8 +93,17 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! KeepDayCell
-        cell.reload()
+        if let cell = tableView.cellForRow(at: indexPath) as? KeepDayCell {
+            cell.reload()
+        }
+        switch indexPath.row {
+        case 0:
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CalendarViewController.reuseIdentifier) as! CalendarViewController
+            nextVC.delegate = self
+            self.navigationController?.present(nextVC, animated: true, completion: nil)
+        default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -82,4 +111,5 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
             cell.reload()
         }
     }
+    
 }

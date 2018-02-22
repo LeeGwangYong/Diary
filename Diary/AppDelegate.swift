@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+//import Realm
+import RealmSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let app = UIApplication.shared
         let notificationSettings = UIUserNotificationSettings(types: UIUserNotificationType([.alert, .sound /*, .Badge*/]), categories:nil)
         app.registerUserNotificationSettings(notificationSettings)
+        
+        if let realmURL = Realm.Configuration.defaultConfiguration.fileURL {
+            print(realmURL.absoluteString)
+        }
         
         return true
     }
