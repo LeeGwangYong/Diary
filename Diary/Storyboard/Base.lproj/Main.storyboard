@@ -175,9 +175,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PiX-N4-Ddb">
                                 <rect key="frame" x="32" y="126" width="350" height="578"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">서정진 셀트리온 회장이 코스닥에서는 처음으로 5조원 넘는 상장주식 자산을 보유하게 되면서 최태원 SK그룹 회장과 정몽구 현대차그룹 회장을 제치고 주식부호 4위에 올랐다.  
-
-7일 재벌닷컴에 따르면 서정진 셀트리온 회장의 상장주식 자산 규모는 지난 5일 종가 기준 5조3천905억원으로 집계됐다. </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
