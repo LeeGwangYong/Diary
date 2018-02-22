@@ -16,6 +16,7 @@ enum Result<T> {
 struct Token {
     static func getUserIndex() -> [String:Int]?{
         let userIdx = UserDefaults.standard.integer(forKey: "userIdx")
+        
         print(userIdx)
         return ["userIdx" : 59]
     }

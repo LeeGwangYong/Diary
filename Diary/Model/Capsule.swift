@@ -56,6 +56,7 @@ class Capsule: Object, Mappable  {
         catch(let err) {
             print(err.localizedDescription)
         }
+        
         return nil
     }
     
