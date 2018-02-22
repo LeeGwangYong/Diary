@@ -13,44 +13,47 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var nextButton: UIButton!
+    var nickname: String!
     override func viewDidLoad() {
         super.viewDidLoad()
     
         nameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
 
-        let text = "이름이 뭐예요?"
-        nameLabel.text = text
-       // nameLabel.font = UIFont(name: "SpoqaHanSans-Bold", size: 28.0)
-        nameLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
-   
-        
+        self.setLabel()
         self.setToSLabel()
         self.view.addSubview(ToSLabel)
-        drawNextButton(nameField: nameField)
-        self.nameField.addTarget(self, action: #selector(drawNextButton), for: UIControlEvents.editingChanged)
+        setNextButton()
+        self.nameField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
     }
-
-    @objc func drawNextButton(nameField: UITextField){
-        let nextButton: UIButton!
-        nextButton = UIButton(type: .custom)
-        nextButton.frame = CGRect(x: 232, y: 240, width: 127, height: 42)
-       // nextButton.titleLabel!.font =  UIFont(name: "SpoqaHanSans-Regular", size: 16)
-        nextButton.layer.cornerRadius = 4
-        nextButton.setTitle("다음", for: .normal)
-       
+    @objc func setNextButton(){
+         nextButton.layer.cornerRadius = 4
         if nameField.text!.isEmpty {
             nextButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
             nextButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
         } else {
-            nextButton.frame = CGRect(x: 233, y: 240.5, width: 125.5, height: 40.5)
             nextButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
+            nextButton.setTitleColor(UIColor.white, for: .normal)
+            
             nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
             
         }
         self.view.addSubview(nextButton)
     }
+    func setLabel(){
+        nameLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
+    }
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SignUpEmail" {
+            if let destinationVC = segue.destination as? SignUpEmailViewController {
+                destinationVC.nickname = nameField.text!
+            }
+        }
+    }
+ */
     @objc func nextButtonClicked() {
+        UserDefaults.standard.set(nameField.text, forKey: "nickname")
         performSegue(withIdentifier: "SignUpEmail", sender: self)
     }
     func setToSLabel() {
@@ -65,7 +68,6 @@ class SignUpViewController: UIViewController {
         
         ToSLabel.attributedText = attributedString
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

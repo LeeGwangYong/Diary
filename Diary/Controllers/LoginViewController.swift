@@ -10,17 +10,23 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 class LoginViewController: UIViewController {
-    var loginButton: UIButton!
-    var fieldEmail: UITextField!
-    var fieldPassword: UITextField!
+
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var logoLabel: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var outLine: UIView!
+    
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var passwordView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let logoLineView = UIView(frame: CGRect(x: 167, y: 127, width: 42, height: 5))
+        let logoLineView = UIView(frame: CGRect(x: view.center.x - 21, y: 127, width: 42, height: 5))
         logoLineView.layer.borderColor = UIColor(red: 168/255, green: 128/255, blue:177/255, alpha: 1.0).cgColor
         logoLineView.createLineGradientLayer()
         self.view.addSubview(logoLineView)
@@ -31,100 +37,63 @@ class LoginViewController: UIViewController {
         logoLabel.attributedText = attributedString
         
         self.view.addSubview(logoLabel)
-        self.setTextField()
-        self.drawLoginButton()
+    
         
-        let lineView = UIView(frame: CGRect(x: 32, y: 332, width: 311, height: 1.0))
+        let lineView = UIView(frame: CGRect(x: 0, y: 56, width: stackView.bounds.width, height: 1.0))
         lineView.layer.borderWidth = 1.0
         lineView.layer.borderColor = UIColor(red: 168/255, green: 128/255, blue:177/255, alpha: 0.5).cgColor
-        self.view.addSubview(lineView)
+        self.stackView.addSubview(lineView)
 
-        let stackView = UIStackView(arrangedSubviews: [fieldEmail,fieldPassword,loginButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.distribution = .fillEqually
-        self.view.addSubview(stackView)
-       
-        loginBackground(backgroundView, to: stackView)
-        stackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 32).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -225).isActive = true
-        stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -32).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
+        customLoginButton()
+        setPlaceholderColor()
+        setOutLine()
+
     }
 
-    private lazy var backgroundView: UIView = {
-        let view = UIView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor(red: 177/255, green: 177/255, blue:177/255, alpha: 1.0).cgColor
-        view.layer.cornerRadius = 4.0
-        return view
-    }()
 
-    func loginBackground(_ view: UIView, to stackView: UIStackView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        stackView.insertSubview(view, at: 0)
-        view.setField(to: stackView)
+    func setOutLine() {
+        outLine.layer.borderWidth = 1
+        outLine.layer.borderColor = UIColor(red: 177/255, green: 177/255, blue:177/255, alpha: 1.0).cgColor
+        outLine.layer.cornerRadius = 4.0
     }
-    func setPlaceholder(textField: UITextField) -> NSAttributedString {
-        var placeholderString: String = ""
-        switch textField {
-            case fieldEmail :
-                placeholderString = "이메일 주소"
-            case fieldPassword :
-                placeholderString = "8자 이상 입력해주세요"
-            default :
-                ()
-        }
-        let placeholder = NSAttributedString(string: placeholderString, attributes: [NSAttributedStringKey.foregroundColor : UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
-        return placeholder
+    
+    func setPlaceholderColor() {
+        emailField.attributedPlaceholder = NSAttributedString(string: "이메일 주소",
+                                                              attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
+        passwordField.attributedPlaceholder = NSAttributedString(string: "8자리 이상 입력해주세요",
+                                                              attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
     }
-    func setTextField() {
-        fieldEmail = UITextField(frame: CGRect(x: 0, y: 0, width: 311, height: 56))
-        fieldEmail.autocapitalizationType = .none
-        fieldEmail.font = UIFont.systemFont(ofSize: 14)
-        fieldEmail.attributedPlaceholder = setPlaceholder(textField: fieldEmail)
-        fieldEmail.setLeftPaddingPoints(16)
-        
-        fieldPassword = UITextField(frame: CGRect(x: 0, y: 0, width: 311, height: 56))
-        fieldPassword.font = UIFont.systemFont(ofSize: 14)
-        fieldPassword.isSecureTextEntry = true
-        fieldPassword.attributedPlaceholder = setPlaceholder(textField: fieldPassword)
-        fieldPassword.setLeftPaddingPoints(16)
-    }
-    func drawLoginButton() {
-        loginButton = UIButton(type: .custom)
-        loginButton.frame = CGRect(x: 0, y: 0, width: 311, height: 62)
-        loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        loginButton.tintColor = UIColor.white
-        loginButton.setTitle("로그인", for: .normal)
-        //loginButton.titleLabel!.font =  UIFont(name: "SpoqaHanSans-Bold", size: 16)
+ 
+    func customLoginButton() {
         loginButton.createGradientLayer()
         loginButton.roundedButton()
+        buttonView.addSubview(loginButton)
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
-    }
+        
+      }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     @objc func loginButtonClicked(sender: UIButton){
-       /*
+      /*
         let param: Parameters = [
-            "email" : self.fieldEmail,
-            "password" : self.fieldPassword,
+            "email" : self.emailField,
+            "password" : self.passwordField
         ]
- 
-        SignService.getSignData(url: "api/signup", parameter: param) { (result) in
-            switch result {
-                case .Success(let response):
-                    guard let data = response as? Data else {return}
-                    let dataJSON = JSON(data)
-                    print(dataJSON)
-                case .Failure(let failureCode):
-                    print("Sign In Failure : \(failureCode)")
-                
-            }
-        }*/
+         SignService.getSignData(url: "api/signup", parameter: param) { (result) in
+                    switch result {
+                    case .Success(let response):
+                        guard let data = response as? Data else {return}
+                        let dataJSON = JSON(data)
+                        print(dataJSON)
+                    case .Failure(let failureCode):
+                        print("Sign In Failure : \(failureCode)")
+                        
+                    }
+                }
+ */
        print("dddddd")
     }
  
