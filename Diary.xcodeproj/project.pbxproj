@@ -21,6 +21,7 @@
 		FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F2433203698090062222F /* CustomTabBarController.swift */; };
 		FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F24352036BE0C0062222F /* CalendarViewController.swift */; };
 		FC3F24382036C35D0062222F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F24372036C35D0062222F /* CalendarCell.swift */; };
+		FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D0203DD988002CCD30 /* CapsuleService.swift */; };
 		FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C05202EC3E000F93095 /* KoreanInt.swift */; };
 		FC9A7C08202ECB0600F93095 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C07202ECB0600F93095 /* Gradient.swift */; };
 		FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */; };
@@ -56,6 +57,7 @@
 		FC3F2433203698090062222F /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		FC3F24352036BE0C0062222F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		FC3F24372036C35D0062222F /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		FC4930D0203DD988002CCD30 /* CapsuleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleService.swift; sourceTree = "<group>"; };
 		FC9A7C05202EC3E000F93095 /* KoreanInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInt.swift; sourceTree = "<group>"; };
 		FC9A7C07202ECB0600F93095 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaCoExtension.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				FC18F2E5200E03B90087E3A8 /* APIService.swift */,
 				FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */,
+				FC4930D0203DD988002CCD30 /* CapsuleService.swift */,
 				FC18F2E9200E04BD0087E3A8 /* SignService.swift */,
 			);
 			path = Network;
@@ -345,6 +348,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -353,13 +357,16 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -368,9 +375,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -394,6 +403,7 @@
 				FCC3CC83200ECCCA00AD0019 /* MainViewController.swift in Sources */,
 				FC9A7C0C202ED61300F93095 /* Designable.swift in Sources */,
 				FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */,
+				FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */,
 				FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */,
 				FC9A7C08202ECB0600F93095 /* Gradient.swift in Sources */,
 				FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */,

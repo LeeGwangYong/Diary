@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import RealmSwift
 
 class MainViewController: ViewController {
     //MARK -: Property
@@ -24,6 +26,7 @@ class MainViewController: ViewController {
         super.viewDidLoad()
         self.setViewController()
         self.setUpTableView()
+        self.fetchCapsuleList()
     }
     
     
@@ -47,8 +50,8 @@ class MainViewController: ViewController {
         self.inputNavigateView.isUserInteractionEnabled = true
         self.capsuleTableView.setUp(target: self, cell: CapsuleTableViewCell.self)
         self.inputNavigateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateInputViewController)))
-        var currentDateString = Date().dateToString()
-        currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6)) //currentDateString.insert("\n", at:  )
+        var currentDateString = "\(Date().dateToStringYMD())의 기억"
+        currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6))
         self.dateLabel.text = currentDateString
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
@@ -59,8 +62,28 @@ class MainViewController: ViewController {
         self.capsuleTableView.separatorColor = UIColor(red: 1/255, green: 117/255, blue: 152/255, alpha: 1)
     }
     
+    func fetchCapsuleList() {
+    
+        CapsuleService.getListData(url: "list", parameter: Token.getUserIndex()) { (result) in
+            switch result {
+            case .Success(let response) :
+                guard let responseData = response as? Data else {return}
+                let dataJSON = JSON(responseData)
+                if let datas = dataJSON["data"].arrayObject as? [Capsule] {
+                    for item in datas {
+                        Capsule.write(item, state: .add)
+                    }
+                }
+
+            case .Failure(let failureCode) :
+                print(failureCode)
+            }
+        }
+    }
+    
     @objc func navigateInputViewController() {
         let nextVC: InputViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: InputViewController.reuseIdentifier) as! InputViewController
+        nextVC.dateString = self.dateLabel.text
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
         self.hidesBottomBarWhenPushed = false

@@ -9,12 +9,45 @@
 import Foundation
 import Realm
 import RealmSwift
-
+import ObjectMapper
 enum RealmState {
     case add, remove
 }
+class CapsuleResponse: Mappable {
+    var code: String = ""
+    var capsule: [Capsule]?
+    
+    required convenience init?(map: Map){
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        code <- map["code"]
+        capsule <- map["data"]
+    }
+}
 
-class Capsule: Object {
+class Capsule: Object, Mappable  {
+
+    @objc dynamic var idx: Int = 0
+    @objc dynamic var userIdx: Int = 0
+    @objc dynamic var contents: String = ""
+    @objc dynamic var insertDate: Date = Date()
+    @objc dynamic var openDate: Date = Date()
+    @objc dynamic var updateDate: Date?
+    
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        idx <- map["idx"]
+        userIdx <- map["user_idx"]
+        contents <- map["contents"]
+        insertDate <- map["insert_date"]
+        openDate <- map["open_date"]
+        updateDate <- map["udate_date"]
+    }
     static var realm: Realm? {
         do {
             //Migration
@@ -26,27 +59,26 @@ class Capsule: Object {
         return nil
     }
     
-    @objc dynamic var date: Date = Date()
-    @objc dynamic var content: String = ""
     
     ///Primary Key를 등록해 줍니다.
     override static func primaryKey() -> String? {
-        return "date"
+        return "idx"
     }
     
     static func write<T: Capsule>(_ item: T, state: RealmState) {
-        let realm = try! Realm()
         do {
-            try realm.write {
+            
+            try self.realm?.write {
                 switch state {
                 case .add :
-                    let preItems = realm.objects(Capsule.self).filter("date = %@", item.date)
-                    if let preItem = preItems.first {
-                        preItem.content = item.content
-                    }
-                    else { realm.add(item) }
+                    self.realm?.add(item, update: true)
+//                    let preItems = realm.objects(Capsule.self).filter("idx = %@", item.idx)
+//                    if let preItem = preItems.first {
+//                        preItem.contents = item.contents
+//                    }
+//                    else { realm.add(item) }
                 case .remove :
-                    realm.delete(item)
+                    self.realm?.delete(item)
                 }
             }
         }
@@ -57,8 +89,13 @@ class Capsule: Object {
     
     static func removeAll() {
         let realm: Realm = try! Realm()
-        try! realm.write {
-            realm.deleteAll()
+        do {
+            try realm.write {
+                realm.deleteAll()
+            }
+        }
+        catch(let err) {
+            print(err.localizedDescription)
         }
     }
 }

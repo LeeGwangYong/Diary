@@ -194,6 +194,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZtS-vQ-rOu"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="9oP-UB-t13" id="Tcq-YN-uUC"/>
+                        <outlet property="textView" destination="PiX-N4-Ddb" id="aJW-u0-Tf6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8q3-IC-cHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
