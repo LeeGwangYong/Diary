@@ -71,8 +71,8 @@ class LoginViewController: UIViewController {
         let password: String! = UserDefaults.standard.string(forKey: "password")!
         print(password)
         let param: Parameters = [
-            "email" : UserDefaults.standard.string(forKey: "email")!,
-            "password" : UserDefaults.standard.string(forKey: "password")!
+            "email" : emailField.text!,
+            "password" : passwordField.text!
         ]
        
         SignService.getSignData(url: "signin", parameter: param) { (result) in

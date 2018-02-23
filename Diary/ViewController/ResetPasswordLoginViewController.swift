@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ResetPasswordLoginViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
@@ -28,6 +30,28 @@ class ResetPasswordLoginViewController: UIViewController {
         let text = "이메일로\n임시 비밀번호를 보냈습니다"
         questionLabel.text = text
         questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
+        
+    }
+    func resendPasswordResetEmail() {
+        
+        let param: Parameters = [
+            "email" : UserDefaults.standard.string(forKey: "email")!
+        ]
+        
+        SignService.getSignData(url: "passwordresetemail", parameter: param) { (result) in
+            switch result {
+            case .Success(let response):
+                let data = response
+                let dataJSON = JSON(data)
+                print(dataJSON)
+                if dataJSON["code"] == "0000" {
+                    //self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
+                }
+            case .Failure(let failureCode):
+                print("Password Reset Email Failure : \(failureCode)")
+                
+            }
+        }
         
     }
     func customLoginButton() {
