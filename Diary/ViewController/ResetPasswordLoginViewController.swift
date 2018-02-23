@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Toast_Swift
 
 class ResetPasswordLoginViewController: UIViewController {
  
@@ -44,8 +45,12 @@ class ResetPasswordLoginViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
+                    self.view.makeToast("새로운 비밀번호를 재전송하였습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init(), completion: { (bool) in
+                            self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
+                        })
+                    }
                     //self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
-                }
+                
             case .Failure(let failureCode):
                 print("Password Reset Email Failure : \(failureCode)")
                 
@@ -59,9 +64,6 @@ class ResetPasswordLoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     @objc func loginButtonClicked() {
-        UserDefaults.standard.synchronize()
-        let password = UserDefaults.standard.string(forKey: "password")
-        print(password)
         self.performSegue(withIdentifier: "ResetPasswordLoginSegue", sender: self)
     }
     override func didReceiveMemoryWarning() {

@@ -712,12 +712,12 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기억의 타임캡슐 타이머리" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ox7-GS-Znc">
-                                <rect key="frame" x="37" y="170" width="300" height="43"/>
+                                <rect key="frame" x="37" y="184" width="300" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.37647058823529411" green="0.23529411764705882" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="positive.png" translatesAutoresizingMaskIntoConstraints="NO" id="FGt-Rg-96N">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="FGt-Rg-96N">
                                 <rect key="frame" x="166" y="74" width="43" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FGt-Rg-96N" secondAttribute="height" multiplier="1:1" id="Ljg-20-ROz"/>
@@ -762,14 +762,21 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LD9-Lf-RuY">
-                                <rect key="frame" x="37" y="130.5" width="300" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.37091916799545288" green="0.18632614612579346" blue="0.41582643985748291" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LD9-Lf-RuY">
+                                <rect key="frame" x="37" y="130.5" width="300" height="34.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="timary">
+                                        <attributes>
+                                            <color key="NSColor" red="0.37091916799545288" green="0.18632614612579346" blue="0.41582643985748291" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="30" name="Baskerville-SemiBold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrW-Dh-SU1">
@@ -828,7 +835,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06C-P3-qDv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="2049"/>
+            <point key="canvasLocation" x="-1314.4000000000001" y="2048.7256371814096"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="QHU-Fj-N96">
@@ -838,7 +845,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asddddddddddkalalskdlakdlaskdlaksldklkl" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smN-7f-OMB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smN-7f-OMB">
                                 <rect key="frame" x="16" y="72" width="343" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="4o9-Kv-4Fu"/>
@@ -910,7 +917,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3F-i2-FKA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2282" y="3152"/>
+            <point key="canvasLocation" x="-2646" y="3152"/>
         </scene>
         <!--Reset Password Login View Controller-->
         <scene sceneID="K0n-d0-X6j">
@@ -920,8 +927,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdasdadasdasdasdasdasdasdasdasdasd" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rH-NQ-508">
-                                <rect key="frame" x="16" y="116" width="343" height="97"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rH-NQ-508">
+                                <rect key="frame" x="16" y="72" width="343" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="97" id="9V9-wE-fmJ"/>
                                 </constraints>
@@ -930,11 +937,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 후 비밀번호를 변경해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSY-o9-ALO">
-                                <rect key="frame" x="16" y="221" width="343" height="20.5"/>
+                                <rect key="frame" x="15" y="221" width="343" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="hAM-8d-2gh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -971,13 +978,13 @@
                             <constraint firstItem="f7d-c2-q2G" firstAttribute="top" secondItem="An0-S3-SMg" secondAttribute="bottom" constant="12" id="SxE-Rm-fk0"/>
                             <constraint firstItem="4rH-NQ-508" firstAttribute="leading" secondItem="XRe-fq-4bd" secondAttribute="leading" constant="16" id="VHL-A2-06U"/>
                             <constraint firstItem="XRe-fq-4bd" firstAttribute="trailing" secondItem="An0-S3-SMg" secondAttribute="trailing" constant="16" id="XSU-A7-VFM"/>
-                            <constraint firstItem="PSY-o9-ALO" firstAttribute="leading" secondItem="XRe-fq-4bd" secondAttribute="leading" constant="16" id="Ymt-b3-quL"/>
-                            <constraint firstItem="XRe-fq-4bd" firstAttribute="trailing" secondItem="PSY-o9-ALO" secondAttribute="trailing" constant="16" id="c5X-Zc-FpC"/>
-                            <constraint firstItem="4rH-NQ-508" firstAttribute="top" secondItem="XRe-fq-4bd" secondAttribute="top" constant="52" id="cNn-nf-4ku"/>
+                            <constraint firstItem="PSY-o9-ALO" firstAttribute="leading" secondItem="XRe-fq-4bd" secondAttribute="leading" constant="15" id="Ymt-b3-quL"/>
+                            <constraint firstItem="XRe-fq-4bd" firstAttribute="trailing" secondItem="PSY-o9-ALO" secondAttribute="trailing" constant="17" id="c5X-Zc-FpC"/>
+                            <constraint firstItem="4rH-NQ-508" firstAttribute="top" secondItem="XRe-fq-4bd" secondAttribute="top" constant="8" id="cNn-nf-4ku"/>
                             <constraint firstItem="f7d-c2-q2G" firstAttribute="trailing" secondItem="XRe-fq-4bd" secondAttribute="trailing" id="deU-h6-tJ5"/>
                             <constraint firstItem="XRe-fq-4bd" firstAttribute="trailing" secondItem="4rH-NQ-508" secondAttribute="trailing" constant="16" id="dlV-kt-XIo"/>
                             <constraint firstItem="An0-S3-SMg" firstAttribute="leading" secondItem="XRe-fq-4bd" secondAttribute="leading" constant="16" id="dsR-m9-uLK"/>
-                            <constraint firstItem="PSY-o9-ALO" firstAttribute="top" secondItem="4rH-NQ-508" secondAttribute="bottom" constant="8" id="p1p-FG-Iyh"/>
+                            <constraint firstItem="PSY-o9-ALO" firstAttribute="top" secondItem="4rH-NQ-508" secondAttribute="bottom" constant="52" id="p1p-FG-Iyh"/>
                             <constraint firstItem="XRe-fq-4bd" firstAttribute="trailing" secondItem="57S-za-BPf" secondAttribute="trailing" constant="16" id="x4d-NC-2UE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XRe-fq-4bd"/>
@@ -991,7 +998,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tNe-Cn-CdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="3152"/>
+            <point key="canvasLocation" x="-1687" y="3152"/>
         </scene>
         <!--User Name View Controller-->
         <scene sceneID="9fF-WK-CJr">
@@ -1133,6 +1140,11 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="T3c-QM-GlR">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1169,6 +1181,7 @@
                         <outlet property="completeButton" destination="lIo-hx-sPb" id="5Gs-C0-PLe"/>
                         <outlet property="emailAlertLabel" destination="DpU-hS-JjP" id="tYz-nr-an4"/>
                         <outlet property="emailField" destination="seM-lk-bhT" id="zQa-YV-bJ5"/>
+                        <outlet property="indicatorView" destination="T3c-QM-GlR" id="dMa-v3-aRp"/>
                         <outlet property="passwordAlertLabel" destination="Ar2-a3-wVS" id="vfm-YZ-JN7"/>
                         <outlet property="passwordField" destination="m1L-vf-kot" id="hgm-rc-TRl"/>
                         <outlet property="questionLabel" destination="Kiq-Rg-VSj" id="m1T-3Y-eOJ"/>
@@ -1177,7 +1190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yqg-8i-NLD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="316" y="2049"/>
+            <point key="canvasLocation" x="316" y="2048.7256371814096"/>
         </scene>
         <!--Verify Email View Controller-->
         <scene sceneID="Mgv-F6-ETg">
@@ -1288,6 +1301,11 @@
                                     <constraint firstAttribute="height" constant="40" id="tPL-g0-BLE"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8A8-dZ-y72">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1318,6 +1336,7 @@
                         <outlet property="authCode03" destination="8ee-o4-f8a" id="Qxd-JT-iN5"/>
                         <outlet property="authCode04" destination="fRu-dO-1UM" id="rcd-Zd-Kel"/>
                         <outlet property="completeButton" destination="y4x-6K-K6U" id="j3u-2i-nzW"/>
+                        <outlet property="indicatorView" destination="8A8-dZ-y72" id="XNG-hc-P8r"/>
                         <outlet property="questionLabel" destination="0D3-5G-T2d" id="bm5-BG-XFt"/>
                         <outlet property="resendEmailButton" destination="VLD-bH-QhU" id="eqy-Eb-AuV"/>
                         <segue destination="iRt-dy-n8V" kind="show" identifier="SignedUpSegue" id="en8-XY-3rk"/>
@@ -1379,10 +1398,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="158" height="154"/>
         <image name="Main" width="125" height="52"/>
         <image name="Memory" width="125" height="52"/>
         <image name="Setting" width="125" height="52"/>
-        <image name="positive.png" width="158" height="154"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dM5-Kk-H0f"/>

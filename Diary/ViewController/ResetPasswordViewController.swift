@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-
+import Toast_Swift
 class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     
@@ -66,8 +66,14 @@ class ResetPasswordViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
-                    UserDefaults.standard.synchronize()
-                    self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
+                    self.view.makeToast("새로운 비밀번호를 보냈습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init(), completion: { (bool) in
+                        if self.emailField.text != nil {
+                            self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
+                        }
+                        else {
+                    
+                        }
+                    })
                 }
                 
             case .Failure(let failureCode):

@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Toast_Swift
 
 class AccountViewController: UIViewController {
     @IBOutlet weak var emailAlertLabel: UILabel!
@@ -16,8 +17,10 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordAlertLabel: UILabel!
 
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var completeButton: UIButton!
     var nickname = UserDefaults.standard.string(forKey: "nickname")!
+    var isCalling = false
     
     override func viewDidAppear(_ animated: Bool) {
         setTextLabel()
@@ -36,6 +39,7 @@ class AccountViewController: UIViewController {
         self.emailField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.passwordField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        self.view.bringSubview(toFront: self.indicatorView)
     }
     func setTextLabel() {
         let text = "이메일과 비밀번호를\n알려주세요"
@@ -62,36 +66,29 @@ class AccountViewController: UIViewController {
     }
     func checkEmailField() -> Bool {
         if (emailField.text?.isEmpty)! {
-            //emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
             return false
         }
         if validateEmail(enteredEmail: emailField.text!) {
-            //emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
             return true
         } else {
-            // emailField.addBorderBottom(height: 1.0, color: UIColor.red)
             return false
         }
         
     }
     func checkPasswordField() -> Bool {
         if (passwordField.text?.isEmpty)! {
-            //pwField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
             return false
         }
         if passwordField.text!.count >= 8  {
-            //pwField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
             passwordAlertLabel.isHidden = true
             return true
         } else {
             passwordAlertLabel.isHidden = false
-            //pwField.addBorderBottom(height: 1.0, color: UIColor.red)
             return false
         }
-        
     }
     @objc func signUp() {
-        
+        self.indicatorView.startAnimating()
         let param: Parameters = [
             "email" : emailField.text!,
             "password" : passwordField.text!,
@@ -107,6 +104,7 @@ class AccountViewController: UIViewController {
                 UserDefaults.standard.set(dataJSON["data"]["idx"].int, forKey: "userIdx")
                 switch dataJSON["code"] {
                 case "0000":
+                    self.indicatorView.stopAnimating()
                     UserDefaults.standard.set(self.emailField.text, forKey: "email")
                     UserDefaults.standard.set(self.passwordField.text, forKey: "password")
                     self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)

@@ -8,11 +8,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Toast_Swift
 
 class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     
    
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var authCode01: UITextField!
     @IBOutlet weak var authCode02: UITextField!
     @IBOutlet weak var authCode03: UITextField!
@@ -42,7 +44,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
+        self.view.bringSubview(toFront: self.indicatorView)
     }
     func setTextLabel() {
         let text = "인증코드를 이메일로\n보냈습니다"
@@ -57,13 +59,11 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         return allowedCharacters.isSuperset(of: characterSet)
     }
     @objc func drawCompleteButton(){
-        
         completeButton.layer.cornerRadius = 4
         if (authCode01.text?.isEmpty)! || (authCode02.text?.isEmpty)! || (authCode03.text?.isEmpty)! || (authCode04.text?.isEmpty)! {
             completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
         } else {
             completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
-            
         }
         self.view.addSubview(completeButton)
     }
@@ -72,7 +72,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         authCode02.tag = 2
         authCode03.tag = 3
         authCode04.tag = 4
-        
+
         authCode01.textAlignment = .center
         authCode02.textAlignment = .center
         authCode03.textAlignment = .center
@@ -107,6 +107,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         checkAuthCode()
     }
     func checkAuthCode(){
+        self.indicatorView.startAnimating()
         let param: Parameters = [
             "idx" : idx,
             "activeAccountCode" : activeAccountFlag
@@ -117,7 +118,10 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
                 let data = response
                 let dataJSON = JSON(data)
                 if dataJSON["code"] == "0000" {
+                    self.indicatorView.stopAnimating()
                     self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                } else {
+                    self.view.makeToast("인증코드 오류", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init())
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
@@ -137,7 +141,10 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
+                    self.view.makeToast("이메일을 재전송 하였습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init())
                     self.checkAuthCode()
+                } else {
+                    self.view.makeToast("인증코드 오류", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init())
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
