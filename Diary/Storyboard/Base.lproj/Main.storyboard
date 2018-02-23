@@ -535,26 +535,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018년 1월 7일의 기억" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyY-mW-0gE">
-                                <rect key="frame" x="16" y="72" width="343" height="67"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018년 1월 7일의 기억" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyY-mW-0gE">
+                                <rect key="frame" x="16" y="72" width="343" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김넥터님을 위한 기억의 타임캡슐을 만들었습니다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvA-KO-HWj">
+                                <rect key="frame" x="16" y="127.5" width="343" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93840724230000006" green="0.93911874289999997" blue="0.93851745129999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bvA-KO-HWj" firstAttribute="top" secondItem="YyY-mW-0gE" secondAttribute="bottom" constant="22" id="H3s-pd-hIB"/>
                             <constraint firstItem="JKi-H1-Ujt" firstAttribute="trailing" secondItem="YyY-mW-0gE" secondAttribute="trailing" constant="16" id="HCe-I1-XQ0"/>
                             <constraint firstItem="YyY-mW-0gE" firstAttribute="leading" secondItem="JKi-H1-Ujt" secondAttribute="leading" constant="16" id="QIp-Xc-FQL"/>
                             <constraint firstItem="YyY-mW-0gE" firstAttribute="top" secondItem="JKi-H1-Ujt" secondAttribute="top" constant="52" id="dsH-ec-bHP"/>
+                            <constraint firstItem="bvA-KO-HWj" firstAttribute="leading" secondItem="YyY-mW-0gE" secondAttribute="leading" id="edb-hA-GtS"/>
+                            <constraint firstItem="bvA-KO-HWj" firstAttribute="trailing" secondItem="YyY-mW-0gE" secondAttribute="trailing" id="gda-dt-Cwn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JKi-H1-Ujt"/>
                     </view>
                     <connections>
-                        <outlet property="dateLabel" destination="YyY-mW-0gE" id="8me-Hq-Fsr"/>
+                        <outlet property="subTitleLabel" destination="bvA-KO-HWj" id="ecT-qQ-if0"/>
+                        <outlet property="titleLabel" destination="YyY-mW-0gE" id="dfm-Jd-CRT"/>
+                        <segue destination="FC6-Kh-9JA" kind="unwind" identifier="unwindToMain" unwindAction="prepareForUnwindWithSegue:" id="m9m-yu-vNa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHR-aS-daJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="FC6-Kh-9JA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6258" y="9"/>
         </scene>

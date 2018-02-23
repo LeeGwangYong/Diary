@@ -5,6 +5,7 @@ PODS:
     - ObjectMapper (~> 3.0)
   - Hero (1.0.1)
   - JTAppleCalendar (7.1.5)
+  - lottie-ios (2.5.0)
   - ObjectMapper (3.1.0)
   - Realm (3.0.2):
     - Realm/Headers (= 3.0.2)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - Hero
   - JTAppleCalendar
+  - lottie-ios
   - ObjectMapper
   - RealmSwift
   - SwiftyJSON
@@ -31,6 +33,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   Hero: cee286821578e170d8c0c9c9cda7897357401112
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
+  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
@@ -38,6 +41,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: c132bdb5066dc911627d06120dfc4f168dd208d2
+PODFILE CHECKSUM: 593d4a9ecb1bcda8d161cc3f9ca693ece7fde1a4
 
 COCOAPODS: 1.4.0

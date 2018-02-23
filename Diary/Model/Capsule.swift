@@ -44,10 +44,18 @@ class Capsule: Object, Mappable  {
         idx <- map["idx"]
         userIdx <- map["user_idx"]
         contents <- map["contents"]
-        insertDate <- map["insert_date"]
-        openDate <- map["open_date"]
-        updateDate <- map["udate_date"]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatterTransform = DateFormatterTransform(dateFormatter: dateFormatter)
+        insertDate <- (map["insert_date"], dateFormatterTransform)
+        openDate <- (map["open_date"], dateFormatterTransform)
+        updateDate <- (map["udate_date"], dateFormatterTransform)
+
     }
+    
+
+    
     static var realm: Realm? {
         do {
             //Migration

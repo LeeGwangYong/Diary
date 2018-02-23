@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 import Toast_Swift
+import Hero
+
 
 class KeepDayCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -91,10 +93,10 @@ class KeepDayViewController: ViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         print(formatter.string(from: Date()))
-        if let contents = self.delegate?.textView.text {
+        if let contents = self.delegate?.textView.text, let selectedDate = self.selectedDate {
             let parameters: [String : Any] = ["userIdx" : Token.getUserIndex(),
                                               "contents" : contents,
-                                              "openDate" : formatter.string(from: Date())]
+                                              "openDate" : formatter.string(from: selectedDate)]
             
             CapsuleService.writeData(url: "write", parameter: parameters, completion: { (result) in
                 switch result {
@@ -105,7 +107,12 @@ class KeepDayViewController: ViewController {
                         self.view.makeToast("에러")
                     }
                     else {
-                        
+                        let completionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CompletionViewController.reuseIdentifier) as! CompletionViewController
+                        if let selectedDate = self.selectedDate?.dateToStringYMD() {
+                            completionVC.titleString = "\(selectedDate)에\n기억을 꺼냅니다"
+                        }
+                        completionVC.delegate = self
+                        self.present(completionVC, animated: true, completion: nil)
                     }
                 case .Failure(let failureCode) :
                     print(failureCode)
@@ -122,7 +129,15 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: KeepDayCell.reuseIdentifier, for: indexPath) as! KeepDayCell
-        cell.titleLabel.text = DivisionOfTheYear.allDescription[indexPath.row]
+        if 1 <= indexPath.row && indexPath.row <= 4  {
+            cell.titleLabel.text = "다음 \(DivisionOfTheYear.allDescription[indexPath.row])"
+        }
+        else if indexPath.row == 5 {
+            cell.titleLabel.text = "내년 \(DivisionOfTheYear.allDescription[indexPath.row])"
+        }
+        else {
+            cell.titleLabel.text = DivisionOfTheYear.allDescription[indexPath.row]
+        }
         cell.reload()
         
         cell.preservesSuperviewLayoutMargins = false

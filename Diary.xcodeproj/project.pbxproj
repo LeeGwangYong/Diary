@@ -31,6 +31,7 @@
 		FC4930D3203FDE79002CCD30 /* DivisionOfTheYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D2203FDE79002CCD30 /* DivisionOfTheYear.swift */; };
 		FC4930D5203FE2CE002CCD30 /* EnumHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */; };
 		FC4930D720404EFC002CCD30 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D620404EFC002CCD30 /* CompletionViewController.swift */; };
+		FC4930D9204060DE002CCD30 /* electric.json in Resources */ = {isa = PBXBuildFile; fileRef = FC4930D8204060DE002CCD30 /* electric.json */; };
 		FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C05202EC3E000F93095 /* KoreanInt.swift */; };
 		FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */; };
 		FC9A7C0C202ED61300F93095 /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C0B202ED61300F93095 /* Designable.swift */; };
@@ -75,6 +76,7 @@
 		FC4930D2203FDE79002CCD30 /* DivisionOfTheYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionOfTheYear.swift; sourceTree = "<group>"; };
 		FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnumHashable.swift; path = Diary/Model/EnumHashable.swift; sourceTree = SOURCE_ROOT; };
 		FC4930D620404EFC002CCD30 /* CompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
+		FC4930D8204060DE002CCD30 /* electric.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = electric.json; sourceTree = "<group>"; };
 		FC9A7C05202EC3E000F93095 /* KoreanInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInt.swift; sourceTree = "<group>"; };
 		FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaCoExtension.swift; sourceTree = "<group>"; };
 		FC9A7C0B202ED61300F93095 /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */,
 				FC18F2D8200DB5570087E3A8 /* Info.plist */,
+				FC4930D8204060DE002CCD30 /* electric.json */,
 				FC18F2E4200E035F0087E3A8 /* Protocol */,
 				FC18F2E3200E03530087E3A8 /* Extension */,
 				FC18F2E1200E03110087E3A8 /* Network */,
@@ -324,6 +327,7 @@
 				FCC3CC92200ED5D600AD0019 /* DiaryCollectionViewCell.xib in Resources */,
 				9ED286C1203EF1250098CDBF /* positive.png in Resources */,
 				FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */,
+				FC4930D9204060DE002CCD30 /* electric.json in Resources */,
 				FC9A7C10202EDB9500F93095 /* CapsuleTableViewCell.xib in Resources */,
 				FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */,
 			);
@@ -382,6 +386,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -395,6 +400,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

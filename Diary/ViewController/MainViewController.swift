@@ -20,23 +20,22 @@ class MainViewController: ViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     private var token: NotificationToken!
-    var capsules = Capsule.realm?.objects(Capsule.self).sorted(byKeyPath: "idx", ascending: true)
+    var capsules = Capsule.realm?.objects(Capsule.self).sorted(byKeyPath: "idx", ascending: false)
     
     //MARK -: Method
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setViewController()
         self.setUpTableView()
-        self.fetchCapsuleList()
+        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.transparentNavigationBar()
         self.blinkingView.alpha = 0.2
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.blinkingView.alpha = 1.0}, completion: nil)
-//        self.inputNavigateView.createGradientLayer()
+        self.fetchCapsuleList()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +89,10 @@ class MainViewController: ViewController {
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
         self.hidesBottomBarWhenPushed = false
+    }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
+        
     }
 }
 

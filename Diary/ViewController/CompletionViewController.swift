@@ -7,19 +7,51 @@
 //
 
 import UIKit
+import Lottie
 
 class CompletionViewController: UIViewController {
+/*
+     이전 ViewController에서 delegate = self를 통해 자신을 넘겨야함.
+*/
 
-    @IBOutlet weak var dateLabel: UILabel!
-    var delegate: KeepDayViewController?
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subTitleLabel: UILabel!
+    var titleString: String?
+    var subTitleText: String?
+    var delegate: UIViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.subTitleLabel.text = ""
+        if let title = self.titleString {
+            self.titleLabel.text = title
+        }
+        if let subTitle = self.subTitleText {
+            self.subTitleLabel.text = subTitle
+        }
+        
+        let animationView: LOTAnimationView? = LOTAnimationView(name: "electric.json")
+        animationView?.frame = self.view.frame
+        animationView?.center = self.view.center
+        animationView?.contentMode = .scaleAspectFill
+        animationView?.loopAnimation = true
+        view.addSubview(animationView!)
+        animationView?.play()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.dismiss(animated: true, completion: {
+                self.delegate?.navigationController?.popToRootViewController(animated: true)
+            })
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.createGradientLayer()
     }
-
+    
 }

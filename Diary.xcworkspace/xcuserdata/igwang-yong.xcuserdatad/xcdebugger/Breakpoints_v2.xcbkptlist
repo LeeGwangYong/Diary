@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Diary/ViewController/CalendarViewController.swift"
-            timestampString = "541085258.055557"
+            timestampString = "541119724.6215709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
@@ -57,13 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Diary/ViewController/KeepDayViewController.swift"
-            timestampString = "541085258.055716"
+            filePath = "Diary/Xib/Cell/CapsuleTableViewCell.swift"
+            timestampString = "541119724.621658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "fetchRegisterCapsule()"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "update(insertDate:openDate:content:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Diary/ViewController/KeepDayViewController.swift"
-            timestampString = "541085258.055807"
+            filePath = "Diary/Xib/Cell/CapsuleTableViewCell.swift"
+            timestampString = "541119724.62198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "fetchRegisterCapsule()"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "update(insertDate:openDate:content:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
