@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import SVGKit
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -27,10 +28,6 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let logoSvgImgVar: SVGKImage = SVGKImage(named: "logotype_timary")
-//        let logoSvgImgView = SVGKImageView(svgkImage: logoSvgImgVar)
-//        let logoImgVar: UIImage = logoSvgImgVar.uiImage
-       
         
         let attributedString = NSMutableAttributedString(string: "기억의 타임캡슐\n타이머리")
         logoLabel.attributedText = attributedString
@@ -71,24 +68,24 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonClicked(sender: UIButton){
-        /*
-         let param: Parameters = [
-         "email" : self.emailField,
-         "password" : self.passwordField
-         ]
-         SignService.getSignData(url: "api/signup", parameter: param) { (result) in
-         switch result {
-         case .Success(let response):
-         guard let data = response as? Data else {return}
-         let dataJSON = JSON(data)
-         print(dataJSON)
-         case .Failure(let failureCode):
-         print("Sign In Failure : \(failureCode)")
-         
-         }
-         }
-         */
-        print("dddddd")
+        let param: Parameters = [
+            "email" : UserDefaults.standard.string(forKey: "email"),
+            "password" : UserDefaults.standard.string(forKey: "password")
+        ]
+        SignService.getSignData(url: "signin", parameter: param) { (result) in
+            switch result {
+            case .Success(let response):
+                let data = response
+                let dataJSON = JSON(data)
+                print(dataJSON)
+                if dataJSON["code"] == "0000" {
+                    self.performSegue(withIdentifier: "MainSegue", sender: self)
+                }
+            case .Failure(let failureCode):
+                print("Sign In Failure : \(failureCode)")
+                
+            }
+        }
     }
     
     @objc func dismissKeyboard() {

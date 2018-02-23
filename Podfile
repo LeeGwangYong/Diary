@@ -11,7 +11,5 @@ pod 'SwiftyJSON'
 pod 'RealmSwift'
 pod 'JTAppleCalendar'
 pod 'UITextView+Placeholder'
-pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
   # Pods for Diary
-
 end
