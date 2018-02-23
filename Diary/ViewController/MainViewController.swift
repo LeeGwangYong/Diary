@@ -34,13 +34,13 @@ class MainViewController: ViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.transparentNavigationBar()
-        
         self.blinkingView.alpha = 0.2
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear, .repeat, .autoreverse], animations: {self.blinkingView.alpha = 1.0}, completion: nil)
 //        self.inputNavigateView.createGradientLayer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.inputNavigateView.createGradientLayer()
     }
     

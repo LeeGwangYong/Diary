@@ -13,7 +13,11 @@ class InputViewController: ViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
+    
     var dateString: String?
+    var keyboardDismissGesture: UITapGestureRecognizer?
+    let limitTextCount = 10000
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewController()
@@ -21,15 +25,18 @@ class InputViewController: ViewController {
     }
     
     override func setViewController() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "담아두기", style: UIBarButtonItemStyle.plain, target: self, action: #selector(selectKeepDay))
-        self.navigationItem.backBarButtonItem?.title = ""
+        let registerBarButton = UIBarButtonItem(title: "담아두기", style: UIBarButtonItemStyle.done, target: self, action: #selector(selectKeepDay))
+        registerBarButton.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray], for: .disabled)
+        self.navigationItem.rightBarButtonItem = registerBarButton
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         if let dateString = dateString  {
             self.dateLabel.text = dateString
         }
         self.textView.placeholder = "오늘은 어떤 기억을 담아둘까?"
         self.textView.tintColor = UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1)
-        
+        self.dateLabel.isUserInteractionEnabled = true
+        self.textView.delegate = self
     }
 
     @objc func selectKeepDay() {
@@ -49,7 +56,7 @@ extension InputViewController {
     {
         if let keyboadSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         {
-//            adjustKeyboardDismissTapGesture(isKeyboardVisible: true)
+            self.adjustKeyboardDismissTapGesture(isKeyboardVisible: true)
             self.textViewBottomConstraint.constant = keyboadSize.height
             
             if let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval{
@@ -70,4 +77,36 @@ extension InputViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    func adjustKeyboardDismissTapGesture(isKeyboardVisible: Bool){
+        if isKeyboardVisible{
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+                self.view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        }
+        else{
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
+    }
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
+}
+
+
+extension InputViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        if newText.count <= limitTextCount {
+            self.navigationItem.rightBarButtonItem?.isEnabled = !(newText.count <= 0)
+            return true
+        }
+        return false
+    }
+    
+    
 }
