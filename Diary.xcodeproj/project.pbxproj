@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9ED286C1203EF1250098CDBF /* positive.png in Resources */ = {isa = PBXBuildFile; fileRef = 9ED286C0203EF1250098CDBF /* positive.png */; };
+		9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */; };
+		9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C6203F1F510098CDBF /* UserNameViewController.swift */; };
+		9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C8203F210A0098CDBF /* LoginViewController.swift */; };
+		9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286CA203F25170098CDBF /* AccountViewController.swift */; };
+		9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286CE203F319C0098CDBF /* VerifyEmailService.swift */; };
+		9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */; };
 		A4B4BBABEF00849F719159DE /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */; };
 		FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */; };
-		FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CE200DB5570087E3A8 /* SignViewController.swift */; };
 		FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D0200DB5570087E3A8 /* Main.storyboard */; };
 		FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D3200DB5570087E3A8 /* Assets.xcassets */; };
 		FC18F2D7200DB5570087E3A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC18F2D5200DB5570087E3A8 /* LaunchScreen.storyboard */; };
@@ -23,7 +29,6 @@
 		FC3F24382036C35D0062222F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F24372036C35D0062222F /* CalendarCell.swift */; };
 		FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D0203DD988002CCD30 /* CapsuleService.swift */; };
 		FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C05202EC3E000F93095 /* KoreanInt.swift */; };
-		FC9A7C08202ECB0600F93095 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C07202ECB0600F93095 /* Gradient.swift */; };
 		FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */; };
 		FC9A7C0C202ED61300F93095 /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C0B202ED61300F93095 /* Designable.swift */; };
 		FC9A7C0F202EDB9500F93095 /* CapsuleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C0D202EDB9500F93095 /* CapsuleTableViewCell.swift */; };
@@ -42,9 +47,15 @@
 		49AAD48E563A0B0CF7602047 /* Pods-Diary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.debug.xcconfig"; sourceTree = "<group>"; };
 		524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
+		9ED286C0203EF1250098CDBF /* positive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = positive.png; sourceTree = "<group>"; };
+		9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		9ED286C6203F1F510098CDBF /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
+		9ED286C8203F210A0098CDBF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9ED286CA203F25170098CDBF /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		9ED286CE203F319C0098CDBF /* VerifyEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailService.swift; sourceTree = "<group>"; };
+		9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailViewController.swift; sourceTree = "<group>"; };
 		FC18F2C9200DB5570087E3A8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC18F2CE200DB5570087E3A8 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		FC18F2D1200DB5570087E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC18F2D3200DB5570087E3A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC18F2D6200DB5570087E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,7 +70,6 @@
 		FC3F24372036C35D0062222F /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		FC4930D0203DD988002CCD30 /* CapsuleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleService.swift; sourceTree = "<group>"; };
 		FC9A7C05202EC3E000F93095 /* KoreanInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInt.swift; sourceTree = "<group>"; };
-		FC9A7C07202ECB0600F93095 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaCoExtension.swift; sourceTree = "<group>"; };
 		FC9A7C0B202ED61300F93095 /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
 		FC9A7C0D202EDB9500F93095 /* CapsuleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,7 +151,6 @@
 		FC18F2DE200E02EA0087E3A8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FC18F2CE200DB5570087E3A8 /* SignViewController.swift */,
 				FCC3CC82200ECCCA00AD0019 /* MainViewController.swift */,
 				FCC3CC85200ED13300AD0019 /* DiaryListViewController.swift */,
 				FCC3CC93200EDB5900AD0019 /* ViewController.swift */,
@@ -149,6 +158,10 @@
 				FC3F243120363E400062222F /* KeepDayViewController.swift */,
 				FC3F2433203698090062222F /* CustomTabBarController.swift */,
 				FC3F24352036BE0C0062222F /* CalendarViewController.swift */,
+				9ED286C6203F1F510098CDBF /* UserNameViewController.swift */,
+				9ED286C8203F210A0098CDBF /* LoginViewController.swift */,
+				9ED286CA203F25170098CDBF /* AccountViewController.swift */,
+				9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 		FC18F2E0200E02F70087E3A8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9ED286C0203EF1250098CDBF /* positive.png */,
 				FC18F2D3200DB5570087E3A8 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -177,6 +191,7 @@
 				FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */,
 				FC4930D0203DD988002CCD30 /* CapsuleService.swift */,
 				FC18F2E9200E04BD0087E3A8 /* SignService.swift */,
+				9ED286CE203F319C0098CDBF /* VerifyEmailService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -195,9 +210,9 @@
 				FCC3CC8B200ED44200AD0019 /* ReusableExtension.swift */,
 				FCC3CCA2200FA25600AD0019 /* DateString.swift */,
 				FC9A7C05202EC3E000F93095 /* KoreanInt.swift */,
-				FC9A7C07202ECB0600F93095 /* Gradient.swift */,
 				FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */,
 				FC9A7C0B202ED61300F93095 /* Designable.swift */,
+				9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -298,6 +313,7 @@
 			files = (
 				FC18F2D7200DB5570087E3A8 /* LaunchScreen.storyboard in Resources */,
 				FCC3CC92200ED5D600AD0019 /* DiaryCollectionViewCell.xib in Resources */,
+				9ED286C1203EF1250098CDBF /* positive.png in Resources */,
 				FC18F2D4200DB5570087E3A8 /* Assets.xcassets in Resources */,
 				FC9A7C10202EDB9500F93095 /* CapsuleTableViewCell.xib in Resources */,
 				FC18F2D2200DB5570087E3A8 /* Main.storyboard in Resources */,
@@ -380,8 +396,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
-				FC18F2CF200DB5570087E3A8 /* SignViewController.swift in Sources */,
+				9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */,
 				FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */,
+				9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */,
+				9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */,
 				FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
 				FC9A7C0F202EDB9500F93095 /* CapsuleTableViewCell.swift in Sources */,
@@ -391,8 +409,9 @@
 				FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */,
 				FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */,
 				FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */,
-				FC9A7C08202ECB0600F93095 /* Gradient.swift in Sources */,
 				FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */,
+				9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */,
+				9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */,
 				FCC3CC94200EDB5900AD0019 /* ViewController.swift in Sources */,
 				FCC3CC91200ED5D600AD0019 /* DiaryCollectionViewCell.swift in Sources */,
 				FC3F243220363E400062222F /* KeepDayViewController.swift in Sources */,
@@ -401,6 +420,7 @@
 				FCC3CCA1200F9FE300AD0019 /* Capsule.swift in Sources */,
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
+				9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */,
 				FCC3CC87200ED13300AD0019 /* DiaryListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
