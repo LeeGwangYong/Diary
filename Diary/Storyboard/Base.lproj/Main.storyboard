@@ -187,7 +187,7 @@
                             <constraint firstItem="9oP-UB-t13" firstAttribute="leading" secondItem="ZtS-vQ-rOu" secondAttribute="leading" constant="16" id="OV3-pc-zUM"/>
                             <constraint firstItem="ZtS-vQ-rOu" firstAttribute="trailing" secondItem="PiX-N4-Ddb" secondAttribute="trailing" constant="32" id="PBp-y3-2VJ"/>
                             <constraint firstItem="PiX-N4-Ddb" firstAttribute="top" secondItem="9oP-UB-t13" secondAttribute="bottom" constant="32" id="nfu-dy-D44"/>
-                            <constraint firstItem="ZtS-vQ-rOu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9oP-UB-t13" secondAttribute="trailing" constant="16" id="q12-AG-HoB"/>
+                            <constraint firstItem="ZtS-vQ-rOu" firstAttribute="trailing" secondItem="9oP-UB-t13" secondAttribute="trailing" constant="16" id="q12-AG-HoB"/>
                             <constraint firstItem="ZtS-vQ-rOu" firstAttribute="bottom" secondItem="PiX-N4-Ddb" secondAttribute="bottom" constant="32" id="tPD-vp-KbB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZtS-vQ-rOu"/>
@@ -195,6 +195,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="9oP-UB-t13" id="Tcq-YN-uUC"/>
                         <outlet property="textView" destination="PiX-N4-Ddb" id="aJW-u0-Tf6"/>
+                        <outlet property="textViewBottomConstraint" destination="tPD-vp-KbB" id="1RG-Ba-Ama"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8q3-IC-cHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
