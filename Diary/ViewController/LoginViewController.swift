@@ -5,11 +5,12 @@
 //  Created by 박수현 on 23/02/2018.
 //  Copyright © 2018 이광용. All rights reserved.
 //
-
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var logoLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -26,6 +27,7 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let attributedString = NSMutableAttributedString(string: "기억의 타임캡슐\n타이머리")
         logoLabel.attributedText = attributedString
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.heavy), range: NSRange(location: 8, length: 5))
@@ -65,24 +67,27 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonClicked(sender: UIButton){
-        /*
-         let param: Parameters = [
-         "email" : self.emailField,
-         "password" : self.passwordField
-         ]
-         SignService.getSignData(url: "api/signup", parameter: param) { (result) in
-         switch result {
-         case .Success(let response):
-         guard let data = response as? Data else {return}
-         let dataJSON = JSON(data)
-         print(dataJSON)
-         case .Failure(let failureCode):
-         print("Sign In Failure : \(failureCode)")
-         
-         }
-         }
-         */
-        print("dddddd")
+        let password: String! = UserDefaults.standard.string(forKey: "password")!
+        print(password)
+        let param: Parameters = [
+            "email" : emailField.text!,
+            "password" : passwordField.text!
+        ]
+        
+        SignService.getSignData(url: "signin", parameter: param) { (result) in
+            switch result {
+            case .Success(let response):
+                let data = response
+                let dataJSON = JSON(data)
+                print(dataJSON)
+                if dataJSON["code"] == "0000" {
+                    self.performSegue(withIdentifier: "MainSegue", sender: self)
+                }
+            case .Failure(let failureCode):
+                print("Sign In Failure : \(failureCode)")
+                
+            }
+        }
     }
     
     @objc func dismissKeyboard() {

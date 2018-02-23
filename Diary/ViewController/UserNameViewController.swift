@@ -5,25 +5,28 @@
 //  Created by 박수현 on 23/02/2018.
 //  Copyright © 2018 이광용. All rights reserved.
 //
-
 import UIKit
 
 class UserNameViewController: UIViewController {
+    
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setLabel()
+        userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        
-        self.setLabel()
         self.setToSLabel()
         self.view.addSubview(ToSLabel)
         setNextButton()
         self.userNameField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     @objc func setNextButton(){
         nextButton.layer.cornerRadius = 4
@@ -42,7 +45,7 @@ class UserNameViewController: UIViewController {
     func setLabel(){
         questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
     }
- 
+    
     @objc func nextButtonClicked() {
         UserDefaults.standard.set(userNameField.text, forKey: "nickname")
         performSegue(withIdentifier: "AccountSegue", sender: self)
@@ -63,5 +66,8 @@ class UserNameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
 }

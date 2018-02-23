@@ -5,7 +5,6 @@
 //  Created by 박수현 on 23/02/2018.
 //  Copyright © 2018 이광용. All rights reserved.
 //
-
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -13,6 +12,7 @@ import SwiftyJSON
 class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     
+   
     @IBOutlet weak var authCode01: UITextField!
     @IBOutlet weak var authCode02: UITextField!
     @IBOutlet weak var authCode03: UITextField!
@@ -22,6 +22,11 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var resendEmailButton: UIButton!
     var activeAccountFlag: String = ""
     var idx = UserDefaults.standard.integer(forKey: "userIdx")
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setTextLabel()
+        authCodeSetup()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         authCode01.delegate = self
@@ -29,10 +34,6 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         authCode03.delegate = self
         authCode04.delegate = self
         
-        let text = "인증코드를 이메일로\n보냈습니다"
-        questionLabel.text = text
-        questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
-        authCodeSetup()
         drawCompleteButton()
         self.authCode01.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.authCode02.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
@@ -40,6 +41,13 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.authCode04.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+    }
+    func setTextLabel() {
+        let text = "인증코드를 이메일로\n보냈습니다"
+        questionLabel.text = text
+        questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -103,14 +111,13 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
             "idx" : idx,
             "activeAccountCode" : activeAccountFlag
         ]
-        VerifyEmailService.getSignData(url: "verifyemail", parameter: param) { (result) in
+        SignService.getSignData(url: "verifyemail", parameter: param) { (result) in
             switch result {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
-                if
-                    dataJSON["code"] == "0000" {
-                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+                if dataJSON["code"] == "0000" {
+                    self.performSegue(withIdentifier: "LoginSegue", sender: self)
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
@@ -123,7 +130,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
             "idx" : idx,
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
-        VerifyEmailService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
+        SignService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
             switch result {
             case .Success(let response):
                 let data = response
@@ -143,4 +150,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
 }
