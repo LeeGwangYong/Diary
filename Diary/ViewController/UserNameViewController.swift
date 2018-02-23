@@ -23,14 +23,11 @@ class UserNameViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
-        
-       // self.setLabel()
         self.setToSLabel()
         self.view.addSubview(ToSLabel)
         setNextButton()
         self.userNameField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     @objc func setNextButton(){
         nextButton.layer.cornerRadius = 4
@@ -69,6 +66,9 @@ class UserNameViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 
 }

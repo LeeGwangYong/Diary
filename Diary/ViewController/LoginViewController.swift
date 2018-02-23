@@ -68,10 +68,13 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonClicked(sender: UIButton){
+        let password: String! = UserDefaults.standard.string(forKey: "password")!
+        print(password)
         let param: Parameters = [
-            "email" : UserDefaults.standard.string(forKey: "email"),
-            "password" : UserDefaults.standard.string(forKey: "password")
+            "email" : UserDefaults.standard.string(forKey: "email")!,
+            "password" : UserDefaults.standard.string(forKey: "password")!
         ]
+       
         SignService.getSignData(url: "signin", parameter: param) { (result) in
             switch result {
             case .Success(let response):

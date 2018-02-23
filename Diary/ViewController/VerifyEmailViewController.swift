@@ -41,6 +41,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.authCode04.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
     }
     func setTextLabel() {
@@ -110,14 +111,13 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
             "idx" : idx,
             "activeAccountCode" : activeAccountFlag
         ]
-        VerifyEmailService.getSignData(url: "verifyemail", parameter: param) { (result) in
+        SignService.getSignData(url: "verifyemail", parameter: param) { (result) in
             switch result {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
-                if
-                    dataJSON["code"] == "0000" {
-                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+                if dataJSON["code"] == "0000" {
+                    self.performSegue(withIdentifier: "LogiinSegue", sender: self)
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
@@ -130,7 +130,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
             "idx" : idx,
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
-        VerifyEmailService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
+        SignService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
             switch result {
             case .Success(let response):
                 let data = response
@@ -150,4 +150,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
 }

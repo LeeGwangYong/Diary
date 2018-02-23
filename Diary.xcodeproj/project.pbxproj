@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9E073AD9203FDC6F000CA7FC /* logotype_timary.svg in Resources */ = {isa = PBXBuildFile; fileRef = 9E073AD8203FDC6F000CA7FC /* logotype_timary.svg */; };
+		9E99B2D52040327B0080F97B /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E99B2D42040327B0080F97B /* PasswordResetViewController.swift */; };
+		9E99B2D7204041850080F97B /* ResetPasswordLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E99B2D6204041850080F97B /* ResetPasswordLoginViewController.swift */; };
 		9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */; };
 		9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C6203F1F510098CDBF /* UserNameViewController.swift */; };
 		9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C8203F210A0098CDBF /* LoginViewController.swift */; };
 		9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286CA203F25170098CDBF /* AccountViewController.swift */; };
-		9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286CE203F319C0098CDBF /* VerifyEmailService.swift */; };
 		9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */; };
 		A4B4BBABEF00849F719159DE /* Pods_Diary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524235E8CAB4B3F88E89B14E /* Pods_Diary.framework */; };
 		FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */; };
@@ -49,11 +50,12 @@
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 		9E073AD8203FDC6F000CA7FC /* logotype_timary.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = logotype_timary.svg; sourceTree = "<group>"; };
 		9E44D5B2203FDBCA00C2BC39 /* SVGKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVGKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E99B2D42040327B0080F97B /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		9E99B2D6204041850080F97B /* ResetPasswordLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordLoginViewController.swift; sourceTree = "<group>"; };
 		9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		9ED286C6203F1F510098CDBF /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 		9ED286C8203F210A0098CDBF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9ED286CA203F25170098CDBF /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		9ED286CE203F319C0098CDBF /* VerifyEmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailService.swift; sourceTree = "<group>"; };
 		9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailViewController.swift; sourceTree = "<group>"; };
 		FC18F2C9200DB5570087E3A8 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC18F2CC200DB5570087E3A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,8 @@
 				9ED286C8203F210A0098CDBF /* LoginViewController.swift */,
 				9ED286CA203F25170098CDBF /* AccountViewController.swift */,
 				9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */,
+				9E99B2D42040327B0080F97B /* PasswordResetViewController.swift */,
+				9E99B2D6204041850080F97B /* ResetPasswordLoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -193,7 +197,6 @@
 				FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */,
 				FC4930D0203DD988002CCD30 /* CapsuleService.swift */,
 				FC18F2E9200E04BD0087E3A8 /* SignService.swift */,
-				9ED286CE203F319C0098CDBF /* VerifyEmailService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -400,7 +403,6 @@
 				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
 				9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */,
 				FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */,
-				9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */,
 				9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */,
 				FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
@@ -420,10 +422,12 @@
 				FCC3CC8C200ED44200AD0019 /* ReusableExtension.swift in Sources */,
 				FC3F24382036C35D0062222F /* CalendarCell.swift in Sources */,
 				FCC3CCA1200F9FE300AD0019 /* Capsule.swift in Sources */,
+				9E99B2D52040327B0080F97B /* PasswordResetViewController.swift in Sources */,
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
 				9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */,
 				FCC3CC87200ED13300AD0019 /* DiaryListViewController.swift in Sources */,
+				9E99B2D7204041850080F97B /* ResetPasswordLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +570,7 @@
 				INFOPLIST_FILE = Diary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GwangGro.Diary;
+				PRODUCT_BUNDLE_IDENTIFIER = clapwatermelon.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -583,7 +587,7 @@
 				INFOPLIST_FILE = Diary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = GwangGro.Diary;
+				PRODUCT_BUNDLE_IDENTIFIER = clapwatermelon.Diary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

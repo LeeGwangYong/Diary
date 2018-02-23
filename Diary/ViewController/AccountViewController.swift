@@ -16,6 +16,7 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordAlertLabel: UILabel!
     
+    @IBOutlet weak var emailAlertLabel: UILabel!
     @IBOutlet weak var completeButton: UIButton!
     var nickname = UserDefaults.standard.string(forKey: "nickname")!
     
@@ -26,8 +27,8 @@ class AccountViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordAlertLabel.isHidden = true
-        
+        self.passwordAlertLabel.isHidden = true
+        self.emailAlertLabel.isHidden = true
         completeButton.layer.cornerRadius = 4
         completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
         completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
@@ -35,6 +36,7 @@ class AccountViewController: UIViewController {
         
         self.emailField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.passwordField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     func setTextLabel() {
         let text = "이메일과 비밀번호를\n알려주세요"
@@ -48,8 +50,7 @@ class AccountViewController: UIViewController {
             if checkPasswordField() {
                 completeButton.setTitleColor(UIColor.white, for: .normal)
                 completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
-                UserDefaults.standard.set(self.emailField.text, forKey: "email")
-                UserDefaults.standard.set(self.passwordField.text, forKey: "password")
+                
                 completeButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
             }
         } else {
@@ -103,9 +104,17 @@ class AccountViewController: UIViewController {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                print(dataJSON)
                 UserDefaults.standard.set(dataJSON["data"]["idx"].int, forKey: "userIdx")
-                if dataJSON["code"] == "0000" {
-                    self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)
+                switch dataJSON["code"] {
+                case "0000":
+                        UserDefaults.standard.set(self.emailField.text, forKey: "email")
+                        UserDefaults.standard.set(self.passwordField.text, forKey: "password")
+                        self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)
+                case "0001":
+                        self.emailAlertLabel.isHidden = false
+                default:
+                    ()
                 }
             case .Failure(let failureCode):
                 print("Sign Up Failure : \(failureCode)")
@@ -127,6 +136,9 @@ class AccountViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 }
 
