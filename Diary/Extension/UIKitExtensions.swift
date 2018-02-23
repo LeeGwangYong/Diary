@@ -42,13 +42,14 @@ extension UIButton {
     func roundedButton(){
         let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
                                      byRoundingCorners: [.bottomLeft , .bottomRight],
-                                     cornerRadii: CGSize(width: 4.0, height: 4.0))
+                                     cornerRadii: CGSize(width: 5.0, height: 5.0))
         let maskLayer1 = CAShapeLayer()
         maskLayer1.frame = self.bounds
         maskLayer1.path = maskPAth1.cgPath
         self.layer.mask = maskLayer1
     }
 }
+
 extension UITextField {
     func setLeftPaddingPoints(_ amount:CGFloat){
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))

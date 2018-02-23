@@ -10,46 +10,26 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var outLine: UIView!
     @IBOutlet weak var logoLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginButtonView: UIView!
+    @IBOutlet weak var imageBottomView: UIView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        customLoginButton()
+        self.imageBottomView.createGradientLayer()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let logoLineView = UIView(frame: CGRect(x: view.center.x - 21, y: 127, width: 42, height: 5))
-        logoLineView.layer.borderColor = UIColor(red: 168/255, green: 128/255, blue:177/255, alpha: 1.0).cgColor
-        logoLineView.createLineGradientLayer()
-        self.view.addSubview(logoLineView)
-        
         let attributedString = NSMutableAttributedString(string: "기억의 타임캡슐\n타이머리")
         logoLabel.attributedText = attributedString
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.heavy), range: NSRange(location: 8, length: 5))
         logoLabel.attributedText = attributedString
-        
-        self.view.addSubview(logoLabel)
-        
-        
-        let lineView = UIView(frame: CGRect(x: 0, y: 56, width: stackView.bounds.width, height: 1.0))
-        lineView.layer.borderWidth = 1.0
-        lineView.layer.borderColor = UIColor(red: 168/255, green: 128/255, blue:177/255, alpha: 0.5).cgColor
-        self.stackView.addSubview(lineView)
-        
-        customLoginButton()
+        self.passwordField.isSecureTextEntry = true
         setPlaceholderColor()
-        setOutLine()
-        
-    }
-    
-    
-    func setOutLine() {
-        outLine.layer.borderWidth = 1
-        outLine.layer.borderColor = UIColor(red: 177/255, green: 177/255, blue:177/255, alpha: 1.0).cgColor
-        outLine.layer.cornerRadius = 4.0
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     func setPlaceholderColor() {
@@ -57,12 +37,22 @@ class LoginViewController: UIViewController {
                                                               attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
         passwordField.attributedPlaceholder = NSAttributedString(string: "8자리 이상 입력해주세요",
                                                                  attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
+        
+        paddingTextField(textField: self.emailField)
+        paddingTextField(textField: self.passwordField)
+    }
+    
+    func paddingTextField(textField: UITextField) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
+        textField.leftView = paddingView
+        textField.leftViewMode = UITextFieldViewMode.always
+        textField.rightView = paddingView
+        textField.rightViewMode = UITextFieldViewMode.always
     }
     
     func customLoginButton() {
         loginButton.createGradientLayer()
         loginButton.roundedButton()
-        loginButtonView.addSubview(loginButton)
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
         
     }
@@ -90,6 +80,10 @@ class LoginViewController: UIViewController {
          }
          */
         print("dddddd")
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
 }
