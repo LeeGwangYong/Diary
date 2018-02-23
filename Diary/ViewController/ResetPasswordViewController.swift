@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 class ResetPasswordViewController: UIViewController {
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var completeButton: UIButton!
@@ -23,6 +24,7 @@ class ResetPasswordViewController: UIViewController {
         setCompleteButton()
         self.emailField.addTarget(self, action: #selector(setCompleteButton), for: UIControlEvents.editingChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        self.view.bringSubview(toFront: indicatorView)
         
     }
     func setTextLabel() {
@@ -55,6 +57,7 @@ class ResetPasswordViewController: UIViewController {
         return emailPredicate.evaluate(with: enteredEmail)
     }
     func passwordResetEmail(){
+        self.indicatorView.startAnimating()
         let param: Parameters = [
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
@@ -66,12 +69,10 @@ class ResetPasswordViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
+                    self.indicatorView.stopAnimating()
                     self.view.makeToast("새로운 비밀번호를 보냈습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init(), completion: { (bool) in
                         if self.emailField.text != nil {
                             self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
-                        }
-                        else {
-                    
                         }
                     })
                 }

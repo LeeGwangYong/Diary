@@ -67,8 +67,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonClicked(sender: UIButton){
-        let password: String! = UserDefaults.standard.string(forKey: "password")!
-        print(password)
         let param: Parameters = [
             "email" : emailField.text!,
             "password" : passwordField.text!

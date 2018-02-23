@@ -109,6 +109,7 @@ class AccountViewController: UIViewController {
                     UserDefaults.standard.set(self.passwordField.text, forKey: "password")
                     self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)
                 case "0001":
+                    self.indicatorView.stopAnimating()
                     self.emailAlertLabel.isHidden = false
                 default:
                     ()
