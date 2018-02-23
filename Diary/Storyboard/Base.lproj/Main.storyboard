@@ -647,7 +647,10 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -707,6 +710,7 @@
                         <outlet property="loginButton" destination="DST-VE-3el" id="xRR-qJ-dZq"/>
                         <outlet property="logoLabel" destination="Ox7-GS-Znc" id="B94-xV-Auh"/>
                         <outlet property="passwordField" destination="WRd-If-tWJ" id="K0h-id-7rU"/>
+                        <outlet property="timaryLogoLabel" destination="LD9-Lf-RuY" id="m6N-i6-KLN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06C-P3-qDv" userLabel="First Responder" sceneMemberID="firstResponder"/>

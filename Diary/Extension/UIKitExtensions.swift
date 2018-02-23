@@ -38,11 +38,11 @@ extension UIView {
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
 }
-extension UIButton {
-    func roundedButton(){
+extension UIView {
+    func makeRoundedView(corners: UIRectCorner, radius: CGFloat = 5.0){
         let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
-                                     byRoundingCorners: [.bottomLeft , .bottomRight],
-                                     cornerRadii: CGSize(width: 5.0, height: 5.0))
+                                     byRoundingCorners: corners,
+                                     cornerRadii: CGSize(width: radius, height: radius))
         let maskLayer1 = CAShapeLayer()
         maskLayer1.frame = self.bounds
         maskLayer1.path = maskPAth1.cgPath

@@ -15,11 +15,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var imageBottomView: UIView!
+    @IBOutlet weak var timaryLogoLabel: UILabel!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         customLoginButton()
         self.imageBottomView.createGradientLayer()
+        self.timaryLogoLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
+        self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +55,7 @@ class LoginViewController: UIViewController {
     
     func customLoginButton() {
         loginButton.createGradientLayer()
-        loginButton.roundedButton()
+        loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
         
     }
