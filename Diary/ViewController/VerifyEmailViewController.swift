@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var questionLabel: UILabel!
-    
+   
     @IBOutlet weak var authCode01: UITextField!
     @IBOutlet weak var authCode02: UITextField!
     @IBOutlet weak var authCode03: UITextField!
@@ -22,6 +22,11 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var resendEmailButton: UIButton!
     var activeAccountFlag: String = ""
     var idx = UserDefaults.standard.integer(forKey: "userIdx")
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setTextLabel()
+        authCodeSetup()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         authCode01.delegate = self
@@ -29,10 +34,6 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         authCode03.delegate = self
         authCode04.delegate = self
         
-        let text = "인증코드를 이메일로\n보냈습니다"
-        questionLabel.text = text
-        questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
-        authCodeSetup()
         drawCompleteButton()
         self.authCode01.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.authCode02.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
@@ -40,6 +41,12 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.authCode04.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
+        
+    }
+    func setTextLabel() {
+        let text = "인증코드를 이메일로\n보냈습니다"
+        questionLabel.text = text
+        questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool

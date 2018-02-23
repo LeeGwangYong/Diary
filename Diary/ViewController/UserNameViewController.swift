@@ -9,17 +9,24 @@
 import UIKit
 
 class UserNameViewController: UIViewController {
+   
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setLabel()
+        userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+       
         
-        self.setLabel()
+       // self.setLabel()
         self.setToSLabel()
         self.view.addSubview(ToSLabel)
         setNextButton()

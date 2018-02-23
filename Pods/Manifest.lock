@@ -3,6 +3,12 @@ PODS:
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
+  - CocoaLumberjack (3.4.1):
+    - CocoaLumberjack/Default (= 3.4.1)
+    - CocoaLumberjack/Extensions (= 3.4.1)
+  - CocoaLumberjack/Default (3.4.1)
+  - CocoaLumberjack/Extensions (3.4.1):
+    - CocoaLumberjack/Default
   - JTAppleCalendar (7.1.5)
   - ObjectMapper (3.1.0)
   - Realm (3.0.2):
@@ -10,6 +16,8 @@ PODS:
   - Realm/Headers (3.0.2)
   - RealmSwift (3.0.2):
     - Realm (= 3.0.2)
+  - SVGKit (2.0.1):
+    - CocoaLumberjack (~> 3.x)
   - SwiftyJSON (4.0.0)
   - UITextView+Placeholder (1.2.0)
 
@@ -19,19 +27,32 @@ DEPENDENCIES:
   - JTAppleCalendar
   - ObjectMapper
   - RealmSwift
+  - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `2.x`)
   - SwiftyJSON
   - UITextView+Placeholder
+
+EXTERNAL SOURCES:
+  SVGKit:
+    :branch: 2.x
+    :git: https://github.com/SVGKit/SVGKit.git
+
+CHECKOUT OPTIONS:
+  SVGKit:
+    :commit: 34781db59cb2c97a1c66067cd8847c6c512ccdd6
+    :git: https://github.com/SVGKit/SVGKit.git
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  SVGKit: 4055d9e809b5db8633755979cfb3b02dc5a8c20d
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 525d439f5328d88aa4e4e621cdbfc4a02b8ceb13
+PODFILE CHECKSUM: 54e138ab61b02996bbeb47ef1df26fa0e2adefdb
 
 COCOAPODS: 1.4.0

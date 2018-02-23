@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVGKit
 
 class LoginViewController: UIViewController {
 
@@ -26,6 +27,11 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let logoSvgImgVar: SVGKImage = SVGKImage(named: "logotype_timary")
+//        let logoSvgImgView = SVGKImageView(svgkImage: logoSvgImgVar)
+//        let logoImgVar: UIImage = logoSvgImgVar.uiImage
+       
+        
         let attributedString = NSMutableAttributedString(string: "기억의 타임캡슐\n타이머리")
         logoLabel.attributedText = attributedString
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.heavy), range: NSRange(location: 8, length: 5))

@@ -19,23 +19,29 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var completeButton: UIButton!
     var nickname = UserDefaults.standard.string(forKey: "nickname")!
     
+    override func viewDidAppear(_ animated: Bool) {
+        setTextLabel()
+        emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordAlertLabel.isHidden = true
-        let text = "이메일과 비밀번호를\n알려주세요"
-        questionLabel.text = text
-        questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         
         completeButton.layer.cornerRadius = 4
         completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
         completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
-        emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        
         
         self.emailField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.passwordField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
     }
-    
+    func setTextLabel() {
+        let text = "이메일과 비밀번호를\n알려주세요"
+        questionLabel.text = text
+        questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
+        
+    }
     @objc func drawCompleteButton() {
         
         if checkEmailField() {
@@ -44,7 +50,7 @@ class AccountViewController: UIViewController {
                 completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
                 UserDefaults.standard.set(self.emailField.text, forKey: "email")
                 UserDefaults.standard.set(self.passwordField.text, forKey: "password")
-                completeButton.addTarget(self, action: #selector(compelteButtonClicked), for: .touchUpInside)
+                completeButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
             }
         } else {
             if checkPasswordField() {
@@ -84,7 +90,6 @@ class AccountViewController: UIViewController {
         }
         
     }
-
     @objc func signUp() {
         
         let param: Parameters = [
@@ -100,11 +105,10 @@ class AccountViewController: UIViewController {
                 let dataJSON = JSON(data)
                 UserDefaults.standard.set(dataJSON["data"]["idx"].int, forKey: "userIdx")
                 if dataJSON["code"] == "0000" {
-                    
                     self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)
                 }
             case .Failure(let failureCode):
-                print("Sign In Failure : \(failureCode)")
+                print("Sign Up Failure : \(failureCode)")
                 
             }
         }
