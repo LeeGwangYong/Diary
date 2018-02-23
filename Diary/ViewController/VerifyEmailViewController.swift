@@ -19,6 +19,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var authCode04: UITextField!
     @IBOutlet weak var completeButton: UIButton!
     
+    @IBOutlet weak var resendEmailButton: UIButton!
     var activeAccountFlag: String = ""
     var idx = UserDefaults.standard.integer(forKey: "userIdx")
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.authCode03.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.authCode04.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+        resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
         
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -106,15 +108,36 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
-                if dataJSON["code"] == "0000" {
-                   // self.performSegue(withIdentifier: "SignedUp", sender: self)
+                if
+                    dataJSON["code"] == "0000" {
+                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
                 
             }
         }
-        
+    }
+    @objc func resendEmailButtonClicked() {
+        let param: Parameters = [
+            "idx" : idx,
+            "email" : UserDefaults.standard.string(forKey: "email")!
+        ]
+        VerifyEmailService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
+            switch result {
+            case .Success(let response):
+                let data = response
+                let dataJSON = JSON(data)
+                print(dataJSON)
+                if
+                    dataJSON["code"] == "0000" {
+                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+                }
+            case .Failure(let failureCode):
+                print("Verify In Failure : \(failureCode)")
+                
+            }
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
