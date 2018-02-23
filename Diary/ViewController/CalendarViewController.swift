@@ -13,6 +13,7 @@ class CalendarViewController: ViewController {
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var completionBarButton: UIBarButtonItem!
     let formatter = DateFormatter()
     var prePostVisibility: ((CellState, CalendarCell?)->())?
     var todayComponents: DateComponents {
@@ -21,21 +22,35 @@ class CalendarViewController: ViewController {
         return calendar.dateComponents([.year, .month, .day], from: Date())
     }
     var delegate: KeepDayViewController?
+    var selectedDate: Date?
+    
+    func createGradientLayer() {
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1).cgColor,
+                                UIColor(red: 87/255, green: 70/255, blue: 115/255, alpha: 1).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCalendarView()
+        setViewController()
         print(Date().description(with: Locale.current))
     }
+    
     override func setViewController() {
-        
+        self.completionBarButton.isEnabled = false
     }
     
     func setUpCalendarView() {
         self.calendarView.showsHorizontalScrollIndicator = false
         self.calendarView.showsVerticalScrollIndicator = false
         self.calendarView.isPagingEnabled = true
-        self.calendarView.scrollDirection = UICollectionViewScrollDirection.horizontal
+        self.calendarView.scrollDirection = UICollectionViewScrollDirection.vertical
         self.calendarView.ibCalendarDelegate = self
         self.calendarView.ibCalendarDataSource = self
         self.calendarView.minimumLineSpacing = 0
@@ -64,12 +79,28 @@ class CalendarViewController: ViewController {
             self.monthLabel.text = self.formatter.string(from: date)
         }
     }
+    
+    @IBAction func dismissCalendar(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func completionSelectDate(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true) {
+            self.delegate?.selectedDate = self.selectedDate
+        }
+    }
+    
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
     func handleCellConfiguration(cell: JTAppleCell?, cellState: CellState) {
         handleCellTextColor(cell: cell, cellState: cellState)
         handleCellSelected(cell: cell, cellState: cellState)
+        guard let cell = cell as? CalendarCell else {return }
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone =  Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        let today = formatter.date(from: "\(todayComponents.year!) \(todayComponents.month!) \(todayComponents.day!)")!
+        cell.todayDisplayView.isHidden = !(cellState.date == today)
         self.prePostVisibility?(cellState, cell as? CalendarCell)
     }
     
@@ -89,20 +120,22 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         guard let cell = cell as? CalendarCell else {return }
         switch cellState.dateBelongsTo {
         case .thisMonth:
+            cell.isUserInteractionEnabled = false
             formatter.dateFormat = "yyyy MM dd"
             formatter.timeZone =  Calendar.current.timeZone
             formatter.locale = Calendar.current.locale
-            cell.isUserInteractionEnabled = false
             let today = formatter.date(from: "\(todayComponents.year!) \(todayComponents.month!) \(todayComponents.day!)")!
-            if cellState.date < today {
+            if cellState.date <= today {
                 cell.dateLabel.textColor = UIColor.lightGray
-                
-            }
-            else if cellState.date == today {
-                cell.dateLabel.textColor = UIColor.blue
             }
             else {
-                cell.dateLabel.textColor = UIColor.black
+                switch cellState.isSelected {
+                case true:
+                    cell.dateLabel.textColor = UIColor.white
+                case false:
+                    cell.dateLabel.textColor = UIColor.black
+                }
+                
                 cell.isUserInteractionEnabled = true
             }
         default :
@@ -142,9 +175,8 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellConfiguration(cell: cell, cellState: cellState)
         print(date.description(with: Locale.current))
-        self.dismiss(animated: true) {
-            self.delegate?.selectedDate = date
-        }
+        self.completionBarButton.isEnabled = true
+        self.selectedDate = date
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

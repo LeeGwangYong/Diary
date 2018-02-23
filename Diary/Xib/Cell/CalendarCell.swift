@@ -12,6 +12,7 @@ import JTAppleCalendar
 class CalendarCell: JTAppleCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var selectedView: UIView!
+    @IBOutlet weak var todayDisplayView: UIView!
     
     override func awakeFromNib() {
         self.selectedView.isHidden = true

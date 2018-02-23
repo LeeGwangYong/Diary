@@ -40,7 +40,8 @@ class InputViewController: ViewController {
     }
 
     @objc func selectKeepDay() {
-        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: KeepDayViewController.reuseIdentifier)
+        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: KeepDayViewController.reuseIdentifier) as! KeepDayViewController
+        nextVC.delegate = self
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -57,7 +58,7 @@ extension InputViewController {
         if let keyboadSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         {
             self.adjustKeyboardDismissTapGesture(isKeyboardVisible: true)
-            self.textViewBottomConstraint.constant = keyboadSize.height
+            self.textViewBottomConstraint.constant = keyboadSize.height + 32
             
             if let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval{
                 UIView.animate(withDuration: animationDuration, animations: { self.view.layoutIfNeeded()})

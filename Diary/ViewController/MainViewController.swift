@@ -69,7 +69,7 @@ class MainViewController: ViewController {
     }
     
     func fetchCapsuleList() {
-        CapsuleService.getListData(url: "list", parameter: Token.getUserIndex()) { (result) in
+        CapsuleService.getListData(url: "list", parameter: ["userIdx" : Token.getUserIndex()]) { (result) in
             switch result {
             case .Success(let value) :
                 print(value.code)

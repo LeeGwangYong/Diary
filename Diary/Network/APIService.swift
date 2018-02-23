@@ -14,11 +14,10 @@ enum Result<T> {
     case Failure(Int)
 }
 struct Token {
-    static func getUserIndex() -> [String:Int]?{
+    static func getUserIndex() -> Int{
         let userIdx = UserDefaults.standard.integer(forKey: "userIdx")
-        
         print(userIdx)
-        return ["userIdx" : 59]
+        return 59
     }
 }
 

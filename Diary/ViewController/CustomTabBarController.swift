@@ -28,8 +28,7 @@ class CustomTabBarController: UITabBarController, UINavigationControllerDelegate
                                    size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
     }
     
-    
-    
+
 }
 
 extension UIImage

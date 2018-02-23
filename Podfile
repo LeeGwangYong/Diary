@@ -11,6 +11,8 @@ pod 'SwiftyJSON'
 pod 'RealmSwift'
 pod 'JTAppleCalendar'
 pod 'UITextView+Placeholder'
+pod 'Toast-Swift'
+pod 'Hero'
   # Pods for Diary
 
 end

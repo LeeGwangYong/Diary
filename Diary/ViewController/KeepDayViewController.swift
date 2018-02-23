@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Toast_Swift
 
 class KeepDayCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,13 +26,12 @@ class KeepDayCell: UITableViewCell {
             self.contentView.backgroundColor = UIColor.clear
             self.titleLabel.textColor = UIColor.black
             self.titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-
         }
     }
 }
 
 class KeepDayViewController: ViewController {
-    let days = ["달력에서 직접 선택", "다음 봄이 시작되는 날", "올해의 마지막 날", "내년 첫 날", "아무때나"]
+    
     var selectedDate: Date? {
         didSet {
             if let dateString = selectedDate?.dateToStringYMD() {
@@ -38,11 +39,15 @@ class KeepDayViewController: ViewController {
                 attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.bold), range: NSRange(location: 0, length: dateString.count))
                 self.selectedDateLabel.attributedText = attributedString
             }
+            fadeView(view: self.selectedDateLabel, hidden: false)
+            fadeView(view: self.memorizeButton, hidden: false)
+            
         }
     }
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var memorizeButton: UIButton!
+    var delegate: InputViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewController()
@@ -55,7 +60,8 @@ class KeepDayViewController: ViewController {
     }
     
     override func setViewController() {
-       
+        self.selectedDateLabel.isHidden = true
+        self.memorizeButton.isHidden = true
     }
     
     func setUpTableView() {
@@ -70,15 +76,53 @@ class KeepDayViewController: ViewController {
         self.tableView.tableHeaderView = line
         line.backgroundColor = self.tableView.separatorColor
     }
+    
+    func fadeView(view: UIView, hidden: Bool) {
+        UIView.transition(with: view, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            view.isHidden = hidden
+        })
+    }
+    
+    @IBAction func touchUpRegisterCapsule(_ sender: UIButton) {
+        fetchRegisterCapsule()
+    }
+    
+    func fetchRegisterCapsule() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        print(formatter.string(from: Date()))
+        if let contents = self.delegate?.textView.text {
+            let parameters: [String : Any] = ["userIdx" : Token.getUserIndex(),
+                                              "contents" : contents,
+                                              "openDate" : formatter.string(from: Date())]
+            
+            CapsuleService.writeData(url: "write", parameter: parameters, completion: { (result) in
+                switch result {
+                case .Success(let value):
+                    let dataJSON = JSON(value)
+                    print(dataJSON)
+                    if let code = dataJSON["code"].string, code == "0009" {
+                        self.view.makeToast("에러")
+                    }
+                    else {
+                        
+                    }
+                case .Failure(let failureCode) :
+                    print(failureCode)
+                }
+            })
+        }
+    }
+    
 }
 
 extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return days.count
+        return DivisionOfTheYear.allDescription.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: KeepDayCell.reuseIdentifier, for: indexPath) as! KeepDayCell
-        cell.titleLabel.text = days[indexPath.row]
+        cell.titleLabel.text = DivisionOfTheYear.allDescription[indexPath.row]
         cell.reload()
         
         cell.preservesSuperviewLayoutMargins = false
@@ -89,20 +133,26 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 48
+        return 50
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? KeepDayCell {
             cell.reload()
         }
-        switch indexPath.row {
-        case 0:
+        let selectedDivision = DivisionOfTheYear.allCases[indexPath.row]
+        if let selectedDate = selectedDivision.date {
+            
+            self.selectedDate = selectedDate
+            let text = self.selectedDateLabel.attributedText
+            var attributeString = NSMutableAttributedString(string: "\(selectedDivision.description) ")
+            attributeString.append(text!)
+            self.selectedDateLabel.attributedText = attributeString
+        }
+        else {
             let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CalendarViewController.reuseIdentifier) as! CalendarViewController
             nextVC.delegate = self
             self.navigationController?.present(nextVC, animated: true, completion: nil)
-        default:
-            break
         }
     }
     

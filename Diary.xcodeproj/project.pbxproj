@@ -28,6 +28,9 @@
 		FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F24352036BE0C0062222F /* CalendarViewController.swift */; };
 		FC3F24382036C35D0062222F /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F24372036C35D0062222F /* CalendarCell.swift */; };
 		FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D0203DD988002CCD30 /* CapsuleService.swift */; };
+		FC4930D3203FDE79002CCD30 /* DivisionOfTheYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D2203FDE79002CCD30 /* DivisionOfTheYear.swift */; };
+		FC4930D5203FE2CE002CCD30 /* EnumHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */; };
+		FC4930D720404EFC002CCD30 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D620404EFC002CCD30 /* CompletionViewController.swift */; };
 		FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C05202EC3E000F93095 /* KoreanInt.swift */; };
 		FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */; };
 		FC9A7C0C202ED61300F93095 /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C0B202ED61300F93095 /* Designable.swift */; };
@@ -69,6 +72,9 @@
 		FC3F24352036BE0C0062222F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		FC3F24372036C35D0062222F /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		FC4930D0203DD988002CCD30 /* CapsuleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleService.swift; sourceTree = "<group>"; };
+		FC4930D2203FDE79002CCD30 /* DivisionOfTheYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivisionOfTheYear.swift; sourceTree = "<group>"; };
+		FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnumHashable.swift; path = Diary/Model/EnumHashable.swift; sourceTree = SOURCE_ROOT; };
+		FC4930D620404EFC002CCD30 /* CompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 		FC9A7C05202EC3E000F93095 /* KoreanInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInt.swift; sourceTree = "<group>"; };
 		FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaCoExtension.swift; sourceTree = "<group>"; };
 		FC9A7C0B202ED61300F93095 /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
@@ -162,6 +168,7 @@
 				9ED286C8203F210A0098CDBF /* LoginViewController.swift */,
 				9ED286CA203F25170098CDBF /* AccountViewController.swift */,
 				9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */,
+				FC4930D620404EFC002CCD30 /* CompletionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC3CCA0200F9FE300AD0019 /* Capsule.swift */,
+				FC4930D2203FDE79002CCD30 /* DivisionOfTheYear.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 		FC18F2E4200E035F0087E3A8 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -365,22 +374,26 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,7 +408,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC4930D5203FE2CE002CCD30 /* EnumHashable.swift in Sources */,
 				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
+				FC4930D720404EFC002CCD30 /* CompletionViewController.swift in Sources */,
 				9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */,
 				FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */,
 				9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */,
@@ -421,6 +436,7 @@
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
 				9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */,
+				FC4930D3203FDE79002CCD30 /* DivisionOfTheYear.swift in Sources */,
 				FCC3CC87200ED13300AD0019 /* DiaryListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
