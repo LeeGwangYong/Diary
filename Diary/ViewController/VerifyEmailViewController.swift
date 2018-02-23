@@ -129,9 +129,8 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
                 let data = response
                 let dataJSON = JSON(data)
                 print(dataJSON)
-                if
-                    dataJSON["code"] == "0000" {
-                    self.performSegue(withIdentifier: "SignedUpSegue", sender: self)
+                if dataJSON["code"] == "0000" {
+                    self.checkAuthCode()
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
