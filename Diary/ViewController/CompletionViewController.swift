@@ -9,7 +9,7 @@ import UIKit
 import Lottie
 
 class CompletionViewController: UIViewController {
-<<<<<<< HEAD
+
 /*
      이전 ViewController에서 delegate = self를 통해 자신을 넘겨야함.
 */
@@ -19,10 +19,7 @@ class CompletionViewController: UIViewController {
     var titleString: String?
     var subTitleText: String?
     var delegate: UIViewController?
-=======
-    @IBOutlet weak var dateLabel: UILabel!
-    var delegate: KeepDayViewController?
->>>>>>> 513c3926090023db0ad57d34148d109957bb0a5d
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.subTitleLabel.text = ""
@@ -57,8 +54,4 @@ class CompletionViewController: UIViewController {
         super.viewWillAppear(animated)
         self.view.createGradientLayer()
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> 513c3926090023db0ad57d34148d109957bb0a5d
 }

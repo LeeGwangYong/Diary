@@ -45,10 +45,6 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-<<<<<<< HEAD
-=======
-        self.view.bringSubview(toFront: self.indicatorView)
->>>>>>> 513c3926090023db0ad57d34148d109957bb0a5d
     }
     
     func setTextLabel() {
