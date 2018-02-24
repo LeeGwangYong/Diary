@@ -21,33 +21,52 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018년 첫 날의 기억" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDX-lG-Hac">
-                        <rect key="frame" x="32" y="27" width="77" height="38.5"/>
+                        <rect key="frame" x="32" y="40" width="77" height="38.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" red="0.65771621465682983" green="0.50092262029647827" blue="0.69500339031219482" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="봄이 시작되는 첫 날 꺼내기, D-51" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCR-xz-6FV">
-                        <rect key="frame" x="32" y="73" width="188.5" height="17"/>
+                        <rect key="frame" x="32" y="86" width="188.5" height="17"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <color key="textColor" red="0.52156862745098043" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="항상 같았었고 일기장 똑같은말만 그것도 몰아서 쓰기도 했었죠 지금 하라고 하면 마찬가지로 밀리기도 하고..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e15-Pr-1ks">
-                        <rect key="frame" x="40" y="108" width="237" height="33.5"/>
+                        <rect key="frame" x="40" y="121" width="237" height="33.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.52156862749999999" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9Y-Tp-7SC">
+                        <rect key="frame" x="8" y="8" width="304" height="24"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjc-40-jxy">
+                                <rect key="frame" x="22" y="2" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="V5n-mR-VYd"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="e15-Pr-1ks" secondAttribute="bottom" constant="34" id="AR2-iZ-RBE"/>
+                    <constraint firstItem="W9Y-Tp-7SC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="BRB-VQ-B1u"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="e15-Pr-1ks" secondAttribute="trailing" constant="24" id="EFJ-fW-8Ue"/>
                     <constraint firstItem="fCR-xz-6FV" firstAttribute="top" secondItem="pDX-lG-Hac" secondAttribute="bottom" constant="8" id="KS2-qv-uqm"/>
                     <constraint firstItem="fCR-xz-6FV" firstAttribute="leading" secondItem="pDX-lG-Hac" secondAttribute="leading" id="LoL-I5-bpo"/>
+                    <constraint firstItem="W9Y-Tp-7SC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="PaU-Kg-qKM"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fCR-xz-6FV" secondAttribute="trailing" constant="16" id="QdH-qG-jVh"/>
+                    <constraint firstItem="pDX-lG-Hac" firstAttribute="top" secondItem="W9Y-Tp-7SC" secondAttribute="bottom" constant="8" id="XpC-Ph-Aug"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pDX-lG-Hac" secondAttribute="trailing" constant="16" id="dfA-f6-Nz5"/>
-                    <constraint firstItem="pDX-lG-Hac" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="ihO-Zr-tsm"/>
                     <constraint firstItem="pDX-lG-Hac" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="o8X-eR-HTT"/>
+                    <constraint firstAttribute="trailing" secondItem="W9Y-Tp-7SC" secondAttribute="trailing" constant="8" id="oEP-al-W3Y"/>
                     <constraint firstItem="e15-Pr-1ks" firstAttribute="top" secondItem="fCR-xz-6FV" secondAttribute="bottom" constant="18" id="os5-Z5-dfv"/>
                     <constraint firstItem="e15-Pr-1ks" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="24" id="y3q-gN-OQv"/>
                 </constraints>
@@ -62,6 +81,7 @@
                 <outlet property="contentLabel" destination="e15-Pr-1ks" id="mGJ-1u-sNL"/>
                 <outlet property="dDayLabel" destination="fCR-xz-6FV" id="HED-o4-TYy"/>
                 <outlet property="dateLabel" destination="pDX-lG-Hac" id="isA-2X-LIW"/>
+                <outlet property="gradiantView" destination="W9Y-Tp-7SC" id="kZ6-7a-Xqr"/>
             </connections>
             <point key="canvasLocation" x="55" y="147"/>
         </tableViewCell>

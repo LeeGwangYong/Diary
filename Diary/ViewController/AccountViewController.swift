@@ -19,7 +19,8 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var completeButton: UIButton!
     var nickname = UserDefaults.standard.string(forKey: "nickname")!
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTextLabel()
         emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))

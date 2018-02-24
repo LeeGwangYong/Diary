@@ -15,11 +15,12 @@ class UserNameViewController: UIViewController {
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setLabel()
         userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setToSLabel()

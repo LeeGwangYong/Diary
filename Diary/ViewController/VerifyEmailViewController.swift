@@ -23,7 +23,8 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
     var activeAccountFlag: String = ""
     var idx = UserDefaults.standard.integer(forKey: "userIdx")
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTextLabel()
         authCodeSetup()
     }
@@ -42,20 +43,22 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
     }
+    
     func setTextLabel() {
         let text = "인증코드를 이메일로\n보냈습니다"
         questionLabel.text = text
         questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         
     }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
     }
+    
     @objc func drawCompleteButton(){
         
         completeButton.layer.cornerRadius = 4
@@ -67,6 +70,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         }
         self.view.addSubview(completeButton)
     }
+    
     func authCodeSetup() {
         authCode01.tag = 1
         authCode02.tag = 2
@@ -78,16 +82,17 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         authCode03.textAlignment = .center
         authCode04.textAlignment = .center
         
-        authCode01.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        authCode02.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        authCode03.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        authCode04.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        authCode01.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        authCode02.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        authCode03.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        authCode04.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         
         authCode01.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         authCode02.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         authCode03.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         authCode04.addTarget(self, action: #selector(textChanged), for: .editingChanged)
     }
+    
     func appendAuthCode() {
         activeAccountFlag.append(authCode01.text!)
         activeAccountFlag.append(authCode02.text!)
@@ -95,17 +100,19 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         activeAccountFlag.append(authCode04.text!)
         print(activeAccountFlag)
     }
+    
     @objc func textChanged(sender: UITextField) {
         if (sender.text?.count)! ==  1 {
             let nextField = sender.superview?.viewWithTag(sender.tag + 1) as UIResponder!
             nextField?.becomeFirstResponder()
-            sender.isUserInteractionEnabled = false
         }
     }
+    
     @objc func completeButtonClicked() {
         appendAuthCode()
         checkAuthCode()
     }
+    
     func checkAuthCode(){
         let param: Parameters = [
             "idx" : idx,
@@ -141,7 +148,6 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
-                
             }
         }
     }

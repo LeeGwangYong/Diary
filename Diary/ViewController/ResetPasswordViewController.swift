@@ -14,10 +14,13 @@ class ResetPasswordViewController: UIViewController {
     
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
-    override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTextLabel()
         emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCompleteButton()

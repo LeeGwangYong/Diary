@@ -1,4 +1,3 @@
-//
 //  LoginViewController.swift
 //  Diary
 //
@@ -8,6 +7,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Toast_Swift
 
 class LoginViewController: UIViewController {
     
@@ -67,8 +67,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonClicked(sender: UIButton){
-        let password: String! = UserDefaults.standard.string(forKey: "password")!
-        print(password)
         let param: Parameters = [
             "email" : emailField.text!,
             "password" : passwordField.text!
@@ -81,7 +79,13 @@ class LoginViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
-                    self.performSegue(withIdentifier: "MainSegue", sender: self)
+                    let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MainViewController.reuseIdentifier) as! MainViewController
+                    self.present(mainVC, animated: true, completion: nil)
+                    
+//                    self.navigationController?.present(mainVC, animated: true, completion: nil)
+                }
+                else {
+                    self.view.makeToast(dataJSON["errmsg"].stringValue)
                 }
             case .Failure(let failureCode):
                 print("Sign In Failure : \(failureCode)")

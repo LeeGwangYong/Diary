@@ -12,6 +12,7 @@ class CapsuleTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dDayLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var gradiantView: UIView!
     
     func update(insertDate: Date, openDate: Date, content: String) {
         var insertDateString = insertDate.dateToStringYMD()
@@ -46,5 +47,10 @@ class CapsuleTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func layoutIfNeeded() {
+        self.gradiantView.createGradientLayer()
+        super.layoutIfNeeded()
     }
 }

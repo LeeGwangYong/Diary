@@ -104,7 +104,7 @@ class KeepDayViewController: ViewController {
                     let dataJSON = JSON(value)
                     print(dataJSON)
                     if let code = dataJSON["code"].string, code == "0009" {
-                        self.view.makeToast("에러")
+                        self.view.makeToast(dataJSON["errmsg"].stringValue)
                     }
                     else {
                         let completionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CompletionViewController.reuseIdentifier) as! CompletionViewController
