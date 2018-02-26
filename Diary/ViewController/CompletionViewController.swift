@@ -18,7 +18,7 @@ class CompletionViewController: UIViewController {
     @IBOutlet weak var subTitleLabel: UILabel!
     var titleString: String?
     var subTitleText: String?
-    var delegate: UIViewController?
+    var delegate: ViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class CompletionViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             self.dismiss(animated: true, completion: {
-                self.delegate?.navigationController?.popToRootViewController(animated: true)
+                self.delegate?.customSegue()
             })
         }
     }

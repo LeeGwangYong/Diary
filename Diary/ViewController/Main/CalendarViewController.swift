@@ -39,7 +39,6 @@ class CalendarViewController: ViewController {
         super.viewDidLoad()
         setUpCalendarView()
         setViewController()
-        print(Date().description(with: Locale.current))
     }
     
     override func setViewController() {
@@ -72,6 +71,7 @@ class CalendarViewController: ViewController {
     
     func getCalendarVisibleDates(from visibleDates: DateSegmentInfo) {
         if let date = visibleDates.monthDates.first?.date {
+            
             self.formatter.dateFormat = "yyyy년"
             self.yearLabel.text = self.formatter.string(from: date)
             
@@ -96,12 +96,15 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         handleCellTextColor(cell: cell, cellState: cellState)
         handleCellSelected(cell: cell, cellState: cellState)
         guard let cell = cell as? CalendarCell else {return }
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone =  Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
-        let today = formatter.date(from: "\(todayComponents.year!) \(todayComponents.month!) \(todayComponents.day!)")!
+
+        let today = Calendar.current.date(from: DateComponents(calendar: Calendar.current,
+                                                               timeZone: Calendar.current.timeZone,
+                                                               year: todayComponents.year,
+                                                               month: todayComponents.month,
+                                                               day: todayComponents.day))
+        
         cell.todayDisplayView.isHidden = !(cellState.date == today)
-        self.prePostVisibility?(cellState, cell as? CalendarCell)
+        self.prePostVisibility?(cellState, cell)
     }
     
     func handleCellSelected(cell: JTAppleCell?, cellState: CellState){
@@ -121,10 +124,13 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         switch cellState.dateBelongsTo {
         case .thisMonth:
             cell.isUserInteractionEnabled = false
-            formatter.dateFormat = "yyyy MM dd"
-            formatter.timeZone =  Calendar.current.timeZone
-            formatter.locale = Calendar.current.locale
-            let today = formatter.date(from: "\(todayComponents.year!) \(todayComponents.month!) \(todayComponents.day!)")!
+            
+            let today = Calendar.current.date(from: DateComponents(calendar: Calendar.current,
+                                                                   timeZone: Calendar.current.timeZone,
+                                                                   year: todayComponents.year,
+                                                                   month: todayComponents.month,
+                                                                   day: todayComponents.day))!
+            
             if cellState.date <= today {
                 cell.dateLabel.textColor = UIColor.lightGray
             }
@@ -162,19 +168,13 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
     
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone =  TimeZone.current
-        formatter.locale = Locale.current
-//        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-//        formatter.locale = Locale(identifier: "en_US_POSIX")
-        let start = formatter.date(from: "\(todayComponents.year!) 01 01")
-        let end = formatter.date(from: "\(todayComponents.year! + 5) 12 31")
+        let start = Calendar.current.date(from: DateComponents(calendar: Calendar.current, timeZone: Calendar.current.timeZone, year: todayComponents.year, month: 1, day: 1))
+        let end = Calendar.current.date(from: DateComponents(calendar: Calendar.current, timeZone: Calendar.current.timeZone, year: todayComponents.year, month: 12, day: 1))
         return ConfigurationParameters(startDate: start!, endDate: end!, generateOutDates: .tillEndOfRow)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellConfiguration(cell: cell, cellState: cellState)
-        print(date.description(with: Locale.current))
         self.completionBarButton.isEnabled = true
         self.selectedDate = date
     }

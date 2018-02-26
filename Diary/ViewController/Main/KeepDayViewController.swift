@@ -46,6 +46,9 @@ class KeepDayViewController: ViewController {
             
         }
     }
+    
+    
+    @IBOutlet weak var displayLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectedDateLabel: UILabel!
     @IBOutlet weak var memorizeButton: UIButton!
@@ -59,6 +62,11 @@ class KeepDayViewController: ViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         memorizeButton.createGradientLayer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.displayLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
     }
     
     override func setViewController() {
@@ -92,13 +100,12 @@ class KeepDayViewController: ViewController {
     func fetchRegisterCapsule() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        print(formatter.string(from: Date()))
-        if let contents = self.delegate?.textView.text, let selectedDate = self.selectedDate {
-            let parameters: [String : Any] = ["userIdx" : Token.getUserIndex(),
+        
+        if let userIdx = Token.getUserIndex(), let contents = self.delegate?.textView.text, let selectedDate = self.selectedDate {
+            let parameters: [String : Any] = ["userIdx" : userIdx,
                                               "contents" : contents,
                                               "openDate" : formatter.string(from: selectedDate)]
-            
-            CapsuleService.writeData(url: "write", parameter: parameters, completion: { (result) in
+            CapsuleService.request(url: "write", parameter: parameters, completion: { (result) in
                 switch result {
                 case .Success(let value):
                     let dataJSON = JSON(value)
@@ -112,6 +119,7 @@ class KeepDayViewController: ViewController {
                             completionVC.titleString = "\(selectedDate)에\n기억을 꺼냅니다"
                         }
                         completionVC.delegate = self
+                        
                         self.present(completionVC, animated: true, completion: nil)
                     }
                 case .Failure(let failureCode) :
@@ -119,6 +127,10 @@ class KeepDayViewController: ViewController {
                 }
             })
         }
+    }
+    
+    override func customSegue() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }

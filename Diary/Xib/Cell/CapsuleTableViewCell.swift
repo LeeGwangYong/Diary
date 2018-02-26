@@ -14,7 +14,7 @@ class CapsuleTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var gradiantView: UIView!
     
-    func update(insertDate: Date, openDate: Date, content: String) {
+    func update(insertDate: Date, openDate: Date, opened: Bool = false, content: String) {
         var insertDateString = insertDate.dateToStringYMD()
         insertDateString.insert("\n", at: insertDateString.index(insertDateString.startIndex, offsetBy: 6))
         let attributedString = NSMutableAttributedString(string: "\(insertDateString)의 기억")
@@ -22,25 +22,24 @@ class CapsuleTableViewCell: UITableViewCell {
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 12, weight: .bold ), range: NSRange(location: 0, length: 5 ))
         self.dateLabel.attributedText = attributedString
         
-        let fromDate = Calendar.current.startOfDay(for: Date())
-        let toDate = Calendar.current.startOfDay(for: openDate)
-        let components = Calendar.current.dateComponents([.day], from: fromDate, to: toDate)
         let formatter = DateFormatter()
-        formatter.dateFormat = "M월 dd일"
-        var dDayString: String = "\(formatter.string(from: openDate)) 꺼내기"
+        formatter.dateFormat =  opened ? "yyyy.MM.dd 꺼냄" : "M월 dd일 꺼내기"
+        var dDayString: String = formatter.string(from: openDate)
         for division in DivisionOfTheYear.allCases {
             if let date = division.date, openDate.compare(date) == .orderedSame {
-                dDayString = "\(division.description) 꺼내기"
+                dDayString = "\(division.description) \(opened ? "꺼냄" : "꺼내기")"
             }
         }
         
-        if let days = components.day {
-            if days == 0 {
+        if !opened {
+            if Date().calculateDDay(to: openDate) == 0 {
                 dDayString += ", D-Day"
             }
-            dDayString += ", D-\(days)"
+            else {dDayString += ", D-\(Date().calculateDDay(to: openDate))"}
         }
         self.dDayLabel.text = dDayString
+        
+        
         self.contentLabel.text = content
     }
     
@@ -50,7 +49,8 @@ class CapsuleTableViewCell: UITableViewCell {
     }
     
     override func layoutIfNeeded() {
-        self.gradiantView.createGradientLayer()
+        
         super.layoutIfNeeded()
+        self.gradiantView.createGradientLayer()
     }
 }

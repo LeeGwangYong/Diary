@@ -24,6 +24,7 @@
 		FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */; };
 		FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E9200E04BD0087E3A8 /* SignService.swift */; };
 		FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC210236202F12B300B3FFDD /* InputViewController.swift */; };
+		FC2167B820415AEA00D478BC /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2167B720415AEA00D478BC /* MemoryViewController.swift */; };
 		FC3F243220363E400062222F /* KeepDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F243120363E400062222F /* KeepDayViewController.swift */; };
 		FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F2433203698090062222F /* CustomTabBarController.swift */; };
 		FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F24352036BE0C0062222F /* CalendarViewController.swift */; };
@@ -33,6 +34,7 @@
 		FC4930D5203FE2CE002CCD30 /* EnumHashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */; };
 		FC4930D720404EFC002CCD30 /* CompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930D620404EFC002CCD30 /* CompletionViewController.swift */; };
 		FC4930D9204060DE002CCD30 /* electric.json in Resources */ = {isa = PBXBuildFile; fileRef = FC4930D8204060DE002CCD30 /* electric.json */; };
+		FC4930DB204109BD002CCD30 /* DDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4930DA204109BD002CCD30 /* DDay.swift */; };
 		FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C05202EC3E000F93095 /* KoreanInt.swift */; };
 		FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */; };
 		FC9A7C0C202ED61300F93095 /* Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9A7C0B202ED61300F93095 /* Designable.swift */; };
@@ -70,6 +72,7 @@
 		FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		FC18F2E9200E04BD0087E3A8 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
 		FC210236202F12B300B3FFDD /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
+		FC2167B720415AEA00D478BC /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		FC3F243120363E400062222F /* KeepDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepDayViewController.swift; sourceTree = "<group>"; };
 		FC3F2433203698090062222F /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		FC3F24352036BE0C0062222F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +82,7 @@
 		FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnumHashable.swift; path = Diary/Model/EnumHashable.swift; sourceTree = SOURCE_ROOT; };
 		FC4930D620404EFC002CCD30 /* CompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionViewController.swift; sourceTree = "<group>"; };
 		FC4930D8204060DE002CCD30 /* electric.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = electric.json; sourceTree = "<group>"; };
+		FC4930DA204109BD002CCD30 /* DDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDay.swift; sourceTree = "<group>"; };
 		FC9A7C05202EC3E000F93095 /* KoreanInt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KoreanInt.swift; sourceTree = "<group>"; };
 		FC9A7C09202ED5BC00F93095 /* TaCoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaCoExtension.swift; sourceTree = "<group>"; };
 		FC9A7C0B202ED61300F93095 /* Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Designable.swift; sourceTree = "<group>"; };
@@ -162,20 +166,12 @@
 		FC18F2DE200E02EA0087E3A8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				FCC3CC82200ECCCA00AD0019 /* MainViewController.swift */,
-				FCC3CC85200ED13300AD0019 /* DiaryListViewController.swift */,
 				FCC3CC93200EDB5900AD0019 /* ViewController.swift */,
-				FC210236202F12B300B3FFDD /* InputViewController.swift */,
-				FC3F243120363E400062222F /* KeepDayViewController.swift */,
-				FC3F2433203698090062222F /* CustomTabBarController.swift */,
-				FC3F24352036BE0C0062222F /* CalendarViewController.swift */,
-				9ED286C6203F1F510098CDBF /* UserNameViewController.swift */,
-				9ED286C8203F210A0098CDBF /* LoginViewController.swift */,
-				9ED286CA203F25170098CDBF /* AccountViewController.swift */,
-				9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */,
 				FC4930D620404EFC002CCD30 /* CompletionViewController.swift */,
-				9E32DC8820405E290036326F /* ResetPasswordViewController.swift */,
-				9E32DC8A20405E750036326F /* ResetPasswordLoginViewController.swift */,
+				FC3F2433203698090062222F /* CustomTabBarController.swift */,
+				FC2167B620415AA700D478BC /* Memory */,
+				FC2167B320415A5D00D478BC /* Sign */,
+				FC2167B420415A8B00D478BC /* Main */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -214,6 +210,7 @@
 			children = (
 				FCC3CCA0200F9FE300AD0019 /* Capsule.swift */,
 				FC4930D2203FDE79002CCD30 /* DivisionOfTheYear.swift */,
+				FC4930DA204109BD002CCD30 /* DDay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,6 +234,39 @@
 				FC4930D4203FE2CE002CCD30 /* EnumHashable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		FC2167B320415A5D00D478BC /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				9ED286C8203F210A0098CDBF /* LoginViewController.swift */,
+				9ED286D0203F32150098CDBF /* VerifyEmailViewController.swift */,
+				9E32DC8A20405E750036326F /* ResetPasswordLoginViewController.swift */,
+				9E32DC8820405E290036326F /* ResetPasswordViewController.swift */,
+				9ED286C6203F1F510098CDBF /* UserNameViewController.swift */,
+				9ED286CA203F25170098CDBF /* AccountViewController.swift */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		FC2167B420415A8B00D478BC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FCC3CC82200ECCCA00AD0019 /* MainViewController.swift */,
+				FCC3CC85200ED13300AD0019 /* DiaryListViewController.swift */,
+				FC210236202F12B300B3FFDD /* InputViewController.swift */,
+				FC3F243120363E400062222F /* KeepDayViewController.swift */,
+				FC3F24352036BE0C0062222F /* CalendarViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FC2167B620415AA700D478BC /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				FC2167B720415AEA00D478BC /* MemoryViewController.swift */,
+			);
+			path = Memory;
 			sourceTree = "<group>";
 		};
 		FCC3CC84200ED08500AD0019 /* Xib */ = {
@@ -419,12 +449,14 @@
 				FC4930D5203FE2CE002CCD30 /* EnumHashable.swift in Sources */,
 				FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */,
 				FC4930D720404EFC002CCD30 /* CompletionViewController.swift in Sources */,
+				FC2167B820415AEA00D478BC /* MemoryViewController.swift in Sources */,
 				9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */,
 				FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */,
 				9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */,
 				9E32DC8920405E290036326F /* ResetPasswordViewController.swift in Sources */,
 				9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */,
 				FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */,
+				FC4930DB204109BD002CCD30 /* DDay.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
 				FC9A7C0F202EDB9500F93095 /* CapsuleTableViewCell.swift in Sources */,
 				FCC3CCA3200FA25600AD0019 /* DateString.swift in Sources */,

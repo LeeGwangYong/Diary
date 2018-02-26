@@ -81,8 +81,7 @@ class LoginViewController: UIViewController {
                 if dataJSON["code"] == "0000" {
                     let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MainViewController.reuseIdentifier) as! MainViewController
                     self.present(mainVC, animated: true, completion: nil)
-                    
-//                    self.navigationController?.present(mainVC, animated: true, completion: nil)
+                    UserDefaults.standard.set(dataJSON["data"]["idx"].intValue, forKey: "userIdx")
                 }
                 else {
                     self.view.makeToast(dataJSON["errmsg"].stringValue)
