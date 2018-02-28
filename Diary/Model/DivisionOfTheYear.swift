@@ -13,21 +13,20 @@ enum DivisionOfTheYear: EnumCollection {
     
     var description: String {
         switch  self {
+        case .select:
+            return "달력에서 직접 선택"
         case .spring:
-            return "다음 봄이 시작되는 날"
+            return "봄이 시작되는 날"
         case .summer:
-            return "다음 여름이 시작되는 날"
+            return "여름이 시작되는 날"
         case .autumn:
-            return "다음 가을이 시작되는 날"
+            return "가을이 시작되는 날"
         case .winter:
-            return "다음 겨울이 시작되는 날"
+            return "겨울이 시작되는 날"
         case .lastDay:
             return "올해의 마지막 날"
         case .nextFirst:
-            return "내년 첫 날"
-        
-        case .select:
-            return "달력에서 직접 선택"
+            return "첫 날"
         case .random:
             return "아무때나"
         }

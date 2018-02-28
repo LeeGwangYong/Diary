@@ -19,7 +19,7 @@ struct CapsuleService: APIService {
             completion(resultData)
         })
     }
-    static func writeData(url: String, parameter: [String : Any]?, completion: @escaping (Result<Data>)->()) {
+    static func request(url: String, parameter: [String : Any]?, completion: @escaping (Result<Data>)->()) {
         let url = self.getURL(path: url)
         Alamofire.request(url, method: .post, parameters: parameter, encoding: JSONEncoding.default, headers: nil).responseData { (response) in
             guard let resultData = getResult_StatusCode(response: response) else {return}
