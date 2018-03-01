@@ -17,6 +17,7 @@ extension UIView {
             bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
+
     func createGradientLayer() {
         let gradientLayer = CAGradientLayer()
         
@@ -27,6 +28,7 @@ extension UIView {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
     func createLineGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.cornerRadius = 3.25
@@ -61,12 +63,14 @@ extension UITextField {
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.frame.height-height, width: self.frame.width, height: height)
         border.backgroundColor = color.cgColor
+        self.layer.masksToBounds = true
         self.layer.addSublayer(border)
     }
     func addBorderBottomReverse(height: CGFloat, color: UIColor) {
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.frame.height+height, width: self.frame.width, height: height)
         border.backgroundColor = color.cgColor
+        self.layer.masksToBounds = true
         self.layer.addSublayer(border)
     }
     

@@ -25,13 +25,10 @@ class AccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTextLabel()
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.passwordAlertLabel.isHidden = true
@@ -104,12 +101,14 @@ class AccountViewController: UIViewController {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
-                UserDefaults.standard.set(dataJSON["data"]["idx"].int, forKey: "userIdx")
+                
                 if let code = dataJSON["code"].string, code == "0000" {
                     self.indicatorView.stopAnimating()
-                    UserDefaults.standard.set(self.emailField.text, forKey: "email")
-                    UserDefaults.standard.set(self.passwordField.text, forKey: "password")
-                    self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)
+                    let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: VerifyEmailViewController.reuseIdentifier) as! VerifyEmailViewController
+                    nextVC.email = self.emailField.text
+                    nextVC.password = self.passwordField.text
+                    nextVC.userIdx = dataJSON["data"]["idx"].int
+                    self.navigationController?.pushViewController(nextVC, animated: true)
                 } else if let code = dataJSON["code"].string, code == "0001" {
                     self.indicatorView.stopAnimating()
                     self.emailAlertLabel.isHidden = false

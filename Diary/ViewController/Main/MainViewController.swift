@@ -39,6 +39,7 @@ class MainViewController: ViewController {
         self.fetchCapsuleList()
         self.transparentNavigationBar()
         self.blinkingView.alpha = 0.2
+        self.inputNavigateView.createGradientLayer()
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        options: [.curveLinear, .repeat, .autoreverse],
@@ -48,7 +49,7 @@ class MainViewController: ViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.inputNavigateView.createGradientLayer()
+        
     }
     
     override func setViewController() {
@@ -106,9 +107,6 @@ class MainViewController: ViewController {
         self.hidesBottomBarWhenPushed = false
     }
     
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue) {
-        
-    }
 }
 
 //MARK -: Extension
@@ -130,12 +128,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                         content: capsule.contents)
         }
         
-        switch Date().compare(date(hour: 9)) {
-        case .orderedAscending, .orderedSame :
-            cell.gradiantView.isHidden = false
-        case .orderedDescending :
-            cell.gradiantView.isHidden = true
+        if let openDate = capsules?[indexPath.row].openDate {
+            switch openDate.compare(date(hour: 9)) {
+            case .orderedAscending, .orderedSame :
+                cell.gradiantView.isHidden = false
+            case .orderedDescending :
+                cell.gradiantView.isHidden = true
+            }
         }
+        
         return cell
     }
 

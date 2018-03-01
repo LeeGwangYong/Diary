@@ -15,18 +15,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var imageBottomView: UIView!
-
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        customLoginButton()
-    
-        self.emailField.becomeFirstResponder()
-        self.imageBottomView.createGradientLayer()
-        self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
-        NotificationCenter.default.addObserver(self, selector: #selector(passCodeView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailField.delegate = self
@@ -41,14 +30,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         passCodeView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        customLoginButton()
+        self.imageBottomView.createGradientLayer()
+        self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         autoLogin()
+        self.emailField.becomeFirstResponder()
+        NotificationCenter.default.addObserver(self, selector: #selector(passCodeView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
+    
     func setPlaceholderColor() {
         emailField.attributedPlaceholder = NSAttributedString(string: "이메일 주소",
                                                               attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
@@ -66,11 +68,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.rightView = paddingView
         textField.rightViewMode = UITextFieldViewMode.always
     }
-    
     func customLoginButton() {
-        loginButton.createGradientLayer()
-        loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
-        loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)    
+        
+        self.loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
+        self.loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
+        self.loginButton.createGradientLayer()
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if(emailField.isEqual(self.emailField)){
@@ -78,15 +80,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
     @objc func passCodeView() {
-        let switchValue = UserDefaults.standard.bool(forKey: "lockSwitch")
-        if switchValue == false {
-           // autoLogin()
-        } else {
-            let passCodeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
-            self.present(passCodeVC, animated: true, completion: nil)
-        }
+        
     }
+    
     func autoLogin() {
         if UserDefaults.standard.string(forKey: "email") != nil {
             if UserDefaults.standard.string(forKey: "password") != nil {
@@ -114,7 +112,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    
     @objc func loginButtonClicked(sender: UIButton){
+        self.dismissKeyboard()
         let param: Parameters = [
             "email" : emailField.text!,
             "password" : passwordField.text!
@@ -157,5 +157,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 }

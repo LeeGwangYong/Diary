@@ -33,7 +33,9 @@ class ConfirmPasswordViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     @objc func loginButtonClicked() {
-        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CustomTabBarController.reuseIdentifier)
-        self.present(nextVC, animated: true, completion: nil)
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialNavigationController")
+        UIApplication.shared.keyWindow?.rootViewController = nextVC
     }
 }

@@ -16,8 +16,8 @@ class ResetPasswordLoginViewController: UIViewController {
     @IBOutlet weak var emailResendButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTextLabel()
         customLoginButton()
     }

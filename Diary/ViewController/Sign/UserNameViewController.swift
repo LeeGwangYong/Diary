@@ -18,12 +18,10 @@ class UserNameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLabel()
-        
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        self.view.layoutIfNeeded()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setToSLabel()
@@ -31,7 +29,10 @@ class UserNameViewController: UIViewController {
         setNextButton()
         self.userNameField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        self.ToSLabel.isUserInteractionEnabled = true
+        self.ToSLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateToTerms)))
     }
+    
     @objc func setNextButton(){
         nextButton.layer.cornerRadius = 4
         if userNameField.text!.isEmpty {
@@ -46,13 +47,15 @@ class UserNameViewController: UIViewController {
         }
         self.view.addSubview(nextButton)
     }
+    
     func setLabel(){
         questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
     }
     
     @objc func nextButtonClicked() {
         UserDefaults.standard.set(userNameField.text, forKey: "nickname")
-        performSegue(withIdentifier: "AccountSegue", sender: self)
+        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AccountViewController.reuseIdentifier)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     func setToSLabel() {
         let attributedString = NSMutableAttributedString(string: "서비스 이용약관과 정책에\n동의하고 회원가입을 진행합니다")
@@ -69,5 +72,11 @@ class UserNameViewController: UIViewController {
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
+    
+    @objc func navigateToTerms() {
+        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: TermsOfServiceViewController.reuseIdentifier)
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     
 }

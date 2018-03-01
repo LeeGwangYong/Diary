@@ -46,7 +46,6 @@ class ExistingPasswordViewController: UIViewController {
                 passwordAlertLabel.isHidden = false
                 completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
                 completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
-                
             } else {
                 passwordAlertLabel.isHidden = true
                 completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
@@ -79,8 +78,10 @@ class ExistingPasswordViewController: UIViewController {
                     self.indicatorView.stopAnimating()
                     self.passwordAlertLabel.isHidden = true
                     let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdatePasswordViewController.reuseIdentifier)
-                    self.present(nextVC, animated: true, completion: nil)
-                } else if dataJSON["code"] == "0013"{
+                    self.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                }
+                else {
                     self.indicatorView.stopAnimating()
                     self.passwordAlertLabel.text = "비밀번호가 일치하지 않습니다."
                     self.passwordAlertLabel.isHidden = false
@@ -97,5 +98,4 @@ class ExistingPasswordViewController: UIViewController {
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
-    
 }

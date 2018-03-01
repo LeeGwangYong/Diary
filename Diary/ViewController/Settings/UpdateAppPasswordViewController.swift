@@ -56,6 +56,7 @@ class UpdateAppPasswordViewController: UIViewController {
         
         self.view.addSubview(completeButton)
     }
+    
     func setLabel(){
         let text = "새로운 잠금 비밀번호를\n입력해주세요"
         questionLabel.text = text
@@ -66,6 +67,7 @@ class UpdateAppPasswordViewController: UIViewController {
         UserDefaults.standard.set(passwordField.text, forKey: "lockPassword")
         updatePassword()
     }
+    
     func updatePassword() {
         self.indicatorView.startAnimating()
         let param: Parameters = [
@@ -80,7 +82,7 @@ class UpdateAppPasswordViewController: UIViewController {
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
                     self.indicatorView.stopAnimating()
-                    self.performSegue(withIdentifier: "SettingsSegue", sender: self)
+                    self.navigationController?.popViewController(animated: true)
                     UserDefaults.standard.set(self.passwordField.text, forKey: "lockPassword")
                 } else if dataJSON["code"] == "0014"{
                     self.indicatorView.stopAnimating()

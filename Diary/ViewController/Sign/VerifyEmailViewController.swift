@@ -22,7 +22,10 @@ class VerifyEmailViewController: ViewController, UITextFieldDelegate {
     
     
     var activeAccountFlag: String = ""
-    var idx = UserDefaults.standard.integer(forKey: "userIdx")
+
+    var userIdx: Int!
+    var email: String!
+    var password: String!
     var nickname = UserDefaults.standard.string(forKey: "nickname")
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +122,7 @@ class VerifyEmailViewController: ViewController, UITextFieldDelegate {
     func checkAuthCode(){
         self.indicatorView.startAnimating()
         let param: Parameters = [
-            "idx" : idx,
+            "idx" : userIdx,
             "activeAccountCode" : activeAccountFlag
         ]
         SignService.getSignData(url: "verifyemail", parameter: param) { (result) in
@@ -133,6 +136,9 @@ class VerifyEmailViewController: ViewController, UITextFieldDelegate {
                     completionVC.delegate = self
                     completionVC.titleString = "가입완료"
                     completionVC.subTitleText = "\(String(describing: self.nickname!))님을 위한\n기억의 타임캡슐을 만들었습니다."
+                    UserDefaults.standard.set(self.userIdx, forKey: "userIdx")
+                    UserDefaults.standard.set(self.email, forKey: "email")
+                    UserDefaults.standard.set(self.password, forKey: "password")
                     self.present(completionVC, animated: true, completion: nil)
 
                 } else if let code = dataJSON["code"].string, code == "0004"{
@@ -150,7 +156,7 @@ class VerifyEmailViewController: ViewController, UITextFieldDelegate {
     }
     @objc func resendEmailButtonClicked() {
         let param: Parameters = [
-            "idx" : idx,
+            "idx" : userIdx,
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
         SignService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
