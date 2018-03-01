@@ -25,6 +25,10 @@ class AccountViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setTextLabel()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
     }
@@ -49,13 +53,12 @@ class AccountViewController: UIViewController {
         
     }
     @objc func drawCompleteButton() {
-        
         if checkEmailField() {
             if checkPasswordField() {
                 completeButton.setTitleColor(UIColor.white, for: .normal)
                 completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
                 
-                completeButton.addTarget(self, action: #selector(signUp), for: .touchUpInside)
+                completeButton.addTarget(self, action: #selector(compelteButtonClicked), for: .touchUpInside)
             }
         } else {
             if checkPasswordField() {
@@ -101,18 +104,15 @@ class AccountViewController: UIViewController {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
-                print(dataJSON)
                 UserDefaults.standard.set(dataJSON["data"]["idx"].int, forKey: "userIdx")
-                switch dataJSON["code"] {
-                case "0000":
+                if let code = dataJSON["code"].string, code == "0000" {
                     self.indicatorView.stopAnimating()
                     UserDefaults.standard.set(self.emailField.text, forKey: "email")
                     UserDefaults.standard.set(self.passwordField.text, forKey: "password")
                     self.performSegue(withIdentifier: "AuthCodeSegue", sender: self)
-                case "0001":
+                } else if let code = dataJSON["code"].string, code == "0001" {
+                    self.indicatorView.stopAnimating()
                     self.emailAlertLabel.isHidden = false
-                default:
-                    ()
                 }
             case .Failure(let failureCode):
                 print("Sign Up Failure : \(failureCode)")

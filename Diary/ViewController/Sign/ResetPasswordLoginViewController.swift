@@ -14,17 +14,17 @@ class ResetPasswordLoginViewController: UIViewController {
  
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var emailResendButton: UIButton!
-    
     @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         setTextLabel()
         customLoginButton()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        emailResendButton.addTarget(self, action: #selector(resendPasswordResetEmail), for: .touchUpInside)
     }
     func setTextLabel() {
         let text = "이메일로\n임시 비밀번호를 보냈습니다"
@@ -32,12 +32,10 @@ class ResetPasswordLoginViewController: UIViewController {
         questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         
     }
-    func resendPasswordResetEmail() {
-        
+    @objc func resendPasswordResetEmail() {
         let param: Parameters = [
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
-        
         SignService.getSignData(url: "passwordresetemail", parameter: param) { (result) in
             switch result {
             case .Success(let response):
@@ -45,12 +43,10 @@ class ResetPasswordLoginViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
-                    self.view.makeToast("새로운 비밀번호를 재전송하였습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init(), completion: { (bool) in
-                            self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
-                        })
-                    }
-                    //self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
-                
+                    self.view.makeToast("새로운 비밀번호를 재전송하였습니다.")
+                } else {
+                    self.view.makeToast(dataJSON["errmsg"].stringValue)
+                }
             case .Failure(let failureCode):
                 print("Password Reset Email Failure : \(failureCode)")
                 
@@ -60,15 +56,12 @@ class ResetPasswordLoginViewController: UIViewController {
     }
     func customLoginButton() {
         loginButton.createGradientLayer()
-        // loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
         loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     @objc func loginButtonClicked() {
-        self.performSegue(withIdentifier: "ResetPasswordLoginSegue", sender: self)
+        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LoginViewController.reuseIdentifier)
+        self.present(nextVC, animated: true, completion: nil)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
 }

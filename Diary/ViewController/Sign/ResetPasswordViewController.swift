@@ -9,9 +9,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Toast_Swift
-class ResetPasswordViewController: UIViewController {
+
+class ResetPasswordViewController: ViewController {
     @IBOutlet weak var questionLabel: UILabel!
     
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
     
@@ -25,6 +27,7 @@ class ResetPasswordViewController: UIViewController {
         super.viewDidLoad()
         setCompleteButton()
         self.emailField.addTarget(self, action: #selector(setCompleteButton), for: UIControlEvents.editingChanged)
+        self.view.bringSubview(toFront: self.indicatorView)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
     }
@@ -37,7 +40,6 @@ class ResetPasswordViewController: UIViewController {
     @objc func setCompleteButton(){
         completeButton.layer.cornerRadius = 4
         if emailField.text!.isEmpty {
-            completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
             completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
         } else {
             if validateEmail(enteredEmail: emailField.text!) {
@@ -58,6 +60,7 @@ class ResetPasswordViewController: UIViewController {
         return emailPredicate.evaluate(with: enteredEmail)
     }
     func passwordResetEmail(){
+        self.indicatorView.startAnimating()
         let param: Parameters = [
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
@@ -69,14 +72,13 @@ class ResetPasswordViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
-                    self.view.makeToast("새로운 비밀번호를 보냈습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init(), completion: { (bool) in
-                        if self.emailField.text != nil {
-                            self.performSegue(withIdentifier: "PasswordEmailSegue", sender: self)
-                        }
-                        else {
-                    
-                        }
-                    })
+                    self.indicatorView.stopAnimating()
+                    UserDefaults.standard.synchronize()
+                    let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ResetPasswordLoginViewController.reuseIdentifier)
+                    self.present(nextVC, animated: true, completion: nil)
+                } else {
+                    self.indicatorView.stopAnimating()
+                    self.view.makeToast(dataJSON["errmsg"].stringValue)
                 }
                 
             case .Failure(let failureCode):
@@ -85,11 +87,6 @@ class ResetPasswordViewController: UIViewController {
             }
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }

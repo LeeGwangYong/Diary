@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		9E32DC8920405E290036326F /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E32DC8820405E290036326F /* ResetPasswordViewController.swift */; };
 		9E32DC8B20405E750036326F /* ResetPasswordLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E32DC8A20405E750036326F /* ResetPasswordLoginViewController.swift */; };
+		9E3D2692204698CD00A8FEBC /* UpdateAppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D2691204698CD00A8FEBC /* UpdateAppPasswordViewController.swift */; };
+		9E3D26942046A6EB00A8FEBC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D26932046A6EB00A8FEBC /* CustomTextField.swift */; };
+		9E928BB6204693D000D72A04 /* PasswordLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E928BB5204693D000D72A04 /* PasswordLoginViewController.swift */; };
+		9EBB5C2720441B6E00BCCB29 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C2620441B6E00BCCB29 /* SettingsTableViewController.swift */; };
+		9EBB5C2D204456AD00BCCB29 /* ExistingPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C2C204456AD00BCCB29 /* ExistingPasswordViewController.swift */; };
+		9EBB5C2F204456B800BCCB29 /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C2E204456B800BCCB29 /* UpdatePasswordViewController.swift */; };
+		9EBB5C3120445B4E00BCCB29 /* ConfirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C3020445B4E00BCCB29 /* ConfirmPasswordViewController.swift */; };
+		9EBB5C33204519C700BCCB29 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C32204519C700BCCB29 /* TermsOfServiceViewController.swift */; };
 		9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */; };
 		9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C6203F1F510098CDBF /* UserNameViewController.swift */; };
 		9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C8203F210A0098CDBF /* LoginViewController.swift */; };
@@ -56,6 +64,14 @@
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 		9E32DC8820405E290036326F /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		9E32DC8A20405E750036326F /* ResetPasswordLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordLoginViewController.swift; sourceTree = "<group>"; };
+		9E3D2691204698CD00A8FEBC /* UpdateAppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppPasswordViewController.swift; sourceTree = "<group>"; };
+		9E3D26932046A6EB00A8FEBC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9E928BB5204693D000D72A04 /* PasswordLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLoginViewController.swift; sourceTree = "<group>"; };
+		9EBB5C2620441B6E00BCCB29 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		9EBB5C2C204456AD00BCCB29 /* ExistingPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingPasswordViewController.swift; sourceTree = "<group>"; };
+		9EBB5C2E204456B800BCCB29 /* UpdatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewController.swift; sourceTree = "<group>"; };
+		9EBB5C3020445B4E00BCCB29 /* ConfirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewController.swift; sourceTree = "<group>"; };
+		9EBB5C32204519C700BCCB29 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		9ED286C6203F1F510098CDBF /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 		9ED286C8203F210A0098CDBF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +143,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9E928BB4204693B500D72A04 /* Passcode */ = {
+			isa = PBXGroup;
+			children = (
+				9E928BB5204693D000D72A04 /* PasswordLoginViewController.swift */,
+			);
+			name = Passcode;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		9EBB5C1C2043CACD00BCCB29 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9EBB5C2620441B6E00BCCB29 /* SettingsTableViewController.swift */,
+				9EBB5C2C204456AD00BCCB29 /* ExistingPasswordViewController.swift */,
+				9EBB5C2E204456B800BCCB29 /* UpdatePasswordViewController.swift */,
+				9EBB5C3020445B4E00BCCB29 /* ConfirmPasswordViewController.swift */,
+				9EBB5C32204519C700BCCB29 /* TermsOfServiceViewController.swift */,
+				9E3D2691204698CD00A8FEBC /* UpdateAppPasswordViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		FC18F2C0200DB5570087E3A8 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +174,7 @@
 				75CE16BFC7DFD88B764F446D /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		FC18F2CA200DB5570087E3A8 /* Products */ = {
 			isa = PBXGroup;
@@ -169,6 +208,9 @@
 				FCC3CC93200EDB5900AD0019 /* ViewController.swift */,
 				FC4930D620404EFC002CCD30 /* CompletionViewController.swift */,
 				FC3F2433203698090062222F /* CustomTabBarController.swift */,
+				9E3D26932046A6EB00A8FEBC /* CustomTextField.swift */,
+				9E928BB4204693B500D72A04 /* Passcode */,
+				9EBB5C1C2043CACD00BCCB29 /* Settings */,
 				FC2167B620415AA700D478BC /* Memory */,
 				FC2167B320415A5D00D478BC /* Sign */,
 				FC2167B420415A8B00D478BC /* Main */,
@@ -329,6 +371,12 @@
 							com.apple.BackgroundModes = {
 								enabled = 0;
 							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -410,29 +458,35 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Diary/Pods-Diary-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SmileLock/SmileLock.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmileLock.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -452,21 +506,28 @@
 				FC2167B820415AEA00D478BC /* MemoryViewController.swift in Sources */,
 				9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */,
 				FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */,
+				9EBB5C2720441B6E00BCCB29 /* SettingsTableViewController.swift in Sources */,
+				9E3D2692204698CD00A8FEBC /* UpdateAppPasswordViewController.swift in Sources */,
 				9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */,
 				9E32DC8920405E290036326F /* ResetPasswordViewController.swift in Sources */,
 				9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */,
 				FC9A7C0A202ED5BC00F93095 /* TaCoExtension.swift in Sources */,
 				FC4930DB204109BD002CCD30 /* DDay.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
+				9E3D26942046A6EB00A8FEBC /* CustomTextField.swift in Sources */,
+				9EBB5C33204519C700BCCB29 /* TermsOfServiceViewController.swift in Sources */,
 				FC9A7C0F202EDB9500F93095 /* CapsuleTableViewCell.swift in Sources */,
 				FCC3CCA3200FA25600AD0019 /* DateString.swift in Sources */,
+				9EBB5C2D204456AD00BCCB29 /* ExistingPasswordViewController.swift in Sources */,
 				FCC3CC83200ECCCA00AD0019 /* MainViewController.swift in Sources */,
 				FC9A7C0C202ED61300F93095 /* Designable.swift in Sources */,
 				FC9A7C06202EC3E000F93095 /* KoreanInt.swift in Sources */,
 				9E32DC8B20405E750036326F /* ResetPasswordLoginViewController.swift in Sources */,
+				9EBB5C3120445B4E00BCCB29 /* ConfirmPasswordViewController.swift in Sources */,
 				FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */,
 				FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */,
 				FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */,
+				9EBB5C2F204456B800BCCB29 /* UpdatePasswordViewController.swift in Sources */,
 				9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */,
 				9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */,
 				FCC3CC94200EDB5900AD0019 /* ViewController.swift in Sources */,
@@ -478,6 +539,7 @@
 				FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */,
 				FC18F2CD200DB5570087E3A8 /* AppDelegate.swift in Sources */,
 				9ED286C7203F1F510098CDBF /* UserNameViewController.swift in Sources */,
+				9E928BB6204693D000D72A04 /* PasswordLoginViewController.swift in Sources */,
 				FC4930D3203FDE79002CCD30 /* DivisionOfTheYear.swift in Sources */,
 				FCC3CC87200ED13300AD0019 /* DiaryListViewController.swift in Sources */,
 			);
@@ -534,7 +596,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ju Young Hong (CX2B64UU5J)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -591,7 +653,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ju Young Hong (CX2B64UU5J)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -617,13 +679,16 @@
 			baseConfigurationReference = 49AAD48E563A0B0CF7602047 /* Pods-Diary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N598FBZXVH;
 				INFOPLIST_FILE = Diary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = clapwatermelon.Diary;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clapwatermelon;
+				PRODUCT_NAME = Diary;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -634,13 +699,16 @@
 			baseConfigurationReference = 69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N598FBZXVH;
 				INFOPLIST_FILE = Diary/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = clapwatermelon.Diary;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.clapwatermelon;
+				PRODUCT_NAME = Diary;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

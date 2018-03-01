@@ -9,34 +9,46 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class LoginViewController: UIViewController {
-    
+class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoLabel: UILabel!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var imageBottomView: UIView!
-    @IBOutlet weak var timaryLogoLabel: UILabel!
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         customLoginButton()
+    
+        self.emailField.becomeFirstResponder()
         self.imageBottomView.createGradientLayer()
-        self.timaryLogoLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
+        NotificationCenter.default.addObserver(self, selector: #selector(passCodeView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.emailField.delegate = self
+        self.passwordField.delegate = self
         
         let attributedString = NSMutableAttributedString(string: "기억의 타임캡슐\n타이머리")
         logoLabel.attributedText = attributedString
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.heavy), range: NSRange(location: 8, length: 5))
         logoLabel.attributedText = attributedString
-        self.passwordField.isSecureTextEntry = true
         setPlaceholderColor()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        passCodeView()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        autoLogin()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
     func setPlaceholderColor() {
         emailField.attributedPlaceholder = NSAttributedString(string: "이메일 주소",
                                                               attributes: [NSAttributedStringKey.foregroundColor: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)])
@@ -58,20 +70,56 @@ class LoginViewController: UIViewController {
     func customLoginButton() {
         loginButton.createGradientLayer()
         loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
-        loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
-        
+        loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)    
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if(emailField.isEqual(self.emailField)){
+            self.passwordField.becomeFirstResponder()
+        }
+        return true
     }
-    
+    @objc func passCodeView() {
+        let switchValue = UserDefaults.standard.bool(forKey: "lockSwitch")
+        if switchValue == false {
+           // autoLogin()
+        } else {
+            let passCodeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
+            self.present(passCodeVC, animated: true, completion: nil)
+        }
+    }
+    func autoLogin() {
+        if UserDefaults.standard.string(forKey: "email") != nil {
+            if UserDefaults.standard.string(forKey: "password") != nil {
+                let param: Parameters = [
+                    "email" : UserDefaults.standard.string(forKey: "email") ?? emailField.text!,
+                    "password" : UserDefaults.standard.string(forKey: "password") ?? passwordField.text!
+                ]
+                print(param)
+                SignService.getSignData(url: "signin", parameter: param) { (result) in
+                    switch result {
+                    case .Success(let response):
+                        let data = response
+                        let dataJSON = JSON(data)
+                        print(dataJSON)
+                        if dataJSON["code"] == "0000" {
+                            let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CustomTabBarController.reuseIdentifier) as! CustomTabBarController
+                            self.present(mainVC, animated: true, completion: nil)
+                            
+                        }
+                    case .Failure(let failureCode):
+                        print("Auto Login Failure : \(failureCode)")
+                        
+                    }
+                }
+            }
+        }
+    }
     @objc func loginButtonClicked(sender: UIButton){
         let param: Parameters = [
             "email" : emailField.text!,
             "password" : passwordField.text!
         ]
-        
+
         SignService.getSignData(url: "signin", parameter: param) { (result) in
             switch result {
             case .Success(let response):
@@ -79,7 +127,10 @@ class LoginViewController: UIViewController {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
-                    let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: MainViewController.reuseIdentifier) as! MainViewController
+                    UserDefaults.standard.set(self.emailField.text, forKey: "email")
+                    UserDefaults.standard.set(self.passwordField.text, forKey: "password")
+                    let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CustomTabBarController.reuseIdentifier) as! CustomTabBarController
+                    
                     self.present(mainVC, animated: true, completion: nil)
                     UserDefaults.standard.set(dataJSON["data"]["idx"].intValue, forKey: "userIdx")
                 }
@@ -93,8 +144,18 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func validateEmail(enteredEmail:String) -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluate(with: enteredEmail)
+    }
+    
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
 }

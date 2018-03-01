@@ -18,9 +18,12 @@ class UserNameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLabel()
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setToSLabel()
@@ -62,10 +65,6 @@ class UserNameViewController: UIViewController {
         attributedString.addAttribute(NSAttributedStringKey.underlineColor, value: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0), range: NSRange(location: 10, length: 2))
         
         ToSLabel.attributedText = attributedString
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     @objc func dismissKeyboard() {
         self.view.endEditing(true)

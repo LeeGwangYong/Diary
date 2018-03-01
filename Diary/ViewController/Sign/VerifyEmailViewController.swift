@@ -10,20 +10,20 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
+class VerifyEmailViewController: ViewController, UITextFieldDelegate {
     @IBOutlet weak var questionLabel: UILabel!
-    
-   
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var authCode01: UITextField!
     @IBOutlet weak var authCode02: UITextField!
     @IBOutlet weak var authCode03: UITextField!
     @IBOutlet weak var authCode04: UITextField!
     @IBOutlet weak var completeButton: UIButton!
-    
     @IBOutlet weak var resendEmailButton: UIButton!
+    
+    
     var activeAccountFlag: String = ""
     var idx = UserDefaults.standard.integer(forKey: "userIdx")
+    var nickname = UserDefaults.standard.string(forKey: "nickname")
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,6 +45,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        self.view.bringSubview(toFront: self.indicatorView)
     }
     
     func setTextLabel() {
@@ -77,6 +78,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         authCode03.tag = 3
         authCode04.tag = 4
 
+        
         authCode01.textAlignment = .center
         authCode02.textAlignment = .center
         authCode03.textAlignment = .center
@@ -91,6 +93,7 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
         authCode02.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         authCode03.addTarget(self, action: #selector(textChanged), for: .editingChanged)
         authCode04.addTarget(self, action: #selector(textChanged), for: .editingChanged)
+     
     }
     
     func appendAuthCode() {
@@ -124,11 +127,20 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
-                if dataJSON["code"] == "0000" {
+                if let code = dataJSON["code"].string, code == "0000"{
                     self.indicatorView.stopAnimating()
-                    self.performSegue(withIdentifier: "LoginSegue", sender: self)
+                    let completionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CompletionViewController.reuseIdentifier) as! CompletionViewController
+                    completionVC.delegate = self
+                    completionVC.titleString = "가입완료"
+                    completionVC.subTitleText = "\(String(describing: self.nickname!))님을 위한\n기억의 타임캡슐을 만들었습니다."
+                    self.present(completionVC, animated: true, completion: nil)
+
+                } else if let code = dataJSON["code"].string, code == "0004"{
+                    self.indicatorView.stopAnimating()
+                    self.view.makeToast("잘못된 인증코드입니다.")
                 } else {
-                    self.view.makeToast("인증코드 오류", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init())
+                    self.indicatorView.stopAnimating()
+                    self.view.makeToast(dataJSON["errmsg"].stringValue)
                 }
             case .Failure(let failureCode):
                 print("Verify In Failure : \(failureCode)")
@@ -148,21 +160,18 @@ class VerifyEmailViewController: UIViewController, UITextFieldDelegate {
                 let dataJSON = JSON(data)
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
-                    self.view.makeToast("이메일을 재전송 하였습니다.", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init())
-                    self.checkAuthCode()
+                    self.view.makeToast("이메일을 재전송 하였습니다.")
                 } else {
-                    self.view.makeToast("인증코드 오류", duration: 1, position: .center, title: nil, image: nil, style: ToastStyle.init())
+                    self.view.makeToast("인증코드 재발송 오류입니다.")
                 }
             case .Failure(let failureCode):
-                print("Verify In Failure : \(failureCode)")
+                print("Resend Email In Failure : \(failureCode)")
             }
         }
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func customSegue() {
+        self.navigationController?.popToRootViewController(animated: true)
     }
-    
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
