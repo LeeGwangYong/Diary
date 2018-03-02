@@ -27,9 +27,6 @@ class CustomTabBarController: UITabBarController, UINavigationControllerDelegate
             UIImage.imageWithColor(color: UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1),
                                    size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
     }
-    
-    
-    
 }
 
 extension UIImage

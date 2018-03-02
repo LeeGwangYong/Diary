@@ -17,6 +17,7 @@ extension UIView {
             bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
     }
+
     func createGradientLayer() {
         let gradientLayer = CAGradientLayer()
         
@@ -27,6 +28,7 @@ extension UIView {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
     func createLineGradientLayer() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.cornerRadius = 3.25
@@ -61,12 +63,14 @@ extension UITextField {
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.frame.height-height, width: self.frame.width, height: height)
         border.backgroundColor = color.cgColor
+        self.layer.masksToBounds = true
         self.layer.addSublayer(border)
     }
     func addBorderBottomReverse(height: CGFloat, color: UIColor) {
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.frame.height+height, width: self.frame.width, height: height)
         border.backgroundColor = color.cgColor
+        self.layer.masksToBounds = true
         self.layer.addSublayer(border)
     }
     
@@ -132,7 +136,35 @@ extension UILabel {
         
         return true
     }
-    
-    
+}
+enum ColorType: String {
+    case purple = "A880B1"
+    case textColor = "555555"
 }
 
+extension UIColor {
+    
+    class func hexStr(_ hexStr: String) -> UIColor {
+        return UIColor.hexStr(hexStr, alpha: 1)
+    }
+    
+    class func color(_ hexColor: ColorType) -> UIColor {
+        return UIColor.hexStr(hexColor.rawValue, alpha: 1.0)
+    }
+    
+    class func hexStr(_ str: String, alpha: CGFloat) -> UIColor {
+        let hexStr = str.replacingOccurrences(of: "#", with: "")
+        let scanner = Scanner(string: hexStr)
+        var color: UInt32 = 0
+        if scanner.scanHexInt32(&color) {
+            let r = CGFloat((color & 0xFF0000) >> 16) / 255.0
+            let g = CGFloat((color & 0x00FF00) >> 8) / 255.0
+            let b = CGFloat(color & 0x0000FF) / 255.0
+            return UIColor(red: r, green: g, blue: b , alpha: alpha)
+        } else {
+            print("Invalid hex string")
+            return .white
+        }
+    }
+    
+}

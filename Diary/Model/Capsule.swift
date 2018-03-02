@@ -10,9 +10,14 @@ import Foundation
 import Realm
 import RealmSwift
 import ObjectMapper
+
 enum RealmState {
     case add, remove
 }
+
+protocol Realmable {}
+extension Object: Realmable {}
+extension Results: Realmable {}
 class CapsuleResponse: Mappable {
     var code: String = ""
     var capsule: [Capsule]?
@@ -44,10 +49,18 @@ class Capsule: Object, Mappable  {
         idx <- map["idx"]
         userIdx <- map["user_idx"]
         contents <- map["contents"]
-        insertDate <- map["insert_date"]
-        openDate <- map["open_date"]
-        updateDate <- map["udate_date"]
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatterTransform = DateFormatterTransform(dateFormatter: dateFormatter)
+        insertDate <- (map["insert_date"], dateFormatterTransform)
+        openDate <- (map["open_date"], dateFormatterTransform)
+        updateDate <- (map["udate_date"], dateFormatterTransform)
+
     }
+    
+
+    
     static var realm: Realm? {
         do {
             //Migration
@@ -66,20 +79,15 @@ class Capsule: Object, Mappable  {
         return "idx"
     }
     
-    static func write<T: Capsule>(_ item: T, state: RealmState) {
+    static func write<T>(_ item: T, state: RealmState) where T: Realmable {
         do {
-            
+
             try self.realm?.write {
                 switch state {
                 case .add :
-                    self.realm?.add(item, update: true)
-//                    let preItems = realm.objects(Capsule.self).filter("idx = %@", item.idx)
-//                    if let preItem = preItems.first {
-//                        preItem.contents = item.contents
-//                    }
-//                    else { realm.add(item) }
+                    self.realm?.add(item as! Object, update: true)
                 case .remove :
-                    self.realm?.delete(item)
+                    self.realm?.delete(item as! Results<Capsule>)
                 }
             }
         }
