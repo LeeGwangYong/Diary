@@ -12,11 +12,13 @@ import RealmSwift
 
 class MainViewController: ViewController {
     //MARK -: Property
+    @IBOutlet weak var parentScrollView: UIScrollView!
     @IBOutlet weak var blinkingView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var inputNavigateView: UIView!
     @IBOutlet weak var capsuleTableView: UITableView!
     @IBOutlet weak var capsuleCountLabel: UILabel!
+    
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     private var token: NotificationToken!
@@ -60,6 +62,9 @@ class MainViewController: ViewController {
         currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6))
         self.dateLabel.text = currentDateString
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        
+        self.capsuleTableView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height - (95 + 72))
+        self.parentScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 97 + 72)
     }
     
     func setUpTableView() {

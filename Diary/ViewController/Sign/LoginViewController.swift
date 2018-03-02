@@ -28,22 +28,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setPlaceholderColor()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
-        passCodeView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
         customLoginButton()
         self.imageBottomView.createGradientLayer()
         self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
-        
+        self.emailField.becomeFirstResponder()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
         autoLogin()
-        self.emailField.becomeFirstResponder()
-        NotificationCenter.default.addObserver(self, selector: #selector(passCodeView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -81,9 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @objc func passCodeView() {
-        
-    }
+    
     
     func autoLogin() {
         if UserDefaults.standard.string(forKey: "email") != nil {
@@ -102,7 +95,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         if dataJSON["code"] == "0000" {
                             let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CustomTabBarController.reuseIdentifier) as! CustomTabBarController
                             self.present(mainVC, animated: true, completion: nil)
-                            
                         }
                     case .Failure(let failureCode):
                         print("Auto Login Failure : \(failureCode)")
@@ -130,7 +122,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     UserDefaults.standard.set(self.emailField.text, forKey: "email")
                     UserDefaults.standard.set(self.passwordField.text, forKey: "password")
                     let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CustomTabBarController.reuseIdentifier) as! CustomTabBarController
-                    
                     self.present(mainVC, animated: true, completion: nil)
                     UserDefaults.standard.set(dataJSON["data"]["idx"].intValue, forKey: "userIdx")
                 }

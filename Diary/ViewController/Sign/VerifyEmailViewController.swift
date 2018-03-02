@@ -28,11 +28,13 @@ class VerifyEmailViewController: ViewController, UITextFieldDelegate {
     var password: String!
     var nickname = UserDefaults.standard.string(forKey: "nickname")
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setTextLabel()
         authCodeSetup()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         authCode01.delegate = self
