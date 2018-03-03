@@ -18,21 +18,21 @@ class UpdateAppPasswordViewController: UIViewController {
     @IBOutlet weak var passwordAlertLabel: UILabel!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var questionLabel: UILabel!
+ 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLabel()
+        passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        self.view.layoutIfNeeded()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setNextButton()
         self.passwordField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         self.view.bringSubview(toFront: indicatorView)
-        passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        
     }
     @objc func setNextButton(){
         completeButton.layer.cornerRadius = 4

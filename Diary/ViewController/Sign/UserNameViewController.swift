@@ -14,9 +14,9 @@ class UserNameViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setLabel()
         userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         self.view.layoutIfNeeded()
@@ -38,11 +38,13 @@ class UserNameViewController: UIViewController {
         if userNameField.text!.isEmpty {
             nextButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
             nextButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+            nextButton.isEnabled = false
         } else {
             nextButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
             nextButton.setTitleColor(UIColor.white, for: .normal)
             
             nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
+            nextButton.isEnabled = true
             
         }
         self.view.addSubview(nextButton)

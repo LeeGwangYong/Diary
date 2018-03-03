@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.emailField.becomeFirstResponder()
         self.emailField.delegate = self
         self.passwordField.delegate = self
         
@@ -28,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setPlaceholderColor()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
-        passCodeView()
+        //passCodeView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,17 +39,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         autoLogin()
-        self.emailField.becomeFirstResponder()
-        NotificationCenter.default.addObserver(self, selector: #selector(passCodeView), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+        self.view.layoutIfNeeded()
     }
     
     func setPlaceholderColor() {
@@ -80,11 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
-    
-    @objc func passCodeView() {
-        
-    }
-    
+ 
     func autoLogin() {
         if UserDefaults.standard.string(forKey: "email") != nil {
             if UserDefaults.standard.string(forKey: "password") != nil {
