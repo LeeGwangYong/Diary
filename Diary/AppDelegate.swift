@@ -16,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let app = UIApplication.shared
-        let notificationSettings = UIUserNotificationSettings(types: UIUserNotificationType([.alert, .sound /*, .Badge*/]), categories:nil)
-        app.registerUserNotificationSettings(notificationSettings)
+//        let app = UIApplication.shared
+//        let notificationSettings = UIUserNotificationSettings(types: UIUserNotificationType([.alert, .sound /*, .Badge*/]), categories:nil)
+//        app.registerUserNotificationSettings(notificationSettings)
         
         if let realmURL = Realm.Configuration.defaultConfiguration.fileURL {
             print(realmURL.absoluteString)
@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
         
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
         return true
     }
 

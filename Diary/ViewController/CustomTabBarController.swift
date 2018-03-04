@@ -22,18 +22,32 @@ class CustomTabBarController: UITabBarController, UINavigationControllerDelegate
             // Fallback on earlier versions
         }
         // Sets the background color of the selected UITabBarItem (using and plain colored UIImage with the width = 1/5 of the tabBar (if you have 5 items) and the height of the tabBar)
+
+        print(self.bottomLayoutGuide.heightAnchor)
+        print(self.bottomLayoutGuide.bottomAnchor)
+    
+        if #available(iOS 11.0, *) {
+            self.tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            // Fallback on earlier versions
+        }
         
+        print(tabBar.frame.height)
+
         UITabBar.appearance().selectionIndicatorImage =
             UIImage.imageWithColor(color: UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1),
-                                   size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height))
+                                   size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height + 35))
+        
+
     }
+    
 }
 
 extension UIImage
 {
     class func imageWithColor(color: UIColor, size: CGSize) -> UIImage
     {
-        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let rect: CGRect = CGRect(x: 0, y: -35, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(rect)

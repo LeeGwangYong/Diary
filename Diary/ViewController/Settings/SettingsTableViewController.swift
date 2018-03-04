@@ -9,8 +9,15 @@
 import UIKit
 import Toast_Swift
 
-class SettingsTableViewController: UITableViewController {
+protocol UpdateAppPasswordViewControllerDelegate {
+    func response(isOn: Bool)
+}
 
+class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewControllerDelegate {
+    func response(isOn: Bool) {
+        self.passwordLockSwitch.isOn = isOn
+    }
+    
 
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var passwordLockSwitch: UISwitch!
@@ -64,15 +71,18 @@ class SettingsTableViewController: UITableViewController {
     @objc func switchValueDidChange(sender: UISwitch!) {
         print(sender.isOn)
         if sender.isOn {
-            self.passwordLockSwitch.setOn(true, animated: true)
-            UserDefaults.standard.set(true, forKey: "lockSwitch")
             if UserDefaults.standard.string(forKey: "lockPassword") == nil {
                 self.view.makeToast("잠금 비밀번호 변경을 통해 비밀번호를 설정해주세요")
-                let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdateAppPasswordViewController.reuseIdentifier)
+                let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdateAppPasswordViewController.reuseIdentifier) as! UpdateAppPasswordViewController
+                nextVC.delegate = self
+                self.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(nextVC, animated: true)
+                self.hidesBottomBarWhenPushed = false
+            }
+            else {
+                UserDefaults.standard.set(true, forKey: "lockSwitch")
             }
         } else {
-            self.passwordLockSwitch.setOn(false, animated: true)
             UserDefaults.standard.set(false, forKey: "lockSwitch")
         }
     }
@@ -80,7 +90,8 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case IndexPath(row: 1, section: 1):
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdateAppPasswordViewController.reuseIdentifier)
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdateAppPasswordViewController.reuseIdentifier) as! UpdateAppPasswordViewController
+            nextVC.delegate = self
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(nextVC, animated: true)
             self.hidesBottomBarWhenPushed = false

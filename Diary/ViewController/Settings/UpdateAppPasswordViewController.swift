@@ -18,7 +18,9 @@ class UpdateAppPasswordViewController: UIViewController {
     @IBOutlet weak var passwordAlertLabel: UILabel!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var questionLabel: UILabel!
- 
+    var lock: Bool?
+    var delegate: SettingsTableViewController?
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setLabel()
@@ -32,7 +34,8 @@ class UpdateAppPasswordViewController: UIViewController {
         self.passwordField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         self.view.bringSubview(toFront: indicatorView)
-        
+        self.lock = self.delegate?.passwordLockSwitch.isOn
+        self.delegate?.response(isOn: false)
     }
     @objc func setNextButton(){
         completeButton.layer.cornerRadius = 4
@@ -82,8 +85,10 @@ class UpdateAppPasswordViewController: UIViewController {
                 print(dataJSON)
                 if dataJSON["code"] == "0000" {
                     self.indicatorView.stopAnimating()
-                    self.navigationController?.popViewController(animated: true)
+                    self.delegate?.response(isOn: (self.lock)!)
+                    UserDefaults.standard.set(self.lock, forKey: "lockSwitch")
                     UserDefaults.standard.set(self.passwordField.text, forKey: "lockPassword")
+                    self.navigationController?.popViewController(animated: true)
                 } else if dataJSON["code"] == "0014"{
                     self.indicatorView.stopAnimating()
                     self.view.makeToast("잠금비밀번호 업데이트 오류입니다.")

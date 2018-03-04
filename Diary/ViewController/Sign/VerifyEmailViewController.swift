@@ -76,10 +76,10 @@ class VerifyEmailViewController: ViewController {
     }
     @objc func drawCompleteButton(){
         completeButton.setTitleColor(UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0), for: .disabled)
-        completeButton.setBackgroundImage(UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0).createImageView(), for: .disabled)
+        completeButton.setBackgroundImage(UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0).createImageView(size: completeButton.frame.size), for: .disabled)
         
         completeButton.setTitleColor(UIColor.white, for: .normal)
-        completeButton.setBackgroundImage(UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0).createImageView(), for: .normal)
+        completeButton.setBackgroundImage(UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0).createImageView(size: completeButton.frame.size), for: .normal)
         completeButton.makeRoundedView(corners: [.allCorners], radius: 4)
         
         completeButton.isEnabled = false
