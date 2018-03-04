@@ -14,11 +14,7 @@ class UserNameViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 354f994ab41c83903798a4f42fb53f2065d15e22
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setLabel()

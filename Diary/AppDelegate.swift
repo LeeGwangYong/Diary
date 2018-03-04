@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().tintColor = UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
-       
+        
         return true
     }
 
@@ -42,14 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         let switchValue = UserDefaults.standard.bool(forKey: "lockSwitch")
         if switchValue {
             let passCodeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
-           UIApplication.topViewController()?.present(passCodeVC, animated: true, completion: nil)
+            UIApplication.topViewController()?.present(passCodeVC, animated: true, completion: nil)
         }
     }
-
 
 
 }

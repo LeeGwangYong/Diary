@@ -38,10 +38,6 @@ class VerifyEmailViewController: ViewController {
         return str
     }
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> 354f994ab41c83903798a4f42fb53f2065d15e22
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setTextLabel()
