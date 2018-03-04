@@ -12,6 +12,7 @@ import Toast_Swift
 class SettingsTableViewController: UITableViewController {
 
 
+    @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var passwordLockSwitch: UISwitch!
     @IBOutlet weak var logout: UIButton!
     override func viewDidLoad() {
@@ -20,7 +21,10 @@ class SettingsTableViewController: UITableViewController {
         self.passwordLockSwitch.setOn(UserDefaults.standard.bool(forKey: "lockSwitch"), animated: false)
         self.passwordLockSwitch.addTarget(self, action: #selector(self.switchValueDidChange(sender:)), for: .valueChanged)
     }
-
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        settingLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }

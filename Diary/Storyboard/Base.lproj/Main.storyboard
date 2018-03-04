@@ -657,6 +657,7 @@
                     <connections>
                         <outlet property="capsuleTableView" destination="MVy-kJ-ZOf" id="3yd-ga-cCJ"/>
                         <outlet property="displayLabel" destination="SCi-14-bH1" id="7B0-Wa-BGS"/>
+                        <outlet property="textLabel" destination="YcE-wv-Q9m" id="zo8-oQ-3Pf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qwt-Oo-vHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1580,6 +1581,7 @@
                     <connections>
                         <outlet property="logout" destination="wuR-Dh-HFO" id="YSz-FP-0ui"/>
                         <outlet property="passwordLockSwitch" destination="d9a-FI-p03" id="kJy-3x-3Jh"/>
+                        <outlet property="settingLabel" destination="v8o-fH-GEm" id="FJf-yf-rYY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJJ-L6-cc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1595,22 +1597,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LW9-C3-j9m">
-                                <rect key="frame" x="16" y="72" width="187" height="68"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="w4w-Rh-Duw"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="30" width="187" height="0.0"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="새 비밀번호 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M21-gz-44C">
-                                <rect key="frame" x="16" y="177" width="343" height="17"/>
+                                <rect key="frame" x="16" y="67" width="343" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" red="0.37647058820000001" green="0.23529411759999999" blue="0.45098039220000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="4자리 숫자를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yVb-N5-C3j">
-                                <rect key="frame" x="16" y="199" width="343" height="29"/>
+                                <rect key="frame" x="16" y="89" width="343" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="Myr-YO-2Yq"/>
                                 </constraints>
@@ -1619,7 +1618,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsg-xp-NtX">
-                                <rect key="frame" x="232" y="253" width="127" height="42"/>
+                                <rect key="frame" x="232" y="143" width="127" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="SLI-pG-JUr"/>
                                 </constraints>
@@ -1631,7 +1630,7 @@
                                 <rect key="frame" x="177" y="333.5" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4자리 숫자를 입력해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2J-Ku-BNG">
-                                <rect key="frame" x="16" y="236" width="129" height="15"/>
+                                <rect key="frame" x="16" y="126" width="129" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1642,18 +1641,18 @@
                             <constraint firstItem="q2J-Ku-BNG" firstAttribute="top" secondItem="yVb-N5-C3j" secondAttribute="bottom" constant="8" id="0vg-C2-e2e"/>
                             <constraint firstItem="yVb-N5-C3j" firstAttribute="leading" secondItem="IyJ-VZ-PvY" secondAttribute="leading" constant="16" id="1rb-B7-2ib"/>
                             <constraint firstItem="IyJ-VZ-PvY" firstAttribute="trailing" secondItem="vsg-xp-NtX" secondAttribute="trailing" constant="16" id="3ty-B8-OtT"/>
-                            <constraint firstItem="M21-gz-44C" firstAttribute="top" secondItem="LW9-C3-j9m" secondAttribute="bottom" constant="37" id="5If-9J-1e4"/>
                             <constraint firstItem="yTz-YH-uGO" firstAttribute="centerX" secondItem="IyJ-VZ-PvY" secondAttribute="centerX" id="FLF-Re-yDp"/>
                             <constraint firstItem="IyJ-VZ-PvY" firstAttribute="trailing" secondItem="yVb-N5-C3j" secondAttribute="trailing" constant="16" id="MdL-KH-9My"/>
                             <constraint firstItem="q2J-Ku-BNG" firstAttribute="leading" secondItem="IyJ-VZ-PvY" secondAttribute="leading" constant="16" id="QRu-Hc-Car"/>
-                            <constraint firstItem="IyJ-VZ-PvY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="LW9-C3-j9m" secondAttribute="trailing" constant="172" id="WvX-Tu-9Hu"/>
+                            <constraint firstItem="IyJ-VZ-PvY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="LW9-C3-j9m" secondAttribute="trailing" constant="172" id="RyP-eP-jHP"/>
                             <constraint firstItem="vsg-xp-NtX" firstAttribute="leading" relation="lessThanOrEqual" secondItem="IyJ-VZ-PvY" secondAttribute="leading" constant="232" id="Z6q-cg-bWn"/>
-                            <constraint firstItem="LW9-C3-j9m" firstAttribute="leading" secondItem="IyJ-VZ-PvY" secondAttribute="leading" constant="16" id="ecx-yh-EvW"/>
+                            <constraint firstItem="LW9-C3-j9m" firstAttribute="leading" secondItem="IyJ-VZ-PvY" secondAttribute="leading" constant="16" id="dEb-NS-sYH"/>
                             <constraint firstItem="IyJ-VZ-PvY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="q2J-Ku-BNG" secondAttribute="trailing" constant="230" id="jbp-6x-gXF"/>
                             <constraint firstItem="vsg-xp-NtX" firstAttribute="top" secondItem="yVb-N5-C3j" secondAttribute="bottom" constant="25" id="lU3-b7-5Qe"/>
                             <constraint firstItem="IyJ-VZ-PvY" firstAttribute="trailing" secondItem="M21-gz-44C" secondAttribute="trailing" constant="16" id="oH3-fP-F3E"/>
                             <constraint firstItem="yTz-YH-uGO" firstAttribute="centerY" secondItem="IyJ-VZ-PvY" secondAttribute="centerY" id="pnC-wX-Y2O"/>
-                            <constraint firstItem="LW9-C3-j9m" firstAttribute="top" secondItem="IyJ-VZ-PvY" secondAttribute="top" constant="52" id="sbM-u8-EwT"/>
+                            <constraint firstItem="M21-gz-44C" firstAttribute="top" secondItem="LW9-C3-j9m" secondAttribute="bottom" constant="37" id="rvC-Pp-jeb"/>
+                            <constraint firstItem="LW9-C3-j9m" firstAttribute="top" secondItem="IyJ-VZ-PvY" secondAttribute="top" constant="10" id="sPw-60-KGI"/>
                             <constraint firstItem="M21-gz-44C" firstAttribute="leading" secondItem="IyJ-VZ-PvY" secondAttribute="leading" constant="16" id="shT-vh-nae"/>
                             <constraint firstItem="yVb-N5-C3j" firstAttribute="top" secondItem="M21-gz-44C" secondAttribute="bottom" constant="5" id="vNa-S2-E8f"/>
                         </constraints>
@@ -2115,6 +2114,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1PD-0s-8Ir"/>
                     <connections>
+                        <outlet property="textLabel" destination="0u9-Ky-6cB" id="deU-q5-U5i"/>
                         <outlet property="textView" destination="7Qm-3p-QE5" id="685-3U-CBP"/>
                     </connections>
                 </viewController>
