@@ -112,7 +112,7 @@
                                     <constraint firstAttribute="trailing" secondItem="OoD-4U-p7A" secondAttribute="trailing" id="MkH-OF-vU9"/>
                                     <constraint firstItem="OoD-4U-p7A" firstAttribute="leading" secondItem="cvl-QP-FsC" secondAttribute="leading" id="Rhs-kS-cBU"/>
                                     <constraint firstItem="eal-VG-qUY" firstAttribute="leading" secondItem="cvl-QP-FsC" secondAttribute="leading" id="gCC-bP-y8Z"/>
-                                    <constraint firstAttribute="bottom" secondItem="OoD-4U-p7A" secondAttribute="bottom" id="hSt-ru-ZCe"/>
+                                    <constraint firstAttribute="bottom" secondItem="OoD-4U-p7A" secondAttribute="bottom" constant="-1" id="hSt-ru-ZCe"/>
                                     <constraint firstItem="vbC-YZ-hbL" firstAttribute="top" secondItem="eal-VG-qUY" secondAttribute="bottom" id="hb5-bq-0jr"/>
                                     <constraint firstItem="eal-VG-qUY" firstAttribute="width" secondItem="cvl-QP-FsC" secondAttribute="width" id="s8j-Wf-v8l"/>
                                     <constraint firstAttribute="trailing" secondItem="vbC-YZ-hbL" secondAttribute="trailing" id="x9P-EI-pkI"/>
@@ -1186,7 +1186,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 등록된 이메일 입니다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpU-hS-JjP">
-                                <rect key="frame" x="55" y="110" width="343" height="21"/>
+                                <rect key="frame" x="16" y="110" width="382" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1211,9 +1211,9 @@
                             <constraint firstItem="Ar2-a3-wVS" firstAttribute="leading" secondItem="0QJ-ZS-W5h" secondAttribute="leading" constant="16" id="S7p-E0-Qvf"/>
                             <constraint firstItem="0QJ-ZS-W5h" firstAttribute="trailing" secondItem="lIo-hx-sPb" secondAttribute="trailing" constant="16" id="SGG-UA-cRF"/>
                             <constraint firstItem="seM-lk-bhT" firstAttribute="leading" secondItem="0QJ-ZS-W5h" secondAttribute="leading" constant="16" id="Wiq-iu-HHW"/>
+                            <constraint firstItem="DpU-hS-JjP" firstAttribute="leading" secondItem="seM-lk-bhT" secondAttribute="leading" id="Y5H-pI-W2H"/>
                             <constraint firstItem="m1L-vf-kot" firstAttribute="top" secondItem="7NM-bw-Xgv" secondAttribute="bottom" constant="1" id="Z13-vX-uAt"/>
                             <constraint firstItem="m1L-vf-kot" firstAttribute="top" secondItem="7NM-bw-Xgv" secondAttribute="bottom" constant="1" id="afp-OM-Lln"/>
-                            <constraint firstItem="DpU-hS-JjP" firstAttribute="leading" secondItem="7NM-bw-Xgv" secondAttribute="trailing" constant="-343" id="azF-2v-elk"/>
                             <constraint firstItem="7NM-bw-Xgv" firstAttribute="top" secondItem="seM-lk-bhT" secondAttribute="bottom" constant="43" id="caX-Qm-HJP"/>
                             <constraint firstItem="09U-5m-Smi" firstAttribute="top" secondItem="Kiq-Rg-VSj" secondAttribute="bottom" constant="38" id="d8s-vn-pt6"/>
                             <constraint firstItem="0QJ-ZS-W5h" firstAttribute="trailing" secondItem="Ar2-a3-wVS" secondAttribute="trailing" constant="16" id="k4b-pN-qzA"/>

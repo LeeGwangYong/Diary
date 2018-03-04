@@ -53,7 +53,6 @@ class MainViewController: ViewController {
         
         self.tableViewHeightConstraint.constant = viewHeight - (96 + 72)
         self.parentScrollView.contentSize = CGSize(width: self.view.frame.width, height: 200 + 72 + self.tableViewHeightConstraint.constant)
-        
     }
     
     override func setViewController() {

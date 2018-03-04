@@ -65,6 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case self.emailField:
+            
             self.passwordField.becomeFirstResponder()
         case self.passwordField:
             self.loginButtonClicked(sender: self.loginButton)
