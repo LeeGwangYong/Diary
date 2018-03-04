@@ -387,5 +387,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Diary/ViewController/Main/MainViewController.swift"
+            timestampString = "541842490.0764461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Diary/ViewController/Main/MainViewController.swift"
+            timestampString = "541842490.076534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Diary.MainViewController.scrollViewDidScroll(__ObjC.UIScrollView) -&gt; ()"
+                  moduleName = "Diary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/PROJECT/%E1%84%84%E1%85%AE%E1%86%BC%E1%84%88%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%B4%20%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%80%E1%85%B5/Diary/Diary/ViewController/Main/MainViewController.swift"
+                  timestampString = "541831805.191901"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "190"
+                  endingLineNumber = "190"
+                  offsetFromSymbolStart = "4112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Diary.MainViewController.scrollViewDidScroll(__ObjC.UIScrollView) -&gt; ()"
+                  moduleName = "Diary"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/igwang-yong/PROJECT/%E1%84%84%E1%85%AE%E1%86%BC%E1%84%88%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B5%E1%84%8B%E1%85%B4%20%E1%84%8B%E1%85%B5%E1%86%AF%E1%84%80%E1%85%B5/Diary/Diary/ViewController/Main/MainViewController.swift"
+                  timestampString = "541831805.194482"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
