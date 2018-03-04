@@ -10,6 +10,15 @@ import UIKit
 
 class CustomTabBarController: UITabBarController, UINavigationControllerDelegate {
     
+    var bottomInset: CGFloat {
+        if #available(iOS 11.0, *) {
+            if let inset = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+                return inset
+            }
+        }
+        return 0
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Sets the default color of the icon of the selected UITabBarItem and Title
@@ -19,40 +28,19 @@ class CustomTabBarController: UITabBarController, UINavigationControllerDelegate
         if #available(iOS 10.0, *) {
             UITabBar.appearance().unselectedItemTintColor = UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1)
         } else {
+            
             // Fallback on earlier versions
         }
         // Sets the background color of the selected UITabBarItem (using and plain colored UIImage with the width = 1/5 of the tabBar (if you have 5 items) and the height of the tabBar)
-
-        print(self.bottomLayoutGuide.heightAnchor)
-        print(self.bottomLayoutGuide.bottomAnchor)
-    
-        if #available(iOS 11.0, *) {
-            self.tabBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        } else {
-            // Fallback on earlier versions
-        }
         
-        print(tabBar.frame.height)
-
-        UITabBar.appearance().selectionIndicatorImage =
-            UIImage.imageWithColor(color: UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1),
-                                   size: CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height + 35))
-        
-
-    }
-    
-}
-
-extension UIImage
-{
-    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage
-    {
-        let rect: CGRect = CGRect(x: 0, y: -35, width: size.width, height: size.height)
+        let size = CGSize(width: tabBar.frame.width/3, height: tabBar.frame.height +  bottomInset)
+        let rect: CGRect = CGRect(x: 0, y: -self.bottomInset, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
+        UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1).setFill()
         UIRectFill(rect)
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        return image
+        UITabBar.appearance().selectionIndicatorImage = image
     }
 }
+
