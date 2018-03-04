@@ -45,10 +45,6 @@ class VerifyEmailViewController: ViewController {
         self.view.layoutIfNeeded()
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-       
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +63,6 @@ class VerifyEmailViewController: ViewController {
             field.maxLength = 1
             field.delegate = self
             field.deletableDelegate = self
-            field.keyboardType = .numberPad
             field.textAlignment = NSTextAlignment.center
         }
         self.codeTextField1.becomeFirstResponder()
@@ -80,18 +75,21 @@ class VerifyEmailViewController: ViewController {
         
     }
     @objc func drawCompleteButton(){
-        completeButton.layer.cornerRadius = 4
-        completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+        completeButton.setTitleColor(UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0), for: .disabled)
+        completeButton.setBackgroundImage(UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0).createImageView(), for: .disabled)
+        
+        completeButton.setTitleColor(UIColor.white, for: .normal)
+        completeButton.setBackgroundImage(UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0).createImageView(), for: .normal)
+        completeButton.makeRoundedView(corners: [.allCorners], radius: 4)
+        
         completeButton.isEnabled = false
-        self.view.addSubview(completeButton)
     }
     
     func authCodeSetup() {
-        codeTextField1.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        codeTextField2.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        codeTextField3.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        codeTextField4.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-     
+        for field in self.codeTextFields {
+            field.addBorderBottom(height: 2.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+            field.keyboardType = .numberPad
+        }
     }
 
     @objc func completeButtonClicked() {
@@ -177,12 +175,14 @@ extension VerifyEmailViewController: DeletableTextFieldDelegate, UITextFieldDele
                     textField.resignFirstResponder()
                     self.codeTextFields[textField.tag + 1].becomeFirstResponder()
                     self.codeTextFields[textField.tag + 1].text = string
-                    completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
-                    completeButton.isEnabled = false
-                    if code.count == 4 {
-                        completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
+                    
+                    if code.count < 4 {
+                        completeButton.isEnabled = false
+                    }
+                    else if code.count == 4 {
                         completeButton.isEnabled = true
                     }
+                    
                 case self.codeTextField4:
                     
                     if code.count == 4 {
@@ -199,11 +199,16 @@ extension VerifyEmailViewController: DeletableTextFieldDelegate, UITextFieldDele
     }
     
     func textFieldDidSelectDeleteButton(_ textField: UITextField) {
+        if code.count < 4 {
+            completeButton.isEnabled = false
+        }
+            
+        else if code.count == 4 {
+            completeButton.isEnabled = true
+        }
         switch textField {
         case self.codeTextField2, self.codeTextField3, self.codeTextField4:
             self.codeTextFields[textField.tag - 1].becomeFirstResponder()
-        case self.codeTextField1 :
-            self.codeTextField4.becomeFirstResponder()
         default:
             break
         }
