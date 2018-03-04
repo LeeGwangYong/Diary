@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         setPlaceholderColor()
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         
-        //passCodeView()
+        passCodeView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +54,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         paddingTextField(textField: self.emailField)
         paddingTextField(textField: self.passwordField)
     }
-    
+    func passCodeView() {
+        let switchValue = UserDefaults.standard.bool(forKey: "lockSwitch")
+        if switchValue {
+            let passCodeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
+            UIApplication.topViewController()?.present(passCodeVC, animated: true, completion: nil)
+        }
+    }
     func paddingTextField(textField: UITextField) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftView = paddingView
@@ -82,7 +88,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     "email" : UserDefaults.standard.string(forKey: "email") ?? emailField.text!,
                     "password" : UserDefaults.standard.string(forKey: "password") ?? passwordField.text!
                 ]
-                print(param)
                 SignService.getSignData(url: "signin", parameter: param) { (result) in
                     switch result {
                     case .Success(let response):

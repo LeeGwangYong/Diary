@@ -22,12 +22,7 @@ class AccountViewController: UIViewController {
     var nickname = UserDefaults.standard.string(forKey: "nickname")!
     var isCalling = false
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setTextLabel()
-        emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-        passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
-    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setTextLabel()

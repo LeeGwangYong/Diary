@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UINavigationBar.appearance().tintColor = UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0)
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), for:UIBarMetrics.default)
-        
+       
         return true
     }
 

@@ -19,13 +19,13 @@ class UpdateAppPasswordViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var questionLabel: UILabel!
  
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setLabel()
         passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         self.view.layoutIfNeeded()
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNextButton()
