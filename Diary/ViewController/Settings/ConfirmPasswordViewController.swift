@@ -13,16 +13,15 @@ class ConfirmPasswordViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setTextLabel()
         customLoginButton()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
+    
     func setTextLabel() {
         let text = "비밀번호가\n변경되었습니다"
         questionLabel.text = text

@@ -23,11 +23,9 @@ class ExistingPasswordViewController: UIViewController {
         super.viewDidLayoutSubviews()
         setLabel()
         self.view.layoutIfNeeded()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNextButton()

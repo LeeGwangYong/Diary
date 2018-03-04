@@ -20,6 +20,7 @@ class SettingsTableViewController: UITableViewController {
         self.logout.addTarget(self, action: #selector(logoutClicked), for: .touchUpInside)
         self.passwordLockSwitch.setOn(UserDefaults.standard.bool(forKey: "lockSwitch"), animated: false)
         self.passwordLockSwitch.addTarget(self, action: #selector(self.switchValueDidChange(sender:)), for: .valueChanged)
+        tableView.isScrollEnabled = false
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -46,6 +47,7 @@ class SettingsTableViewController: UITableViewController {
             let domain = Bundle.main.bundleIdentifier!
             UserDefaults.standard.removePersistentDomain(forName: domain)
             let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialNavigationController")
+            Capsule.removeAll()
             UIApplication.shared.keyWindow?.rootViewController = nextVC
         }))
         

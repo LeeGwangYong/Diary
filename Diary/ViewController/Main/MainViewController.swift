@@ -43,26 +43,12 @@ class MainViewController: ViewController {
         self.setViewController()
         self.setUpTableView()
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> dev_GwangYong
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.fetchCapsuleList()
         self.transparentNavigationBar()
-<<<<<<< HEAD
-        self.blinkingView.alpha = 0.2
-        self.inputNavigateView.createGradientLayer()
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       options: [.curveLinear, .repeat, .autoreverse],
-                       animations: {self.blinkingView.alpha = 1.0},
-                       completion: nil)
-        self.view.layoutIfNeeded()
-    }
-       
-=======
+
         self.view.createGradientLayer()
         
         self.tableViewHeightConstraint.constant = viewHeight - (96 + 72)
@@ -70,7 +56,6 @@ class MainViewController: ViewController {
         
     }
     
->>>>>>> dev_GwangYong
     override func setViewController() {
         self.inputNavigateView.isUserInteractionEnabled = true
         self.inputNavigateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateInputViewController)))
