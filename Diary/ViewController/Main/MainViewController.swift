@@ -185,12 +185,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     // change parent scrollView contentOffset y which is equal to minimum between maximum y offset that parent scrollView can have and sum of parentScrollView's content's y offset and child's y content offset. Because, we don't want parent scrollView go above sticked menu.
                     // Scroll parent scrollview upwards as much as child scrollView is scrolled
                     // Sometimes parent scrollView goes in the middle of screen and stucks there so max is used.
-                    
                     let maxValue = max(min(parentScrollView.contentOffset.y + childScrollView.contentOffset.y, parentViewMaxContentYOffset), 0)
                     print("parentScrollView.contentOffset.y \(parentScrollView.contentOffset.y)")
                     print("maxValue \(maxValue)")
                     self.parentScrollView.contentOffset.y = maxValue
                     print("maxValued parentScrollView.contentOffset.y \(parentScrollView.contentOffset.y)\n")
+                    
                     if self.parentScrollView.contentOffset.y >= parentViewMaxContentYOffset {
                         UIView.animate(withDuration: 1, animations: {
                             self.dateLabel.alpha = 0
