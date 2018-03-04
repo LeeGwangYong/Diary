@@ -12,15 +12,23 @@ import RealmSwift
 
 class MainViewController: ViewController {
     //MARK -: Property
-    @IBOutlet weak var parentScrollView: UIScrollView!
     @IBOutlet weak var blinkingView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var inputNavigateView: UIView!
     @IBOutlet weak var capsuleTableView: UITableView!
     @IBOutlet weak var capsuleCountLabel: UILabel!
+    @IBOutlet weak var stackViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    lazy var viewHeight = self.view.frame.height -  self.topLayoutGuide.length - self.bottomLayoutGuide.length
+    @IBOutlet weak var parentScrollView: UIScrollView!
+    var childScrollView: UIScrollView {
+        return capsuleTableView
+    }
+    var goingUp: Bool?
+    var childScrollingDownDueToParent = false
+    
+    
     private var token: NotificationToken!
     func date(hour: Int)-> Date {
         let components = Calendar.current.dateComponents([.year, .month, .day], from: Date())
@@ -36,35 +44,39 @@ class MainViewController: ViewController {
         self.setUpTableView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         self.fetchCapsuleList()
         self.transparentNavigationBar()
-        self.blinkingView.alpha = 0.2
-        self.inputNavigateView.createGradientLayer()
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       options: [.curveLinear, .repeat, .autoreverse],
-                       animations: {self.blinkingView.alpha = 1.0},
-                       completion: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        self.view.createGradientLayer()
+        
+        self.tableViewHeightConstraint.constant = viewHeight - (96 + 72)
+        self.parentScrollView.contentSize = CGSize(width: self.view.frame.width, height: 200 + 72 + self.tableViewHeightConstraint.constant)
         
     }
     
     override func setViewController() {
         self.inputNavigateView.isUserInteractionEnabled = true
-        self.capsuleTableView.setUp(target: self, cell: CapsuleTableViewCell.self)
         self.inputNavigateView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateInputViewController)))
+        
+        self.parentScrollView.delegate = self
+        self.parentScrollView.showsVerticalScrollIndicator = false
+        self.parentScrollView.bounces = false
+        
+        self.capsuleTableView.showsVerticalScrollIndicator = false
+//        self.capsuleTableView.bounces = false
+        self.capsuleTableView.setUp(target: self, cell: CapsuleTableViewCell.self)
+        
         var currentDateString = "\(Date().dateToStringYMD())의 기억"
         currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6))
         self.dateLabel.text = currentDateString
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        
-        self.capsuleTableView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height - (95 + 72))
-        self.parentScrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 97 + 72)
+        self.blinkingView.alpha = 0.2
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       options: [.curveLinear, .repeat, .autoreverse],
+                       animations: {self.blinkingView.alpha = 1.0},
+                       completion: nil)
     }
     
     func setUpTableView() {
@@ -151,22 +163,87 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offset = scrollView.contentOffset.y * 2
-//        print(offset)
-//        UIView.animate(withDuration: 0.001) {
-//            if offset <= 60 {
-//                self.topConstraint.constant =  30 - offset
-//                self.bottomConstraint.constant = 80 - offset
-//                self.dateLabel.alpha = (60 - offset) / 60
-//            }
-//            else if offset > 60 {
-//                self.topConstraint.constant = -30
-//                self.bottomConstraint.constant = 20
-//                self.dateLabel.alpha = 0
-//            }
-//            self.view.layoutIfNeeded()
-//        }
-//        
-//    }
+    func uiUpdate(value: CGFloat, max: CGFloat) {
+        self.dateLabel.alpha = 1 - value / max
+        self.stackViewBottomConstraint.constant = 76 - ( value / max * 56 )
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // determining whether scrollview is scrolling up or down
+        goingUp = scrollView.panGestureRecognizer.translation(in: scrollView).y < 0
+        
+        // maximum contentOffset y that parent scrollView can have
+        let parentViewMaxContentYOffset = parentScrollView.contentSize.height - parentScrollView.frame.height
+        
+        switch goingUp! {
+            // if scrollView is going upwards
+        case true:
+            switch scrollView {
+            case childScrollView:
+                // if parent scroll view is't scrolled maximum (i.e. menu isn't sticked on top yet)
+                if parentScrollView.contentOffset.y < parentViewMaxContentYOffset && !childScrollingDownDueToParent {
+                    // change parent scrollView contentOffset y which is equal to minimum between maximum y offset that parent scrollView can have and sum of parentScrollView's content's y offset and child's y content offset. Because, we don't want parent scrollView go above sticked menu.
+                    // Scroll parent scrollview upwards as much as child scrollView is scrolled
+                    // Sometimes parent scrollView goes in the middle of screen and stucks there so max is used.
+                    
+                    let maxValue = max(min(parentScrollView.contentOffset.y + childScrollView.contentOffset.y, parentViewMaxContentYOffset), 0)
+                    print("parentScrollView.contentOffset.y \(parentScrollView.contentOffset.y)")
+                    print("maxValue \(maxValue)")
+                    self.parentScrollView.contentOffset.y = maxValue
+                    print("maxValued parentScrollView.contentOffset.y \(parentScrollView.contentOffset.y)\n")
+                    if self.parentScrollView.contentOffset.y >= parentViewMaxContentYOffset {
+                        UIView.animate(withDuration: 1, animations: {
+                            self.dateLabel.alpha = 0
+                            self.stackViewBottomConstraint.constant = 20
+                        })
+                    }
+                    
+                    else {
+                        uiUpdate(value: maxValue, max: parentViewMaxContentYOffset)
+                    }
+                    
+                    // change child scrollView's content's y offset to 0 because we are scrolling parent scrollView instead with same content offset change.
+                    childScrollView.contentOffset.y = 0
+                }
+            case parentScrollView:
+                uiUpdate(value: self.parentScrollView.contentOffset.y, max: parentViewMaxContentYOffset)
+            default: break
+            }
+            
+            // Scrollview is going downwards
+        case false:
+            switch scrollView {
+            case childScrollView :
+                // when child view scrolls down. if childScrollView is scrolled to y offset 0 (child scrollView is completely scrolled down) then scroll parent scrollview instead
+                // if childScrollView's content's y offset is less than 0 and parent's content's y offset is greater than 0
+                if childScrollView.contentOffset.y < 0 && parentScrollView.contentOffset.y > 0 {
+                    // set parent scrollView's content's y offset to be the maximum between 0 and difference of parentScrollView's content's y offset and absolute value of childScrollView's content's y offset
+                    // we don't want parent to scroll more that 0 i.e. more downwards so we use max of 0.
+                    
+                    parentScrollView.contentOffset.y = max(parentScrollView.contentOffset.y - abs(childScrollView.contentOffset.y), 0)
+                    uiUpdate(value: self.parentScrollView.contentOffset.y, max: parentViewMaxContentYOffset)
+                }
+                
+                // if downward scrolling view is parent scrollView
+            case parentScrollView:
+                // if child scrollView's content's y offset is greater than 0. i.e. child is scrolled up and content is hiding up
+                // and parent scrollView's content's y offset is less than parentView's maximum y offset
+                // i.e. if child view's content is hiding up and parent scrollView is scrolled down than we need to scroll content of childScrollView first
+                if childScrollView.contentOffset.y > 0 && parentScrollView.contentOffset.y < parentViewMaxContentYOffset {
+                    // set if scrolling is due to parent scrolled
+                    childScrollingDownDueToParent = true
+                    // assign the scrolled offset of parent to child not exceding the offset 0 for child scroll view
+                    childScrollView.contentOffset.y = max(childScrollView.contentOffset.y - (parentViewMaxContentYOffset - parentScrollView.contentOffset.y), 0)
+
+                    // stick parent view to top coz it's scrolled offset is assigned to child
+                    parentScrollView.contentOffset.y = parentViewMaxContentYOffset
+                    childScrollingDownDueToParent = false
+                }
+                else {
+                    uiUpdate(value: self.parentScrollView.contentOffset.y, max: parentViewMaxContentYOffset)
+                }
+            default: break
+            }
+        }
+    }
 }

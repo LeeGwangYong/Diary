@@ -65,7 +65,6 @@ enum DivisionOfTheYear: EnumCollection {
         case .random:
             return customCalendar.date(byAdding: .day, value: Int(arc4random_uniform(365) + 1) , to: Date())
         }
-        print(customCalendar.date(from: dateComponents) ?? Date())
         return customCalendar.date(from: dateComponents) ?? Date()
         
     }
