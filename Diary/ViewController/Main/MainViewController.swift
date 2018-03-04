@@ -35,9 +35,8 @@ class MainViewController: ViewController {
         self.setViewController()
         self.setUpTableView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         self.fetchCapsuleList()
         self.transparentNavigationBar()
         self.blinkingView.alpha = 0.2
@@ -47,13 +46,9 @@ class MainViewController: ViewController {
                        options: [.curveLinear, .repeat, .autoreverse],
                        animations: {self.blinkingView.alpha = 1.0},
                        completion: nil)
+        self.view.layoutIfNeeded()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
+       
     override func setViewController() {
         self.inputNavigateView.isUserInteractionEnabled = true
         self.capsuleTableView.setUp(target: self, cell: CapsuleTableViewCell.self)

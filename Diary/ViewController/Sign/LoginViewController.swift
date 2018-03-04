@@ -18,6 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.emailField.becomeFirstResponder()
         self.emailField.delegate = self
         self.passwordField.delegate = self
         
@@ -36,6 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.imageBottomView.makeRoundedView(corners: [.allCorners], radius: 5)
         self.emailField.becomeFirstResponder()
     }
+<<<<<<< HEAD
     
     override func viewDidAppear(_ animated: Bool) {
         autoLogin()
@@ -44,6 +46,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+=======
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        autoLogin()
+        self.view.layoutIfNeeded()
+>>>>>>> 354f994ab41c83903798a4f42fb53f2065d15e22
     }
     
     func setPlaceholderColor() {
@@ -55,7 +63,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         paddingTextField(textField: self.emailField)
         paddingTextField(textField: self.passwordField)
     }
-    
+    func passCodeView() {
+        let switchValue = UserDefaults.standard.bool(forKey: "lockSwitch")
+        if switchValue {
+            let passCodeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
+            UIApplication.topViewController()?.present(passCodeVC, animated: true, completion: nil)
+        }
+    }
     func paddingTextField(textField: UITextField) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: textField.frame.height))
         textField.leftView = paddingView
@@ -75,9 +89,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+<<<<<<< HEAD
     
     
     
+=======
+ 
+>>>>>>> 354f994ab41c83903798a4f42fb53f2065d15e22
     func autoLogin() {
         if UserDefaults.standard.string(forKey: "email") != nil {
             if UserDefaults.standard.string(forKey: "password") != nil {
@@ -85,7 +103,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     "email" : UserDefaults.standard.string(forKey: "email") ?? emailField.text!,
                     "password" : UserDefaults.standard.string(forKey: "password") ?? passwordField.text!
                 ]
-                print(param)
                 SignService.getSignData(url: "signin", parameter: param) { (result) in
                     switch result {
                     case .Success(let response):

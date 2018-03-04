@@ -19,7 +19,6 @@ class CompletionViewController: UIViewController {
     var titleString: String?
     var subTitleText: String?
     var delegate: ViewController?
-    let pulseLayer = CAShapeLayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +33,6 @@ class CompletionViewController: UIViewController {
         
     }
     
-    private func animatePulsatingLayer() {
-        let animation = CABasicAnimation(keyPath: "transform.scale")
-        animation.toValue = 1.4
-        animation.duration = 0.8
-        animation.autoreverses = true
-        animation.repeatCount = Float.infinity
-        
-        self.pulseLayer.add(animation, forKey: "pulsing")
-    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -64,13 +54,5 @@ class CompletionViewController: UIViewController {
         view.addSubview(animationView!)
         animationView?.play()
         
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 20,
-                                        startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-        pulseLayer.path = circularPath.cgPath
-        pulseLayer.fillColor = UIColor.white.cgColor
-        pulseLayer.position = view.center
-        pulseLayer.lineWidth = 7
-        view.layer.addSublayer(pulseLayer)
-        animatePulsatingLayer()
     }
 }

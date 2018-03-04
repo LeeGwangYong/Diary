@@ -22,13 +22,14 @@ class AccountViewController: UIViewController {
     var nickname = UserDefaults.standard.string(forKey: "nickname")!
     var isCalling = false
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setTextLabel()
         emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         passwordField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
+        self.view.layoutIfNeeded()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.passwordAlertLabel.isHidden = true
@@ -36,7 +37,6 @@ class AccountViewController: UIViewController {
         completeButton.layer.cornerRadius = 4
         completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
         completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
-        
         
         self.emailField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
         self.passwordField.addTarget(self, action: #selector(drawCompleteButton), for: UIControlEvents.editingChanged)
@@ -50,44 +50,40 @@ class AccountViewController: UIViewController {
         
     }
     @objc func drawCompleteButton() {
-        if checkEmailField() {
-            if checkPasswordField() {
-                completeButton.setTitleColor(UIColor.white, for: .normal)
-                completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
-                
-                completeButton.addTarget(self, action: #selector(compelteButtonClicked), for: .touchUpInside)
-            }
-        } else {
-            if checkPasswordField() {
-            }
+        if (emailField.text?.isEmpty)! || (passwordField.text?.isEmpty)! {
             completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
             completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+            completeButton.isEnabled = false
+        } else {
+            if validateEmail(enteredEmail: emailField.text!) {
+                if passwordField.text!.count >= 8   {
+                    passwordAlertLabel.isHidden = true
+                    completeButton.setTitleColor(UIColor.white, for: .normal)
+                    completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
+                    completeButton.addTarget(self, action: #selector(compelteButtonClicked), for: .touchUpInside)
+                    completeButton.isEnabled = true
+                } else {
+                    completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
+                    completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+                    passwordAlertLabel.isHidden = false
+                    completeButton.isEnabled = false
+                }
+            } else {
+                if passwordField.text!.count >= 8   {
+                    passwordAlertLabel.isHidden = true
+                    completeButton.isEnabled = false
+                    completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
+                    completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+                } else {
+                    completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
+                    completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+                    passwordAlertLabel.isHidden = false
+                }
+            }
         }
         self.view.addSubview(completeButton)
     }
-    func checkEmailField() -> Bool {
-        if (emailField.text?.isEmpty)! {
-            return false
-        }
-        if validateEmail(enteredEmail: emailField.text!) {
-            return true
-        } else {
-            return false
-        }
-        
-    }
-    func checkPasswordField() -> Bool {
-        if (passwordField.text?.isEmpty)! {
-            return false
-        }
-        if passwordField.text!.count >= 8  {
-            passwordAlertLabel.isHidden = true
-            return true
-        } else {
-            passwordAlertLabel.isHidden = false
-            return false
-        }
-    }
+    
     @objc func signUp() {
         self.indicatorView.startAnimating()
         let param: Parameters = [
@@ -128,7 +124,6 @@ class AccountViewController: UIViewController {
     }
     @objc func compelteButtonClicked() {
         signUp()
-        //performSegue(withIdentifier: "AuthCode", sender: self)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

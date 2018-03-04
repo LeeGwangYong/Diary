@@ -18,10 +18,11 @@ class ExistingPasswordViewController: UIViewController {
     @IBOutlet weak var passwordAlertLabel: UILabel!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var questionLabel: UILabel!
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         setLabel()
+        self.view.layoutIfNeeded()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

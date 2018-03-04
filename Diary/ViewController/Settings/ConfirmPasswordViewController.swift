@@ -18,6 +18,7 @@ class ConfirmPasswordViewController: UIViewController {
         setTextLabel()
         customLoginButton()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
