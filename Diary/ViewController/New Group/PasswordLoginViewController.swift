@@ -8,17 +8,32 @@
 
 import UIKit
 import SmileLock
+import SwiftyJSON
+
+enum Password {
+    case validate, input
+    
+    var description: String? {
+        switch self {
+        case .validate: return "암호를 입력하세요"
+        case .input: return "새 비밀번호를 입력하세요"
+        }
+    }
+}
 
 class PasswordLoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var passwordStackView: UIStackView!
-    //MARK: Property
+    var passwordType: Password = .validate
+    var lock: Bool? = false
+    var delegate: SettingsTableViewController?
+    
     var passwordContainerView: PasswordContainerView!
     let kPasswordDigit = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //create PasswordContainerView
         passwordContainerView = PasswordContainerView.create(in: passwordStackView, digit: kPasswordDigit)
         passwordContainerView.delegate = self
@@ -27,15 +42,55 @@ class PasswordLoginViewController: UIViewController {
         //customize password UI
         passwordContainerView.tintColor = UIColor.color(.textColor)
         passwordContainerView.highlightedColor = UIColor.color(.purple)
+        
+        titleLabel.text = self.passwordType.description
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if passwordType == .input {
+            self.delegate?.response(isOn: UserDefaults.standard.bool(forKey: "lockSwitch"))
+        }
+    }
+    
+    func updatePassword(code: String) {
+        let param: [String: Any] = [
+            "idx" : UserDefaults.standard.string(forKey: "userIdx"),
+            "lockNumber" : code
+        ]
+        SignService.getSignData(url: "updatelocknum", parameter: param) { (result) in
+            switch result {
+            case .Success(let response):
+                let data = response
+                let dataJSON = JSON(data)
+                print(dataJSON)
+                if dataJSON["code"] == "0000" {
+                    UserDefaults.standard.set(self.delegate?.passwordLockSwitch.isOn, forKey: "lockSwitch")
+                    UserDefaults.standard.set(code, forKey: "lockPassword")
+                    self.navigationController?.popViewController(animated: true)
+                } else if dataJSON["code"] == "0014"{
+                    self.view.makeToast("잠금비밀번호 업데이트 오류입니다.")
+                }
+            case .Failure(let failureCode):
+                print("Resend Email In Failure : \(failureCode)")
+            }
+        }
     }
 }
 
 extension PasswordLoginViewController: PasswordInputCompleteProtocol {
     func passwordInputComplete(_ passwordContainerView: PasswordContainerView, input: String) {
-        if validation(input) {
-            validationSuccess()
-        } else {
-            validationFail()
+        
+        switch passwordType {
+        case .validate:
+            switch validation(input) {
+            case true:
+                validationSuccess()
+            case false:
+                validationFail()
+            }
+        case .input:
+            updatePassword(code: input)
         }
     }
     
@@ -58,7 +113,7 @@ private extension PasswordLoginViewController {
     
     func validationSuccess() {
         print("*️⃣ success!")
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     func validationFail() {

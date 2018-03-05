@@ -14,11 +14,6 @@ protocol UpdateAppPasswordViewControllerDelegate {
 }
 
 class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewControllerDelegate {
-    func response(isOn: Bool) {
-        self.passwordLockSwitch.isOn = isOn
-    }
-    
-
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var passwordLockSwitch: UISwitch!
     @IBOutlet weak var logout: UIButton!
@@ -33,6 +28,7 @@ class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewC
         super.viewDidLayoutSubviews()
         settingLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
     }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
@@ -68,12 +64,17 @@ class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewC
         return allowedCharacters.isSuperset(of: characterSet)
     }
     
+    func response(isOn: Bool) {
+        self.passwordLockSwitch.setOn(isOn, animated: true)
+    }
+    
     @objc func switchValueDidChange(sender: UISwitch!) {
         print(sender.isOn)
         if sender.isOn {
             if UserDefaults.standard.string(forKey: "lockPassword") == nil {
                 self.view.makeToast("잠금 비밀번호 변경을 통해 비밀번호를 설정해주세요")
-                let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdateAppPasswordViewController.reuseIdentifier) as! UpdateAppPasswordViewController
+                let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
+                nextVC.passwordType = .input
                 nextVC.delegate = self
                 self.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(nextVC, animated: true)
@@ -90,8 +91,9 @@ class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewC
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath {
         case IndexPath(row: 1, section: 1):
-            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: UpdateAppPasswordViewController.reuseIdentifier) as! UpdateAppPasswordViewController
+            let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
             nextVC.delegate = self
+            nextVC.passwordType = .input
             self.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(nextVC, animated: true)
             self.hidesBottomBarWhenPushed = false

@@ -67,7 +67,6 @@ class UpdateAppPasswordViewController: UIViewController {
     }
     
     @objc func completeButtonClicked() {
-        UserDefaults.standard.set(passwordField.text, forKey: "lockPassword")
         updatePassword()
     }
     

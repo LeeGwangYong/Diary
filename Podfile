@@ -14,8 +14,7 @@ pod 'RealmSwift'
 pod 'JTAppleCalendar'
 pod 'UITextView+Placeholder'
 pod 'Toast-Swift'
-pod 'Hero'
 pod 'lottie-ios'
   # Pods for Diary
-
+  
 end

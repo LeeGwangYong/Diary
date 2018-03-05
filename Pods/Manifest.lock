@@ -20,7 +20,6 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
-  - Hero (1.0.1)
   - JTAppleCalendar (7.1.5)
   - lottie-ios (2.5.0)
   - nanopb (0.3.8):
@@ -43,7 +42,6 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
   - Firebase
-  - Hero
   - JTAppleCalendar
   - lottie-ios
   - ObjectMapper
@@ -61,7 +59,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
-  Hero: cee286821578e170d8c0c9c9cda7897357401112
   JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
   lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -73,6 +70,6 @@ SPEC CHECKSUMS:
   Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 210385a55d7974566aed75bee4a6e428cb700329
+PODFILE CHECKSUM: 65b63f22e8d15dbe616fb689917f903fd140edbf
 
 COCOAPODS: 1.4.0

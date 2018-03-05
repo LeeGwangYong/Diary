@@ -19,6 +19,7 @@ class MainViewController: ViewController {
     @IBOutlet weak var capsuleCountLabel: UILabel!
     @IBOutlet weak var stackViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundView: UIView!
     
     lazy var viewHeight = self.view.frame.height -  self.topLayoutGuide.length - self.bottomLayoutGuide.length
     @IBOutlet weak var parentScrollView: UIScrollView!
@@ -46,6 +47,12 @@ class MainViewController: ViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.blinkingView.alpha = 0.2
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       options: [.curveLinear, .repeat, .autoreverse],
+                       animations: {self.blinkingView.alpha = 1.0},
+                       completion: nil)
         UIApplication.shared.statusBarStyle = .lightContent
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,11 +64,9 @@ class MainViewController: ViewController {
         super.viewDidLayoutSubviews()
         self.fetchCapsuleList()
         self.transparentNavigationBar()
-
-        self.view.createGradientLayer()
-        
+        self.backgroundView.createGradientLayer()
         self.tableViewHeightConstraint.constant = viewHeight - (96 + 72)
-        self.parentScrollView.contentSize = CGSize(width: self.view.frame.width, height: 200 + 72 + self.tableViewHeightConstraint.constant)
+        self.parentScrollView.contentSize = CGSize(width: self.view.frame.width, height: 200 + 72 + self.tableViewHeightConstraint.constant - 5)
     }
     
     override func setViewController() {
@@ -80,12 +85,6 @@ class MainViewController: ViewController {
         currentDateString.insert("\n", at: currentDateString.index(currentDateString.startIndex, offsetBy: 6))
         self.dateLabel.text = currentDateString
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        self.blinkingView.alpha = 0.2
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       options: [.curveLinear, .repeat, .autoreverse],
-                       animations: {self.blinkingView.alpha = 1.0},
-                       completion: nil)
     }
     
     func setUpTableView() {
@@ -206,11 +205,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                             self.stackViewBottomConstraint.constant = 20
                         })
                     }
-                    
                     else {
                         uiUpdate(value: maxValue, max: parentViewMaxContentYOffset)
                     }
-                    
                     // change child scrollView's content's y offset to 0 because we are scrolling parent scrollView instead with same content offset change.
                     childScrollView.contentOffset.y = 0
                 }

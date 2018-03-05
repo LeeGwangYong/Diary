@@ -41,10 +41,15 @@ class CompletionViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.view.createGradientLayer()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
-        self.view.createGradientLayer()
+        
         let animationView: LOTAnimationView? = LOTAnimationView(name: "electric.json")
         animationView?.frame = self.view.frame
         animationView?.center = self.view.center
@@ -56,11 +61,11 @@ class CompletionViewController: UIViewController {
         imageView.center = self.view.center
         imageView.image = #imageLiteral(resourceName: "innerCircle")
         self.view.addSubview(imageView)
-        
         UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse],
-                                   animations: {
-                                    self.imageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                       animations: {
+                        self.imageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }, completion: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

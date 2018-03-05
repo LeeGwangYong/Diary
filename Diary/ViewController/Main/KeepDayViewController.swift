@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import Toast_Swift
-import Hero
 
 
 class KeepDayCell: UITableViewCell {
