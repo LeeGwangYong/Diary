@@ -31,6 +31,7 @@
 		FC18F2E6200E03B90087E3A8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E5200E03B90087E3A8 /* APIService.swift */; };
 		FC18F2E8200E04110087E3A8 /* NetworkStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */; };
 		FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC18F2E9200E04BD0087E3A8 /* SignService.swift */; };
+		FC19D2E2204CBCC500D62E45 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC19D2E1204CBCC500D62E45 /* CustomButton.swift */; };
 		FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC210236202F12B300B3FFDD /* InputViewController.swift */; };
 		FC2167B820415AEA00D478BC /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2167B720415AEA00D478BC /* MemoryViewController.swift */; };
 		FC3F243220363E400062222F /* KeepDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC3F243120363E400062222F /* KeepDayViewController.swift */; };
@@ -87,6 +88,7 @@
 		FC18F2E5200E03B90087E3A8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		FC18F2E7200E04110087E3A8 /* NetworkStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatus.swift; sourceTree = "<group>"; };
 		FC18F2E9200E04BD0087E3A8 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
+		FC19D2E1204CBCC500D62E45 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FC210236202F12B300B3FFDD /* InputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 		FC2167B720415AEA00D478BC /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		FC3F243120363E400062222F /* KeepDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepDayViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC3CC8D200ED51900AD0019 /* Cell */,
+				FC19D2E1204CBCC500D62E45 /* CustomButton.swift */,
 			);
 			path = Xib;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				FC4930D1203DD988002CCD30 /* CapsuleService.swift in Sources */,
 				FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */,
 				FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */,
+				FC19D2E2204CBCC500D62E45 /* CustomButton.swift in Sources */,
 				9EBB5C2F204456B800BCCB29 /* UpdatePasswordViewController.swift in Sources */,
 				9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */,
 				9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */,

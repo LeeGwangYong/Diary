@@ -11,7 +11,7 @@ class UserNameViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: CustomButton!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
 
@@ -26,7 +26,9 @@ class UserNameViewController: UIViewController {
         super.viewDidLoad()
         self.setToSLabel()
         self.view.addSubview(ToSLabel)
-        setNextButton()
+        
+        self.nextButton.isEnabled = false
+        
         self.userNameField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         self.ToSLabel.isUserInteractionEnabled = true
@@ -34,20 +36,12 @@ class UserNameViewController: UIViewController {
     }
     
     @objc func setNextButton(){
-        nextButton.layer.cornerRadius = 4
+        
         if userNameField.text!.isEmpty {
-            nextButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
-            nextButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
             nextButton.isEnabled = false
         } else {
-            nextButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
-            nextButton.setTitleColor(UIColor.white, for: .normal)
-            
-            nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
             nextButton.isEnabled = true
-            
         }
-        self.view.addSubview(nextButton)
     }
     
     func setLabel(){

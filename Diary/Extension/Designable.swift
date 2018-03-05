@@ -22,15 +22,25 @@ class DesignableLabel: UILabel {
 }
 
 extension UIView {
-    
     @IBInspectable
-    var cornerRadius: CGFloat {
+    var cornerRadius: CGFloat{
         get {
             return layer.cornerRadius
         }
         set {
             layer.cornerRadius = newValue
+            makeRoundedView(corners: [.allCorners], radius: newValue)
         }
+    }
+    
+    func makeRoundedView(corners: UIRectCorner, radius: CGFloat = 5.0){
+        let maskPAth1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: corners,
+                                     cornerRadii: CGSize(width: radius, height: radius))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPAth1.cgPath
+        self.layer.mask = maskLayer1
     }
     
     @IBInspectable
