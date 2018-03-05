@@ -1415,11 +1415,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="Yr1-vN-EGw">
-                            <rect key="frame" x="0.0" y="280" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                         <sections>
                             <tableViewSection id="ZE5-F3-Yc7">
                                 <cells>
@@ -1431,17 +1426,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-fH-GEm">
-                                                    <rect key="frame" x="15.999999999999996" y="0.0" width="48.666666666666657" height="43.666666666666664"/>
+                                                    <rect key="frame" x="15.999999999999996" y="-3.6666666666666661" width="48.666666666666657" height="33.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                     <color key="textColor" red="0.37647058823529411" green="0.23529411764705882" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v8o-fH-GEm" secondAttribute="trailing" id="8dV-m8-V7V"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v8o-fH-GEm" secondAttribute="trailing" constant="16" id="8dV-m8-V7V"/>
                                                 <constraint firstItem="v8o-fH-GEm" firstAttribute="leading" secondItem="agu-nb-G56" secondAttribute="leading" constant="16" id="MKg-GU-Iun"/>
-                                                <constraint firstItem="v8o-fH-GEm" firstAttribute="top" secondItem="agu-nb-G56" secondAttribute="top" id="PTh-OF-94g"/>
-                                                <constraint firstAttribute="bottom" secondItem="v8o-fH-GEm" secondAttribute="bottom" id="xai-Vp-sM2"/>
+                                                <constraint firstAttribute="bottom" secondItem="v8o-fH-GEm" secondAttribute="bottom" constant="14" id="xai-Vp-sM2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1604,7 +1598,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jJJ-L6-cc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2954" y="1496"/>
+            <point key="canvasLocation" x="2953.6231884057975" y="1495.9239130434785"/>
         </scene>
         <!--Update App Password View Controller-->
         <scene sceneID="xbw-9o-ilO">

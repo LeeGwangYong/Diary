@@ -57,11 +57,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.rightViewMode = UITextFieldViewMode.always
     }
     func customLoginButton() {
-        
         self.loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
         self.loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
         self.loginButton.createGradientLayer()
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case self.emailField:

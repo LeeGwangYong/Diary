@@ -25,6 +25,6 @@ class CustomButton: UIButton {
         self.setBackgroundImage(UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0).createImageView(size: self.frame.size), for: .disabled)
         self.setTitleColor(UIColor.white, for: .normal)
         self.setBackgroundImage(UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0).createImageView(size: self.frame.size), for: .normal)
-        self.cornerRadius = 5
+        self.makeRoundedView(corners: [.allCorners], radius: 5)
     }
 }

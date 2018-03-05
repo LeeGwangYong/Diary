@@ -29,7 +29,7 @@ extension UIView {
         }
         set {
             layer.cornerRadius = newValue
-            makeRoundedView(corners: [.allCorners], radius: newValue)
+//            makeRoundedView(corners: [.allCorners], radius: newValue)
         }
     }
     

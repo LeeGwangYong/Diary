@@ -16,7 +16,7 @@ enum Password {
     var description: String? {
         switch self {
         case .validate: return "암호를 입력하세요"
-        case .input: return "새 비밀번호를 입력하세요"
+        case .input: return "새로운 앱 비밀번호를 입력해주세요"
         }
     }
 }
@@ -26,7 +26,6 @@ class PasswordLoginViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var passwordStackView: UIStackView!
     var passwordType: Password = .validate
-    var lock: Bool? = false
     var delegate: SettingsTableViewController?
     
     var passwordContainerView: PasswordContainerView!
@@ -44,6 +43,12 @@ class PasswordLoginViewController: UIViewController {
         passwordContainerView.highlightedColor = UIColor.color(.purple)
         
         titleLabel.text = self.passwordType.description
+        switch self.passwordType {
+        case .input: self.passwordContainerView.touchAuthenticationEnabled = false
+        default:
+            self.passwordContainerView.touchAuthenticationEnabled = true
+        }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

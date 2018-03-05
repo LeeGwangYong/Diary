@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension UIViewController {
     func transparentNavigationBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

@@ -40,6 +40,15 @@ class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewC
         return 30
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath == IndexPath(row: 0, section: 0)
+             {
+                return 60
+        }
+        return 60
+    }
+    
     @objc func logoutClicked() {
         let logoutAlert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까? ", preferredStyle: UIAlertControllerStyle.alert)
         logoutAlert.addAction(UIAlertAction(title: "취소", style: .destructive, handler: { (action: UIAlertAction!) in
