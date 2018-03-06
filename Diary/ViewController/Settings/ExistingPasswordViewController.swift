@@ -10,11 +10,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ExistingPasswordViewController: UIViewController {
+class ExistingPasswordViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var completeButton: CustomButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    
     @IBOutlet weak var passwordAlertLabel: UILabel!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var questionLabel: UILabel!
@@ -29,30 +28,26 @@ class ExistingPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNextButton()
+        self.passwordField.delegate = self
         self.passwordField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
+        self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         self.view.bringSubview(toFront: indicatorView)
     }
     @objc func setNextButton(){
-        completeButton.layer.cornerRadius = 4
         if passwordField.text!.isEmpty {
             passwordAlertLabel.isHidden = true
-            completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
-            completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+            completeButton.isEnabled = false
         } else {
             if passwordField.text!.count < 8 {
                 passwordAlertLabel.text = "8자 이상 입력해주세요"
                 passwordAlertLabel.isHidden = false
-                completeButton.setTitleColor(UIColor(red: 206/255, green: 206/255, blue: 206/255, alpha: 1.0), for: .normal)
-                completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
+                completeButton.isEnabled = false
             } else {
                 passwordAlertLabel.isHidden = true
-                completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
-                completeButton.setTitleColor(UIColor.white, for: .normal)
-                completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
+                completeButton.isEnabled = true
             }
         }
-        self.view.addSubview(completeButton)
     }
     func setLabel(){
         let text = "기존 비밀번호를\n입력해주세요"
@@ -93,7 +88,12 @@ class ExistingPasswordViewController: UIViewController {
     @objc func completeButtonClicked() {
         updatePassword()
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if passwordField.text!.count >= 8 {
+            completeButtonClicked()
+        }
+        return true
+    }
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }

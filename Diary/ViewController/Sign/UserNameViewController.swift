@@ -7,16 +7,16 @@
 //
 import UIKit
 
-class UserNameViewController: UIViewController {
+class UserNameViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionLabel: UILabel!
-    
     @IBOutlet weak var nextButton: CustomButton!
     @IBOutlet weak var ToSLabel: UILabel!
     @IBOutlet weak var userNameField: UITextField!
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        self.userNameField.delegate = self
         setLabel()
         userNameField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         self.view.layoutIfNeeded()
@@ -28,15 +28,14 @@ class UserNameViewController: UIViewController {
         self.view.addSubview(ToSLabel)
         
         self.nextButton.isEnabled = false
-        
         self.userNameField.addTarget(self, action: #selector(setNextButton), for: UIControlEvents.editingChanged)
+        self.nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
         self.ToSLabel.isUserInteractionEnabled = true
         self.ToSLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(navigateToTerms)))
     }
     
-    @objc func setNextButton(){
-        
+    @objc func setNextButton() {
         if userNameField.text!.isEmpty {
             nextButton.isEnabled = false
         } else {
@@ -64,6 +63,12 @@ class UserNameViewController: UIViewController {
         attributedString.addAttribute(NSAttributedStringKey.underlineColor, value: UIColor(red: 155/255, green: 155/255, blue: 155/255, alpha: 1.0), range: NSRange(location: 10, length: 2))
         
         ToSLabel.attributedText = attributedString
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if userNameField != nil {
+            nextButtonClicked()
+        }
+        return true
     }
     @objc func dismissKeyboard() {
         self.view.endEditing(true)

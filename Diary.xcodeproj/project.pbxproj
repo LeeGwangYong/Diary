@@ -9,12 +9,11 @@
 /* Begin PBXBuildFile section */
 		9E32DC8920405E290036326F /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E32DC8820405E290036326F /* ResetPasswordViewController.swift */; };
 		9E32DC8B20405E750036326F /* ResetPasswordLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E32DC8A20405E750036326F /* ResetPasswordLoginViewController.swift */; };
-		9E3D2692204698CD00A8FEBC /* UpdateAppPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D2691204698CD00A8FEBC /* UpdateAppPasswordViewController.swift */; };
 		9E3D26942046A6EB00A8FEBC /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3D26932046A6EB00A8FEBC /* CustomTextField.swift */; };
 		9E928BB6204693D000D72A04 /* PasswordLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E928BB5204693D000D72A04 /* PasswordLoginViewController.swift */; };
+		9EB70C78204ECC4100D68090 /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB70C77204ECC4100D68090 /* UpdatePasswordViewController.swift */; };
 		9EBB5C2720441B6E00BCCB29 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C2620441B6E00BCCB29 /* SettingsTableViewController.swift */; };
 		9EBB5C2D204456AD00BCCB29 /* ExistingPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C2C204456AD00BCCB29 /* ExistingPasswordViewController.swift */; };
-		9EBB5C2F204456B800BCCB29 /* UpdatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C2E204456B800BCCB29 /* UpdatePasswordViewController.swift */; };
 		9EBB5C3120445B4E00BCCB29 /* ConfirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C3020445B4E00BCCB29 /* ConfirmPasswordViewController.swift */; };
 		9EBB5C33204519C700BCCB29 /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB5C32204519C700BCCB29 /* TermsOfServiceViewController.swift */; };
 		9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */; };
@@ -65,12 +64,11 @@
 		69DF82A48C115E948CB9E5EB /* Pods-Diary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Diary.release.xcconfig"; path = "Pods/Target Support Files/Pods-Diary/Pods-Diary.release.xcconfig"; sourceTree = "<group>"; };
 		9E32DC8820405E290036326F /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		9E32DC8A20405E750036326F /* ResetPasswordLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordLoginViewController.swift; sourceTree = "<group>"; };
-		9E3D2691204698CD00A8FEBC /* UpdateAppPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAppPasswordViewController.swift; sourceTree = "<group>"; };
 		9E3D26932046A6EB00A8FEBC /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9E928BB5204693D000D72A04 /* PasswordLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordLoginViewController.swift; sourceTree = "<group>"; };
+		9EB70C77204ECC4100D68090 /* UpdatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewController.swift; sourceTree = "<group>"; };
 		9EBB5C2620441B6E00BCCB29 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9EBB5C2C204456AD00BCCB29 /* ExistingPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingPasswordViewController.swift; sourceTree = "<group>"; };
-		9EBB5C2E204456B800BCCB29 /* UpdatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordViewController.swift; sourceTree = "<group>"; };
 		9EBB5C3020445B4E00BCCB29 /* ConfirmPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewController.swift; sourceTree = "<group>"; };
 		9EBB5C32204519C700BCCB29 /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		9ED286C2203EF2900098CDBF /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
@@ -159,10 +157,9 @@
 			children = (
 				9EBB5C2620441B6E00BCCB29 /* SettingsTableViewController.swift */,
 				9EBB5C2C204456AD00BCCB29 /* ExistingPasswordViewController.swift */,
-				9EBB5C2E204456B800BCCB29 /* UpdatePasswordViewController.swift */,
 				9EBB5C3020445B4E00BCCB29 /* ConfirmPasswordViewController.swift */,
 				9EBB5C32204519C700BCCB29 /* TermsOfServiceViewController.swift */,
-				9E3D2691204698CD00A8FEBC /* UpdateAppPasswordViewController.swift */,
+				9EB70C77204ECC4100D68090 /* UpdatePasswordViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -508,7 +505,6 @@
 				9ED286CB203F25170098CDBF /* AccountViewController.swift in Sources */,
 				FC3F2434203698090062222F /* CustomTabBarController.swift in Sources */,
 				9EBB5C2720441B6E00BCCB29 /* SettingsTableViewController.swift in Sources */,
-				9E3D2692204698CD00A8FEBC /* UpdateAppPasswordViewController.swift in Sources */,
 				9ED286CF203F319C0098CDBF /* VerifyEmailService.swift in Sources */,
 				9E32DC8920405E290036326F /* ResetPasswordViewController.swift in Sources */,
 				9ED286D1203F32150098CDBF /* VerifyEmailViewController.swift in Sources */,
@@ -516,6 +512,7 @@
 				FC4930DB204109BD002CCD30 /* DDay.swift in Sources */,
 				FC18F2EA200E04BD0087E3A8 /* SignService.swift in Sources */,
 				9E3D26942046A6EB00A8FEBC /* CustomTextField.swift in Sources */,
+				9EB70C78204ECC4100D68090 /* UpdatePasswordViewController.swift in Sources */,
 				9EBB5C33204519C700BCCB29 /* TermsOfServiceViewController.swift in Sources */,
 				FC9A7C0F202EDB9500F93095 /* CapsuleTableViewCell.swift in Sources */,
 				FCC3CCA3200FA25600AD0019 /* DateString.swift in Sources */,
@@ -529,7 +526,6 @@
 				FC210237202F12B300B3FFDD /* InputViewController.swift in Sources */,
 				FC3F24362036BE0C0062222F /* CalendarViewController.swift in Sources */,
 				FC19D2E2204CBCC500D62E45 /* CustomButton.swift in Sources */,
-				9EBB5C2F204456B800BCCB29 /* UpdatePasswordViewController.swift in Sources */,
 				9ED286C9203F210A0098CDBF /* LoginViewController.swift in Sources */,
 				9ED286C3203EF2900098CDBF /* UIKitExtensions.swift in Sources */,
 				FCC3CC94200EDB5900AD0019 /* ViewController.swift in Sources */,

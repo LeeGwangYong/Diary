@@ -26,6 +26,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.heavy), range: NSRange(location: 8, length: 5))
         logoLabel.attributedText = attributedString
         setPlaceholderColor()
+        self.emailField.addTarget(self, action: #selector(setLoginButton), for: UIControlEvents.editingChanged)
+        self.passwordField.addTarget(self, action: #selector(setLoginButton), for: UIControlEvents.editingChanged)
+        self.loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
@@ -58,17 +61,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     func customLoginButton() {
         self.loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
-        self.loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
         self.loginButton.createGradientLayer()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case self.emailField:
-            
-            self.passwordField.becomeFirstResponder()
+            if validateEmail(enteredEmail: emailField.text!) {
+                self.passwordField.becomeFirstResponder()
+                loginButton.isEnabled = false
+            }
         case self.passwordField:
-            self.loginButtonClicked(sender: self.loginButton)
+            if passwordField.text!.count >= 8 {
+                loginButton.isEnabled = true
+                self.loginButtonClicked()
+            }
         default: break
         }
         return true
@@ -99,8 +106,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    @objc func loginButtonClicked(sender: UIButton){
+    @objc func setLoginButton() {
+        if (emailField.text?.isEmpty)! || (passwordField.text?.isEmpty)! {
+            loginButton.isEnabled = false
+        } else {
+            if validateEmail(enteredEmail: emailField.text!) {
+                if passwordField.text!.count >= 8   {
+                    loginButton.isEnabled = true
+                } else {
+                    loginButton.isEnabled = false
+                }
+            } else {
+                if passwordField.text!.count >= 8   {
+                    loginButton.isEnabled = false
+                } else {
+                    loginButton.isEnabled = false
+                }
+            }
+        }
+    }
+    @objc func loginButtonClicked() {
         self.dismissKeyboard()
         let param: Parameters = [
             "email" : emailField.text!,

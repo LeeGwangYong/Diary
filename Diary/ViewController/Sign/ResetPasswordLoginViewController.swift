@@ -25,7 +25,8 @@ class ResetPasswordLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailResendButton.addTarget(self, action: #selector(resendPasswordResetEmail), for: .touchUpInside)
+        self.emailResendButton.addTarget(self, action: #selector(resendPasswordResetEmail), for: .touchUpInside)
+        self.loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     func setTextLabel() {
         let text = "이메일로\n임시 비밀번호를 보냈습니다"
@@ -57,7 +58,6 @@ class ResetPasswordLoginViewController: UIViewController {
     }
     func customLoginButton() {
         loginButton.createGradientLayer()
-        loginButton.addTarget(self, action: #selector(loginButtonClicked), for: .touchUpInside)
     }
     @objc func loginButtonClicked() {
         let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LoginViewController.reuseIdentifier)

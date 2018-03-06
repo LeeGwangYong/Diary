@@ -13,7 +13,7 @@ import Toast_Swift
 class VerifyEmailViewController: ViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var completeButton: CustomButton!
     @IBOutlet weak var resendEmailButton: UIButton!
     @IBOutlet weak var codeTextField1: CustomTextField!
     @IBOutlet weak var codeTextField2: CustomTextField!
@@ -23,7 +23,6 @@ class VerifyEmailViewController: ViewController {
                                                   self.codeTextField2,
                                                   self.codeTextField3,
                                                   self.codeTextField4]
-  
     var userIdx: Int!
     var email: String!
     var password: String!
@@ -48,10 +47,8 @@ class VerifyEmailViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setViewController()
-        drawCompleteButton()
-
+        self.completeButton.isEnabled = false
         self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         resendEmailButton.addTarget(self, action: #selector(resendEmailButtonClicked), for: .touchUpInside)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
@@ -73,16 +70,6 @@ class VerifyEmailViewController: ViewController {
         questionLabel.text = text
         questionLabel.applyGradientWith(startColor: UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1), endColor: UIColor(red: 94/255, green: 37/255, blue: 99/255, alpha: 1))
         
-    }
-    @objc func drawCompleteButton(){
-        completeButton.setTitleColor(UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0), for: .disabled)
-        completeButton.setBackgroundImage(UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0).createImageView(size: completeButton.frame.size), for: .disabled)
-        
-        completeButton.setTitleColor(UIColor.white, for: .normal)
-        completeButton.setBackgroundImage(UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0).createImageView(size: completeButton.frame.size), for: .normal)
-        completeButton.makeRoundedView(corners: [.allCorners], radius: 4)
-        
-        completeButton.isEnabled = false
     }
     
     func authCodeSetup() {
@@ -182,13 +169,10 @@ extension VerifyEmailViewController: DeletableTextFieldDelegate, UITextFieldDele
                     else if code.count == 4 {
                         completeButton.isEnabled = true
                     }
-                    
                 case self.codeTextField4:
-                    
                     if code.count == 4 {
                         textField.resignFirstResponder()
                     }
-                    
                 default:
                     break
                 }
@@ -202,7 +186,6 @@ extension VerifyEmailViewController: DeletableTextFieldDelegate, UITextFieldDele
         if code.count < 4 {
             completeButton.isEnabled = false
         }
-            
         else if code.count == 4 {
             completeButton.isEnabled = true
         }

@@ -10,11 +10,10 @@ import Alamofire
 import SwiftyJSON
 import Toast_Swift
 
-class ResetPasswordViewController: ViewController {
+class ResetPasswordViewController: ViewController, UITextFieldDelegate {
     @IBOutlet weak var questionLabel: UILabel!
-    
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var completeButton: CustomButton!
     @IBOutlet weak var emailField: UITextField!
    
     override func viewDidLayoutSubviews() {
@@ -23,14 +22,14 @@ class ResetPasswordViewController: ViewController {
         emailField.addBorderBottom(height: 1.0, color: UIColor(red: 168/255, green: 128/255, blue: 177/255, alpha: 1.0))
         self.view.layoutIfNeeded()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCompleteButton()
+        self.emailField.delegate = self
+        self.completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
         self.emailField.addTarget(self, action: #selector(setCompleteButton), for: UIControlEvents.editingChanged)
         self.view.bringSubview(toFront: self.indicatorView)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-        
     }
     func setTextLabel() {
         let text = "비밀번호를\n잊으셨나요?"
@@ -39,18 +38,15 @@ class ResetPasswordViewController: ViewController {
         
     }
     @objc func setCompleteButton(){
-        completeButton.layer.cornerRadius = 4
         if emailField.text!.isEmpty {
-            completeButton.backgroundColor = UIColor(red: 227/255, green: 227/255, blue: 227/255, alpha: 1.0)
             completeButton.isEnabled = false
         } else {
             if validateEmail(enteredEmail: emailField.text!) {
-                completeButton.backgroundColor = UIColor(red: 96/255, green: 60/255, blue: 115/255, alpha: 1.0)
-                completeButton.addTarget(self, action: #selector(completeButtonClicked), for: .touchUpInside)
                 completeButton.isEnabled = true
+            } else {
+                completeButton.isEnabled = false
             }
         }
-        self.view.addSubview(completeButton)
     }
     @objc func completeButtonClicked() {
         UserDefaults.standard.set(emailField.text, forKey: "email")
@@ -90,9 +86,13 @@ class ResetPasswordViewController: ViewController {
             }
         }
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if emailField != nil {
+            completeButtonClicked()
+        }
+        return true
+    }
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
-    
-    
 }
