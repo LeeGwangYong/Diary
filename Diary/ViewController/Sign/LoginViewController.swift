@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.emailField.delegate = self
         self.passwordField.delegate = self
-        
+        self.loginButton.isEnabled = false
         let attributedString = NSMutableAttributedString(string: "기억의 타임캡슐\n타이머리")
         logoLabel.attributedText = attributedString
         attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 18.0, weight: UIFont.Weight.heavy), range: NSRange(location: 8, length: 5))
@@ -60,8 +60,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         textField.rightViewMode = UITextFieldViewMode.always
     }
     func customLoginButton() {
+        self.loginButton.setTitleColor(UIColor(red: 170/255, green: 170/255, blue: 170/255, alpha: 1.0), for: .disabled)
+        self.loginButton.setBackgroundImage(UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0).createImageView(size: loginButton.frame.size), for: .disabled)
+        self.loginButton.setTitleColor(UIColor.white, for: .normal)
+        
         self.loginButton.makeRoundedView(corners: [.bottomLeft, .bottomRight])
-        self.loginButton.createGradientLayer()
+        if loginButton.isEnabled == true {
+            loginButton.createGradientLayer()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
