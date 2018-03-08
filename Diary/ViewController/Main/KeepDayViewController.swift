@@ -143,7 +143,7 @@ extension KeepDayViewController: UITableViewDelegate, UITableViewDataSource {
         if 1 <= indexPath.row && indexPath.row <= 4  {
             cell.titleLabel.text = "다음 \(DivisionOfTheYear.allDescription[indexPath.row])"
         }
-        else if indexPath.row == 5 {
+        else if indexPath.row == 6 {
             cell.titleLabel.text = "내년 \(DivisionOfTheYear.allDescription[indexPath.row])"
         }
         else {

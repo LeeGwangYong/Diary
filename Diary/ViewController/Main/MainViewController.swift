@@ -54,6 +54,7 @@ class MainViewController: ViewController {
                        animations: {self.blinkingView.alpha = 1.0},
                        completion: nil)
         UIApplication.shared.statusBarStyle = .lightContent
+        self.fetchCapsuleList()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -62,7 +63,6 @@ class MainViewController: ViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.fetchCapsuleList()
         self.transparentNavigationBar()
         self.backgroundView.createGradientLayer()
         self.tableViewHeightConstraint.constant = viewHeight - (96 + 72)
@@ -78,7 +78,6 @@ class MainViewController: ViewController {
         self.parentScrollView.bounces = false
         
         self.capsuleTableView.showsVerticalScrollIndicator = false
-//        self.capsuleTableView.bounces = false
         self.capsuleTableView.setUp(target: self, cell: CapsuleTableViewCell.self)
         
         var currentDateString = "\(Date().dateToStringYMD())의 기억"

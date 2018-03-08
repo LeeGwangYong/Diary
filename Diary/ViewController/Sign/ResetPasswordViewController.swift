@@ -89,6 +89,7 @@ class ResetPasswordViewController: ViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailField != nil {
             completeButtonClicked()
+            self.view.endEditing(true)
         }
         return true
     }

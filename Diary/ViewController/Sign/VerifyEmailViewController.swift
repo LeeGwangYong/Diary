@@ -121,7 +121,7 @@ class VerifyEmailViewController: ViewController {
     @objc func resendEmailButtonClicked() {
         let param: Parameters = [
             "idx" : userIdx,
-            "email" : UserDefaults.standard.string(forKey: "email")!
+            "email" : self.email
         ]
         SignService.getSignData(url: "resendverifyemail", parameter: param) { (result) in
             switch result {
