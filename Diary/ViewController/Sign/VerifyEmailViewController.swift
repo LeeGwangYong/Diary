@@ -113,7 +113,9 @@ class VerifyEmailViewController: ViewController {
                     self.view.makeToast(dataJSON["errmsg"].stringValue)
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Verify In Failure : \(failureCode)")
+                #endif
                 
             }
         }
@@ -128,14 +130,18 @@ class VerifyEmailViewController: ViewController {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     self.view.makeToast("이메일을 재전송 하였습니다.")
                 } else {
                     self.view.makeToast("인증코드 재발송 오류입니다.")
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Resend Email In Failure : \(failureCode)")
+                #endif
             }
         }
     }

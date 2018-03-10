@@ -69,7 +69,9 @@ class ResetPasswordViewController: ViewController, UITextFieldDelegate {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     self.indicatorView.stopAnimating()
                     UserDefaults.standard.synchronize()
@@ -81,8 +83,9 @@ class ResetPasswordViewController: ViewController, UITextFieldDelegate {
                 }
                 
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Password Reset Email Failure : \(failureCode)")
-                
+                #endif
             }
         }
     }

@@ -118,7 +118,9 @@ class MainViewController: ViewController {
                         }
                     }
                 case .Failure(let failureCode) :
+                    #if DEBUG
                     print(failureCode)
+                    #endif
                 }
             }
         }
@@ -193,10 +195,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     // Scroll parent scrollview upwards as much as child scrollView is scrolled
                     // Sometimes parent scrollView goes in the middle of screen and stucks there so max is used.
                     let maxValue = max(min(parentScrollView.contentOffset.y + childScrollView.contentOffset.y, parentViewMaxContentYOffset), 0)
-                    print("parentScrollView.contentOffset.y \(parentScrollView.contentOffset.y)")
-                    print("maxValue \(maxValue)")
                     self.parentScrollView.contentOffset.y = maxValue
-                    print("maxValued parentScrollView.contentOffset.y \(parentScrollView.contentOffset.y)\n")
                     
                     if self.parentScrollView.contentOffset.y >= parentViewMaxContentYOffset {
                         UIView.animate(withDuration: 1, animations: {

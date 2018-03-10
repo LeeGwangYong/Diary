@@ -67,7 +67,9 @@ class ExistingPasswordViewController: UIViewController, UITextFieldDelegate {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     self.indicatorView.stopAnimating()
                     self.passwordAlertLabel.isHidden = true
@@ -81,7 +83,9 @@ class ExistingPasswordViewController: UIViewController, UITextFieldDelegate {
                     self.passwordAlertLabel.isHidden = false
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Resend Email In Failure : \(failureCode)")
+                #endif
             }
         }
     }

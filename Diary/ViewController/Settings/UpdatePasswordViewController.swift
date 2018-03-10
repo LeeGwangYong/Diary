@@ -69,7 +69,9 @@ class UpdatePasswordViewController: UIViewController, UITextFieldDelegate {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     self.indicatorView.stopAnimating()
                     let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ConfirmPasswordViewController.reuseIdentifier)
@@ -79,7 +81,9 @@ class UpdatePasswordViewController: UIViewController, UITextFieldDelegate {
                     self.view.makeToast("비밀번호 업데이트 오류입니다.")
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Resend Email In Failure : \(failureCode)")
+                #endif
             }
         }
     }

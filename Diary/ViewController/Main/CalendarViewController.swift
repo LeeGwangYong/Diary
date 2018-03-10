@@ -149,8 +149,6 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
     }
     
-    
-    
     func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
         let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: CalendarCell.reuseIdentifier, for: indexPath) as! CalendarCell
         cell.dateLabel.text = cellState.text
@@ -159,13 +157,11 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         return cell
     }
     
-    
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         let cell = cell as! CalendarCell
         cell.dateLabel.text = cellState.text
         handleCellConfiguration(cell: cell, cellState: cellState)
     }
-    
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         let start = Calendar.current.date(from: DateComponents(calendar: Calendar.current, timeZone: Calendar.current.timeZone, year: todayComponents.year, month: 1, day: 1))

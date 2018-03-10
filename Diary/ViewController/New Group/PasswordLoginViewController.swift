@@ -68,7 +68,9 @@ class PasswordLoginViewController: UIViewController {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     UserDefaults.standard.set(self.delegate?.passwordLockSwitch.isOn, forKey: "lockSwitch")
                     UserDefaults.standard.set(code, forKey: "lockPassword")
@@ -77,7 +79,9 @@ class PasswordLoginViewController: UIViewController {
                     self.view.makeToast("잠금비밀번호 업데이트 오류입니다.")
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Resend Email In Failure : \(failureCode)")
+                #endif
             }
         }
     }
@@ -117,12 +121,10 @@ private extension PasswordLoginViewController {
     }
     
     func validationSuccess() {
-        print("*️⃣ success!")
         self.dismiss(animated: true, completion: nil)
     }
     
     func validationFail() {
-        print("*️⃣ failure!")
         passwordContainerView.wrongPassword()
     }
 }

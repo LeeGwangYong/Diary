@@ -72,7 +72,9 @@ class InputViewController: ViewController {
     }
     
     @objc func deleteCapsule(_ sender: UIBarButtonItem) {
+        #if DEBUG
         print(sender.tag)
+        #endif
         let alertVC = UIAlertController(title: "기억 지우기", message: "기억을 지우면 다시 되돌릴 수 없습니다. 기억을 지우시겠습니까?", preferredStyle: .alert)
         let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "지우기", style: .destructive) { (alertAction) in
@@ -91,7 +93,9 @@ class InputViewController: ViewController {
                 switch result {
                 case .Success(let value):
                     let dataJSON = JSON(value)
+                    #if DEBUG
                     print(dataJSON)
+                        #endif
                     if let code = dataJSON["code"].string, code == "0009" {
                         self.view.makeToast(dataJSON["errmsg"].stringValue)
                     }
@@ -104,7 +108,9 @@ class InputViewController: ViewController {
                         self.displayDate = formatter.date(from: dataJSON["data"]["insert_date"].stringValue)
                     }
                 case .Failure(let failureCode) :
+                    #if DEBUG
                     print(failureCode)
+                    #endif
                 }
             })
         }
@@ -118,7 +124,9 @@ class InputViewController: ViewController {
                 switch result {
                 case .Success(let value):
                     let dataJSON = JSON(value)
+                    #if DEBUG
                     print(dataJSON)
+                        #endif
                     if let code = dataJSON["code"].string, code == "0009" {
                         self.view.makeToast(dataJSON["errmsg"].stringValue)
                     }
@@ -132,7 +140,9 @@ class InputViewController: ViewController {
                         self.present(completionVC, animated: true, completion: nil)
                     }
                 case .Failure(let failureCode) :
+                    #if DEBUG
                     print(failureCode)
+                    #endif
                 }
             })
         }

@@ -99,13 +99,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     case .Success(let response):
                         let data = response
                         let dataJSON = JSON(data)
+                        #if DEBUG
                         print(dataJSON)
+                            #endif
                         if dataJSON["code"] == "0000" {
                             let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CustomTabBarController.reuseIdentifier) as! CustomTabBarController
                             self.present(mainVC, animated: true, completion: nil)
                         }
                     case .Failure(let failureCode):
+                        #if DEBUG
                         print("Auto Login Failure : \(failureCode)")
+                        #endif
                         
                     }
                 }
@@ -143,7 +147,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     UserDefaults.standard.set(self.emailField.text, forKey: "email")
                     UserDefaults.standard.set(self.passwordField.text, forKey: "password")
@@ -155,8 +161,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.view.makeToast(dataJSON["errmsg"].stringValue)
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Sign In Failure : \(failureCode)")
-                
+                #endif
             }
         }
     }

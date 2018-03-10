@@ -43,14 +43,18 @@ class ResetPasswordLoginViewController: UIViewController {
             case .Success(let response):
                 let data = response
                 let dataJSON = JSON(data)
+                #if DEBUG
                 print(dataJSON)
+                    #endif
                 if dataJSON["code"] == "0000" {
                     self.view.makeToast("새로운 비밀번호를 재전송하였습니다.")
                 } else {
                     self.view.makeToast(dataJSON["errmsg"].stringValue)
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Password Reset Email Failure : \(failureCode)")
+                #endif
                 
             }
         }

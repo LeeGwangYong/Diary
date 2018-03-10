@@ -108,7 +108,9 @@ class KeepDayViewController: ViewController {
                 switch result {
                 case .Success(let value):
                     let dataJSON = JSON(value)
+                    #if DEBUG
                     print(dataJSON)
+                        #endif
                     if let code = dataJSON["code"].string, code == "0009" {
                         self.view.makeToast(dataJSON["errmsg"].stringValue)
                     }
@@ -122,7 +124,9 @@ class KeepDayViewController: ViewController {
                         self.present(completionVC, animated: true, completion: nil)
                     }
                 case .Failure(let failureCode) :
+                    #if DEBUG
                     print(failureCode)
+                    #endif
                 }
             })
         }

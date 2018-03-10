@@ -78,7 +78,6 @@ class SettingsTableViewController: UITableViewController, UpdateAppPasswordViewC
     }
     
     @objc func switchValueDidChange(sender: UISwitch!) {
-        print(sender.isOn)
         if sender.isOn {
             if UserDefaults.standard.string(forKey: "lockPassword") == nil {
                 self.view.makeToast("잠금 비밀번호 변경을 통해 비밀번호를 설정해주세요")

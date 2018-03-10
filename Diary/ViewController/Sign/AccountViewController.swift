@@ -98,7 +98,9 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
                     self.emailAlertLabel.isHidden = false
                 }
             case .Failure(let failureCode):
+                #if DEBUG
                 print("Sign Up Failure : \(failureCode)")
+                #endif
                 
             }
         }
