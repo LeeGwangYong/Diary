@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        app.registerUserNotificationSettings(notificationSettings)
         
         if let realmURL = Realm.Configuration.defaultConfiguration.fileURL {
+            #if DEBUG
             print(realmURL.absoluteString)
+            #endif
         }
         
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -46,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         let switchValue = UserDefaults.standard.bool(forKey: "lockSwitch")
         if switchValue {
+            
             let passCodeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: PasswordLoginViewController.reuseIdentifier) as! PasswordLoginViewController
             UIApplication.topViewController()?.present(passCodeVC, animated: true, completion: nil)
         }

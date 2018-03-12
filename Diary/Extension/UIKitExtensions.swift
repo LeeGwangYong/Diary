@@ -38,6 +38,8 @@ extension UIView {
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    
 }
 
 extension UIColor {

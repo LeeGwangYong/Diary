@@ -60,6 +60,7 @@ class UpdatePasswordViewController: UIViewController, UITextFieldDelegate {
     }
     func updatePassword() {
         self.indicatorView.startAnimating()
+        self.view.isUserInteractionEnabled = false
         let param: Parameters = [
             "idx" : UserDefaults.standard.string(forKey: "userIdx"),
             "password" : UserDefaults.standard.string(forKey: "password")!
@@ -86,6 +87,7 @@ class UpdatePasswordViewController: UIViewController, UITextFieldDelegate {
                 #endif
             }
         }
+        self.view.isUserInteractionEnabled = true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if passwordField.text!.count >= 8 {

@@ -56,7 +56,7 @@ class ExistingPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     func updatePassword() {
         self.indicatorView.startAnimating()
-     
+     self.view.isUserInteractionEnabled = false
         let param: Parameters = [
             "idx" : UserDefaults.standard.string(forKey: "userIdx")!,
             "password" : passwordField.text!
@@ -88,6 +88,7 @@ class ExistingPasswordViewController: UIViewController, UITextFieldDelegate {
                 #endif
             }
         }
+        self.view.isUserInteractionEnabled = true
     }
     @objc func completeButtonClicked() {
         updatePassword()

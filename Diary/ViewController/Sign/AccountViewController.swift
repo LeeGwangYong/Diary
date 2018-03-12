@@ -74,6 +74,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
     
     @objc func signUp() {
         self.indicatorView.startAnimating()
+        self.view.isUserInteractionEnabled = false
         let param: Parameters = [
             "email" : emailField.text!,
             "password" : passwordField.text!,
@@ -88,6 +89,8 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
                 
                 if let code = dataJSON["code"].string, code == "0000" {
                     self.indicatorView.stopAnimating()
+                    
+                    
                     let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: VerifyEmailViewController.reuseIdentifier) as! VerifyEmailViewController
                     nextVC.email = self.emailField.text
                     nextVC.password = self.passwordField.text
@@ -103,6 +106,7 @@ class AccountViewController: UIViewController, UITextFieldDelegate {
                 #endif
                 
             }
+            self.view.isUserInteractionEnabled = true
         }
         
     }

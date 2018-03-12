@@ -20,7 +20,6 @@ class ResetPasswordLoginViewController: UIViewController {
         super.viewDidLayoutSubviews()
         setTextLabel()
         customLoginButton()
-        self.view.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
@@ -64,8 +63,7 @@ class ResetPasswordLoginViewController: UIViewController {
         loginButton.createGradientLayer()
     }
     @objc func loginButtonClicked() {
-        let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: LoginViewController.reuseIdentifier)
-        self.present(nextVC, animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     

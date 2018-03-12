@@ -85,6 +85,7 @@ class VerifyEmailViewController: ViewController {
     
     func checkAuthCode(){
         self.indicatorView.startAnimating()
+        self.view.isUserInteractionEnabled = false
         let param: Parameters = [
             "idx" : userIdx,
             "activeAccountCode" : code
@@ -96,6 +97,8 @@ class VerifyEmailViewController: ViewController {
                 let dataJSON = JSON(data)
                 if let code = dataJSON["code"].string, code == "0000"{
                     self.indicatorView.stopAnimating()
+                    self.view.isUserInteractionEnabled = true
+                    
                     let completionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: CompletionViewController.reuseIdentifier) as! CompletionViewController
                     completionVC.delegate = self
                     completionVC.titleString = "가입완료"
@@ -119,6 +122,7 @@ class VerifyEmailViewController: ViewController {
                 
             }
         }
+        self.view.isUserInteractionEnabled = true
     }
     @objc func resendEmailButtonClicked() {
         let param: Parameters = [

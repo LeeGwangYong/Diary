@@ -24,17 +24,6 @@ class CalendarViewController: ViewController {
     var delegate: KeepDayViewController?
     var selectedDate: Date?
     
-    func createGradientLayer() {
-        let gradientLayer = CAGradientLayer()
-        
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [UIColor(red:  101/255, green: 121/255, blue: 151/255, alpha: 1).cgColor,
-                                UIColor(red: 87/255, green: 70/255, blue: 115/255, alpha: 1).cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCalendarView()
@@ -61,7 +50,6 @@ class CalendarViewController: ViewController {
                 cell?.isHidden = true
             }
         }
-        
         self.calendarView.visibleDates { (visibleDates) in
             self.getCalendarVisibleDates(from: visibleDates)
         }

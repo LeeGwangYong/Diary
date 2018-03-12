@@ -60,6 +60,7 @@ class ResetPasswordViewController: ViewController, UITextFieldDelegate {
     }
     func passwordResetEmail(){
         self.indicatorView.startAnimating()
+        self.view.isUserInteractionEnabled = false
         let param: Parameters = [
             "email" : UserDefaults.standard.string(forKey: "email")!
         ]
@@ -76,7 +77,7 @@ class ResetPasswordViewController: ViewController, UITextFieldDelegate {
                     self.indicatorView.stopAnimating()
                     UserDefaults.standard.synchronize()
                     let nextVC =  UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ResetPasswordLoginViewController.reuseIdentifier)
-                    self.present(nextVC, animated: true, completion: nil)
+                    self.navigationController?.pushViewController(nextVC, animated: true)
                 } else {
                     self.indicatorView.stopAnimating()
                     self.view.makeToast(dataJSON["errmsg"].stringValue)
@@ -88,6 +89,7 @@ class ResetPasswordViewController: ViewController, UITextFieldDelegate {
                 #endif
             }
         }
+        self.view.isUserInteractionEnabled = true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailField != nil {
