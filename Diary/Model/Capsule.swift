@@ -67,7 +67,9 @@ class Capsule: Object, Mappable  {
             return try Realm()
         }
         catch(let err) {
+            #if DEBUG
             print(err.localizedDescription)
+            #endif
         }
         
         return nil
