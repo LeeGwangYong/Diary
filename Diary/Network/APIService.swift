@@ -26,7 +26,7 @@ protocol APIService {
 
 extension APIService  {
     static func getURL(path: String) -> String {
-        return "http://45.63.120.140:40004/api/" + path
+        return "" + path
     }
     static func getResult_StatusCode<T>(response: DataResponse<T>) -> Result<T>? {
         switch response.result {
